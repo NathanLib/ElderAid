@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/BorderHorizontalNavBar"
+        android:layout_marginBottom="80dp"
+        android:paddingTop="80dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/contact_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="@string/contact_tvTitle"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/contact_llUserProfile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/contact_llUserProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_tvTitle">
+
+                <ImageView
+                    android:id="@+id/contact_ivUserPhoto"
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:visibility="visible"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/contact_tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_tvUserName"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/contact_tvMyCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_tvMyCard"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/contact_tvFavorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:height="40dp"
+                android:background="@drawable/divider_bloc"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/contact_tvFavorites"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toTopOf="@id/contact_llFavoriteContacts"
+                app:layout_constraintTop_toBottomOf="@id/contact_llUserProfile" />
+
+
+            <LinearLayout
+                android:id="@+id/contact_llFavoriteContacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/contact_tvFavorites">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/contact_ivFavorite1"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="10dp"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/contact_tvFavorite1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_tvFavorite1"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/contact_ivFavorite2"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="10dp"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/contact_tvFavorite2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_tvFavorite2"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/contact_ivFavorite3"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="10dp"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/contact_tvFavorite3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_tvFavorite3"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/contact_tvContactsA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:height="40dp"
+                android:background="@drawable/divider_bloc"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/contact_tvContactsA"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintTop_toBottomOf="@id/contact_llFavoriteContacts"
+                app:layout_constraintBottom_toTopOf="@id/contact_llContactA"/>
+
+            <LinearLayout
+                android:id="@+id/contact_llContactA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/contact_tvContactsA"
+                app:layout_constraintBottom_toTopOf="@id/contact_tvContactsB">
+
+                <TextView
+                    android:id="@+id/contact_tvContactA1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactA1"
+                    android:padding="20dp" />
+
+                <View style="@style/Divider"/>
+
+                <TextView
+                    android:id="@+id/contact_tvContactA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactA2"
+                    android:padding="20dp"/>
+
+                <View style="@style/Divider"/>
+
+                <TextView
+                    android:id="@+id/contact_tvContactA3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactA1"
+                    android:padding="20dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/contact_tvContactsB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:height="40dp"
+                android:background="@drawable/divider_bloc"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/contact_tvContactsB"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintTop_toBottomOf="@id/contact_llContactA"
+                app:layout_constraintBottom_toTopOf="@id/contact_llContactA"/>
+
+            <LinearLayout
+                android:id="@+id/contact_llContactB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/contact_tvContactsB">
+
+                <TextView
+                    android:id="@+id/contact_tvContactB1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactB1"
+                    android:padding="20dp" />
+
+                <View style="@style/Divider"/>
+
+                <TextView
+                    android:id="@+id/contact_tvContactB2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactB2"
+                    android:padding="20dp"/>
+
+                <View style="@style/Divider"/>
+
+                <TextView
+                    android:id="@+id/contact_tvContactB3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_tvContactB1"
+                    android:padding="20dp"/>
+
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/BorderHorizontalNavBar"
+        app:layout_constraintBottom_toTopOf="@id/navbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/BorderHorizontal"/>
+
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_sos"
+            android:minHeight="80dp"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent"/>
+
+        <View
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/BorderVertical"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:minHeight="80dp"
+            android:background="@color/transparent"/>
+
+        <View
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/BorderVertical"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu"
+            android:minHeight="80dp"
+            android:background="@color/transparent"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
