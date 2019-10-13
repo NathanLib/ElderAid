@@ -9,5 +9,8 @@
     <color name="white">#ffffff</color>
     <color name="lightgray">#e5e5e5</color>
     <color name="darkgray">#999999</color>
+    <color name="verydarkgray">#505050</color>
     <color name="transparent"></color>
+    <color name="lightred">#FA6B73</color>
+    <color name="darkred">#9c051a</color>
 </resources>

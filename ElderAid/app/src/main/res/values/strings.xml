@@ -21,4 +21,22 @@
 
     <!-- Strings for PrescriptionLevel page -->
     <string name="prescription_tvTitle">Prescription level</string>
+    <string name="prescription_tvAddMedication">Add a medication</string>
+    <string name="prescription_tvMyMedications">My medications</string>
+
+    <string name="prescription_tvMyMedication1Name">Xanax</string>
+    <string name="prescription_tvMyMedication1ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication1Quantity"><b>15</b> left</string>
+
+    <string name="prescription_tvMyMedication2Name">Ibuprofen</string>
+    <string name="prescription_tvMyMedication2ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication2Quantity"><b>10</b> left</string>
+
+    <string name="prescription_tvMyMedication3Name">Celexa</string>
+    <string name="prescription_tvMyMedication3ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication3Quantity"><b>3</b> left</string>
+
+    <string name="prescription_tvMyMedication4Name">Risperdal</string>
+    <string name="prescription_tvMyMedication4ExpDate">Exp. date : 10/02/2018</string>
+    <string name="prescription_tvMyMedication4Quantity"><b>20</b> left</string>
 </resources>

@@ -86,7 +86,6 @@
                 app:layout_constraintBottom_toTopOf="@id/contact_llFavoriteContacts"
                 app:layout_constraintTop_toBottomOf="@id/contact_llUserProfile" />
 
-
             <LinearLayout
                 android:id="@+id/contact_llFavoriteContacts"
                 android:layout_width="match_parent"
