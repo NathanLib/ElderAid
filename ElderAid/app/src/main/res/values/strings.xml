@@ -59,4 +59,16 @@
     <string name="medical_tvEmergency">Emergency Contact</string>
     <string name="medical_btnEmerAltText">Text emergency contact</string>
     <string name="medical_btnEmerAltCall">Call emergency contact</string>
+
+
+    <!--    Maps Activity Strings-->
+    <string name="maps_tvTitle">Maps</string>
+    <string name="maps_altText1">Hospital</string>
+    <string name="maps_altText2">Home</string>
+    <string name="maps_altText3">Shop</string>
+    <string name="maps_altText4">Vet</string>
+    <string name="maps_tvSearch">Search for your destination</string>
+    <string name="maps_etPlaceholder">Put your location here</string>
+    <string name="maps_submit">Submit</string>
+
 </resources>
