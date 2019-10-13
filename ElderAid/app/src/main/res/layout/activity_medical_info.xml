@@ -6,4 +6,464 @@
     android:layout_height="match_parent"
     tools:context=".MedicalInfoActivity">
 
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_sos"
+            android:minHeight="80dp"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent"/>
+
+        <View
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/BorderVertical"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:minHeight="80dp"
+            android:background="@color/transparent"/>
+
+        <View
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/BorderVertical"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_menu"
+            android:minHeight="80dp"
+            android:background="@color/transparent"/>
+        <View
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            style="@style/BorderVertical"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="516dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/medical_tvTitle"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="140dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="21dp"
+        android:contentDescription="@string/medical_profilePic_altText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="214dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="@string/medical_tvName"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvNameType"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvNameType"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:text="@string/medical_tvNameType"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="209dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="@string/medical_tvAge"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/tvAgeType"
+        android:layout_width="71dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:text="@string/medical_tvAgeType"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvAge"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameType" />
+
+    <TextView
+        android:id="@+id/tvBloodType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/medical_tvBloodType"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+
+    <TextView
+        android:id="@+id/tvBlood"
+        android:layout_width="157dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/medical_tvBlood"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvBloodType"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+
+    <TextView
+        android:id="@+id/tvMedicine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="388dp"
+        android:layout_marginRight="388dp"
+        android:text="@string/medical_tvMedication"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePic" />
+
+    <ScrollView
+        android:id="@+id/svMedication"
+        android:layout_width="487dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#CEE9E9E9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMedicine">
+
+        <LinearLayout
+            android:id="@+id/linearMedication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvMedication1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication1"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication2"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication3"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication4"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication5"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication6"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication7"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication8"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvMedication9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication9"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvMedication10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication10"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/medical_tvConditions"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svMedication" />
+
+    <ScrollView
+        android:id="@+id/svConditions"
+        android:layout_width="487dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#CEE9E9E9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvConditions">
+
+        <LinearLayout
+            android:id="@+id/linearConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvCondition1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication1"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication2"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication3"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication4"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication5"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication6"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication7"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication8"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tvCondition9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication9"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tvCondition10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/medical_tvMedication10"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvInsurance"
+        android:layout_width="261dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/medical_tvInsurance"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svConditions" />
+
+    <Button
+        android:id="@+id/btnInsurance"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:text="@string/medical_btnInsurance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvInsurance"
+        app:layout_constraintTop_toBottomOf="@+id/svConditions" />
+
+    <TextView
+        android:id="@+id/tvEmergency"
+        android:layout_width="248dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/medical_tvEmergency"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInsurance" />
+
+    <ImageButton
+        android:id="@+id/textImgBtn"
+        android:layout_width="54dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:contentDescription="@string/medical_btnEmerAltText"
+        android:src="@drawable/ic_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsurance" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="60dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginLeft="121dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/medical_btnEmerAltCall"
+        android:src="@drawable/ic_call"
+        app:layout_constraintEnd_toStartOf="@+id/textImgBtn"
+        app:layout_constraintStart_toEndOf="@+id/tvEmergency"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsurance" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
