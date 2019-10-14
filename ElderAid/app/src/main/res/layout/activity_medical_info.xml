@@ -65,14 +65,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="280dp"
-        android:layout_marginRight="280dp"
         android:text="@string/medical_tvTitle"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ivProfilePic"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,8 +81,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
         android:layout_marginBottom="18dp"
         android:contentDescription="@string/medical_profilePic_altText"
         app:layout_constraintBottom_toTopOf="@+id/tvMedicine"
@@ -96,10 +91,8 @@
 
     <LinearLayout
         android:id="@+id/linearUserData"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
@@ -203,15 +196,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="460dp"
-        android:layout_marginRight="460dp"
         android:layout_marginBottom="7dp"
         android:text="@string/medical_tvMedication"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/svMedication"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfilePic" />
 
@@ -327,15 +317,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="372dp"
-        android:layout_marginRight="372dp"
         android:layout_marginBottom="7dp"
         android:text="@string/medical_tvConditions"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/svConditions"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/svMedication" />
 
@@ -444,20 +431,17 @@
 
     <TextView
         android:id="@+id/tvInsurance"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="238dp"
-        android:layout_marginRight="238dp"
         android:layout_marginBottom="8dp"
         android:text="@string/medical_tvInsurance"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvEmergency"
-        app:layout_constraintEnd_toStartOf="@+id/btnInsurance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/svConditions" />
 
@@ -470,18 +454,17 @@
         android:text="@string/medical_btnInsurance"
         app:layout_constraintBottom_toTopOf="@+id/textImgBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvInsurance"
         app:layout_constraintTop_toBottomOf="@+id/svConditions" />
 
     <TextView
         android:id="@+id/tvEmergency"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="3dp"
         android:text="@string/medical_tvEmergency"
         android:textColor="@color/black"
@@ -495,10 +478,10 @@
 
     <ImageButton
         android:id="@+id/textImgBtn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
         android:layout_marginBottom="1dp"
@@ -511,12 +494,10 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="1dp"
         android:contentDescription="@string/medical_btnEmerAltCall"
         app:layout_constraintBottom_toTopOf="@+id/navbar"
