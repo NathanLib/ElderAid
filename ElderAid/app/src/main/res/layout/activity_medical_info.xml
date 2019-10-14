@@ -59,18 +59,15 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="516dp"
-        android:layout_height="45dp"
+        android:layout_width="310dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/medical_tvTitle"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -183,27 +180,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="388dp"
-        android:layout_marginRight="388dp"
         android:text="@string/medical_tvMedication"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfilePic" />
 
     <ScrollView
         android:id="@+id/svMedication"
-        android:layout_width="487dp"
-        android:layout_height="173dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="558dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:background="#CEE9E9E9"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMedicine">
 
@@ -211,7 +202,7 @@
             android:id="@+id/linearMedication"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvMedication1"
@@ -220,6 +211,7 @@
                 android:text="@string/medical_tvMedication1"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication2"
                 android:layout_width="match_parent"
@@ -227,6 +219,7 @@
                 android:text="@string/medical_tvMedication2"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication3"
                 android:layout_width="match_parent"
@@ -234,6 +227,7 @@
                 android:text="@string/medical_tvMedication3"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication4"
                 android:layout_width="match_parent"
@@ -241,6 +235,7 @@
                 android:text="@string/medical_tvMedication4"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication5"
                 android:layout_width="match_parent"
@@ -248,6 +243,7 @@
                 android:text="@string/medical_tvMedication5"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication6"
                 android:layout_width="match_parent"
@@ -255,6 +251,7 @@
                 android:text="@string/medical_tvMedication6"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication7"
                 android:layout_width="match_parent"
@@ -262,6 +259,7 @@
                 android:text="@string/medical_tvMedication7"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication8"
                 android:layout_width="match_parent"
@@ -277,6 +275,7 @@
                 android:text="@string/medical_tvMedication9"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tvMedication10"
                 android:layout_width="match_parent"
@@ -305,15 +304,12 @@
 
     <ScrollView
         android:id="@+id/svConditions"
-        android:layout_width="487dp"
-        android:layout_height="173dp"
+        android:layout_width="558dp"
+        android:layout_height="180dp"
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:background="#CEE9E9E9"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvConditions">
 
@@ -323,77 +319,85 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvCondition1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication1"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication2"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication3"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication4"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication5"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication6"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication7"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition8"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication8"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvCondition1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication1"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-                        <TextView
-                            android:id="@+id/tvCondition9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication9"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/tvCondition10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/medical_tvMedication10"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvCondition2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication2"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication3"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication4"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication5"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication6"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication7"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication8"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication9"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCondition10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medical_tvMedication10"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -414,16 +418,12 @@
 
     <Button
         android:id="@+id/btnInsurance"
-        android:layout_width="79dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
+        android:layout_width="113dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
         android:text="@string/medical_btnInsurance"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvInsurance"
         app:layout_constraintTop_toBottomOf="@+id/svConditions" />
 
     <TextView
@@ -447,7 +447,7 @@
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
         android:contentDescription="@string/medical_btnEmerAltText"
-        android:src="@drawable/ic_message"
+        app:srcCompat="@drawable/ic_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsurance" />
 
@@ -455,15 +455,12 @@
         android:id="@+id/imageButton"
         android:layout_width="60dp"
         android:layout_height="34dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginLeft="121dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:contentDescription="@string/medical_btnEmerAltCall"
-        android:src="@drawable/ic_call"
         app:layout_constraintEnd_toStartOf="@+id/textImgBtn"
-        app:layout_constraintStart_toEndOf="@+id/tvEmergency"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsurance" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInsurance"
+        app:srcCompat="@drawable/ic_call" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
