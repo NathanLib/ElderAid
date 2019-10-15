@@ -115,7 +115,7 @@
             android:contentDescription="@string/maps_altText1"
             android:cropToPadding="false"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_Hospital" />
+            app:srcCompat="@drawable/ic_hospital" />
 
         <ImageButton
             android:id="@+id/btnHomeFav"
