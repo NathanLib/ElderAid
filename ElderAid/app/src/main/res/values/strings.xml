@@ -39,4 +39,22 @@
     <string name="prescription_tvMyMedication4Name">Risperdal</string>
     <string name="prescription_tvMyMedication4ExpDate">Exp. date : 10/02/2018</string>
     <string name="prescription_tvMyMedication4Quantity"><b>20</b> left</string>
+
+    <!-- Strings for Calendar page -->
+    <string name="calendar_tvSyncEvents">Sync. events</string>
+    <string name="calendar_tvAddEvent">Add an event</string>
+    <string name="calendar_tvEvent1Name">Eat Christmas chocolates</string>
+    <string name="calendar_tvEvent1Time">1pm - 2pm</string>
+    <string name="calendar_tvEvent2Name">Eat more Christmas chocolates</string>
+    <string name="calendar_tvEvent2Time">2pm - 3pm</string>
+    <string name="calendar_tvEvent3Name">Eat still more Christmas chocolates</string>
+    <string name="calendar_tvEvent3Time">3pm - 4pm</string>
+
+    <string name="addevent_etEventName">Name of the event</string>
+    <string name="addevent_etEventPlace">Add a location</string>
+    <string name="addevent_etEventDescription">Add a description</string>
+    <string name="addevent_btnCancelEvent">
+        <u>Cancel</u>
+    </string>
+    <string name="addevent_btnAddEvent">Add the event</string>
 </resources>
