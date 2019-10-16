@@ -62,15 +62,16 @@
         android:id="@+id/tvMaps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="7dp"
+        android:background="#0ea5c6"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/maps_tvTitle"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/contact_tvFavorites"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.39" />
@@ -79,7 +80,6 @@
         android:id="@+id/contact_tvFavorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:height="40dp"
         android:background="@drawable/divider_bloc"
         android:gravity="center_vertical"
@@ -102,6 +102,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/tvSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,10 +113,10 @@
             android:id="@+id/btnHospital"
             android:layout_width="71dp"
             android:layout_height="66dp"
+            android:layout_weight="1"
             android:adjustViewBounds="false"
             android:contentDescription="@string/maps_altText1"
             android:cropToPadding="false"
-            android:layout_weight="1"
             app:srcCompat="@drawable/ic_hospital" />
 
         <ImageButton
@@ -157,6 +159,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearFavourites" />
@@ -164,7 +167,7 @@
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="0dp"
-        android:layout_height="39dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="12dp"
@@ -175,6 +178,7 @@
         android:inputType="textPersonName"
         android:text="@string/maps_etPlaceholder"
         android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditFav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSearch" />
@@ -187,7 +191,26 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/maps_submit"
+        android:background="#0ea5c6"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnEditFav"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+    <Button
+        android:id="@+id/btnEditFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp"
+        android:text="@string/maps_favourite"
+        android:background="@color/transparent"
+        android:textColor="#0ea5c6"
+        app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
 

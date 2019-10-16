@@ -108,5 +108,17 @@
     <string name="maps_tvSearch">Search for your destination</string>
     <string name="maps_etPlaceholder">Put your location here</string>
     <string name="maps_submit">Submit</string>
+    <string name="maps_favourite">Edit Favourites</string>
+
+    <!--    favourites for maps-->
+    <string name="maps_fav_title">Edit your Favourites</string>
+    <string name="maps_fav1">Address of Favourite 1</string>
+    <string name="maps_fav2">Address of Favourite 2</string>
+    <string name="maps_fav3">Address of Favourite 3</string>
+    <string name="maps_fav4">Address of Favourite 4</string>
+    <string name="maps_fav_placeholder">Address</string>
+    <string name="maps_fav_submit">Submit</string>
+    <string name="maps_fav_cancel">Cancel</string>
+
 
 </resources>
