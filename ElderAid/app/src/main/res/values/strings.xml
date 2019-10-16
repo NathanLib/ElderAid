@@ -111,13 +111,20 @@
     <string name="editInstructionsCondition">Please enter the Condition name, each on a new line</string>
     <string name="conditionsInfo">Medical Conditions Information</string>
     <string name="insuranceInfo">Insurance Information</string>
-    <string name="editProvider">Edit Insurance Provider</string>
+    <string name="editProvider">Edit Provider</string>
     <string name="editInsuranceNum">Edit Insurance Number</string>
 
     <string name="emergencyContactInfo">Emergency Contact Information</string>
     <string name="tvEmergencyContactNum">Edit Phone number</string>
     <string name="edit_med_submit">Submit</string>
     <string name="edit_med_cancel">Cancel</string>
+    <string name="viewInsuranceTitle">View Insurance</string>
+
+    <string name="tvInsuranceProviderType">Insurance Provider: </string>
+    <string name="tvInsuranceNumberType">Insurance Number: </string>
+    <string name="tvExampleInsuranceProvider">Health And Co.</string>
+    <string name="tvExampleInsuranceNumber">8337462-ABKE-22094</string>
+    <string name="btnOK">OK</string>
 
 
 

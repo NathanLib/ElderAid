@@ -62,12 +62,12 @@
         android:id="@+id/tvMaps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#0ea5c6"
+
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="@string/maps_tvTitle"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/contact_tvFavorites"
@@ -116,7 +116,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="false"
             android:contentDescription="@string/maps_altText1"
-            android:cropToPadding="false"
+            android:background="@color/pacificblue"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/ic_hospital" />
 
         <ImageButton
@@ -125,6 +126,8 @@
             android:layout_height="66dp"
             android:layout_weight="1"
             android:contentDescription="@string/maps_altText2"
+            android:background="@color/pacificblue"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/ic_home" />
 
         <ImageButton
@@ -133,6 +136,8 @@
             android:layout_height="66dp"
             android:layout_weight="1"
             android:contentDescription="@string/maps_altText4"
+            android:background="@color/pacificblue"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/ic_vet" />
 
         <ImageButton
@@ -141,6 +146,9 @@
             android:layout_height="66dp"
             android:layout_weight="1"
             android:contentDescription="@string/maps_altText3"
+            android:background="@color/pacificblue"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:srcCompat="@drawable/ic_shop" />
 
 
