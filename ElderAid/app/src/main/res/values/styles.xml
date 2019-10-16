@@ -29,5 +29,10 @@
         <item name="android:background">@color/darkgray</item>
     </style>
 
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/pacificblue</item>
+        <item name="colorPrimary">@color/darkgray</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
 
 </resources>

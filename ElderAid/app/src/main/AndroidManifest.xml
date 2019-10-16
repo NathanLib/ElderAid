@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CalendarActivity"></activity>
+
         <activity android:name=".MapsActivity"></activity>
         <activity android:name=".ContactActivity">
             <intent-filter>
@@ -17,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".PrescriptionLevelActivity"></activity>
+
+
         <activity android:name=".MainActivity"></activity>
     </application>
 

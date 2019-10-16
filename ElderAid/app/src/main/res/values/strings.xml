@@ -19,6 +19,44 @@
     <string name="contact_tvContactB1">Balbert Einstein</string>
     <string name="contact_tvContactB2">Balbert Camus</string>
 
+    <!-- Strings for PrescriptionLevel page -->
+    <string name="prescription_tvTitle">Prescription level</string>
+    <string name="prescription_tvAddMedication">Add a medication</string>
+    <string name="prescription_tvMyMedications">My medications</string>
+
+    <string name="prescription_tvMyMedication1Name">Xanax</string>
+    <string name="prescription_tvMyMedication1ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication1Quantity"><b>15</b> left</string>
+
+    <string name="prescription_tvMyMedication2Name">Ibuprofen</string>
+    <string name="prescription_tvMyMedication2ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication2Quantity"><b>10</b> left</string>
+
+    <string name="prescription_tvMyMedication3Name">Celexa</string>
+    <string name="prescription_tvMyMedication3ExpDate">Exp. date : 10/02/2022</string>
+    <string name="prescription_tvMyMedication3Quantity"><b>3</b> left</string>
+
+    <string name="prescription_tvMyMedication4Name">Risperdal</string>
+    <string name="prescription_tvMyMedication4ExpDate">Exp. date : 10/02/2018</string>
+    <string name="prescription_tvMyMedication4Quantity"><b>20</b> left</string>
+
+    <!-- Strings for Calendar page -->
+    <string name="calendar_tvSyncEvents">Sync. events</string>
+    <string name="calendar_tvAddEvent">Add an event</string>
+    <string name="calendar_tvEvent1Name">Eat Christmas chocolates</string>
+    <string name="calendar_tvEvent1Time">1pm - 2pm</string>
+    <string name="calendar_tvEvent2Name">Eat more Christmas chocolates</string>
+    <string name="calendar_tvEvent2Time">2pm - 3pm</string>
+    <string name="calendar_tvEvent3Name">Eat still more Christmas chocolates</string>
+    <string name="calendar_tvEvent3Time">3pm - 4pm</string>
+
+    <string name="addevent_etEventName">Name of the event</string>
+    <string name="addevent_etEventPlace">Add a location</string>
+    <string name="addevent_etEventDescription">Add a description</string>
+    <string name="addevent_btnCancelEvent">
+        <u>Cancel</u>
+    </string>
+    <string name="addevent_btnAddEvent">Add the event</string>
 
     <!-- Strings for Medical page -->
     <string name="medical_tvTitle">Medical Information</string>
