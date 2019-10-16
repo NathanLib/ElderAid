@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapsActivity">
+
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_sos" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:src="@drawable/ic_home" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:src="@drawable/ic_menu" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMaps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/maps_tvTitle"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/contact_tvFavorites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <TextView
+        android:id="@+id/contact_tvFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:height="40dp"
+        android:background="@drawable/divider_bloc"
+        android:gravity="center_vertical"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/contact_tvFavorites"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearFavourites"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaps" />
+
+
+    <LinearLayout
+        android:id="@+id/linearFavourites"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tvSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_tvFavorites">
+
+        <ImageButton
+            android:id="@+id/btnHospital"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/maps_altText1"
+            android:cropToPadding="false"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_hospital" />
+
+        <ImageButton
+            android:id="@+id/btnHomeFav"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/maps_altText2"
+            app:srcCompat="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/btnVet"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/maps_altText4"
+            app:srcCompat="@drawable/ic_vet" />
+
+        <ImageButton
+            android:id="@+id/btnShop"
+            android:layout_width="71dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/maps_altText3"
+            app:srcCompat="@drawable/ic_shop" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="40dp"
+        android:background="@drawable/divider_bloc"
+        android:gravity="center_vertical"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/maps_tvSearch"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearFavourites" />
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:text="@string/maps_etPlaceholder"
+        android:textColor="@color/darkgray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearch" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/maps_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,4 +57,56 @@
         <u>Cancel</u>
     </string>
     <string name="addevent_btnAddEvent">Add the event</string>
+
+    <!-- Strings for Medical page -->
+    <string name="medical_tvTitle">Medical Information</string>
+    <string name="medical_tvNameType">Name:</string>
+    <string name="medical_tvName">Example Name</string>
+    <string name="medical_tvAgeType">Age:</string>
+    <string name="medical_tvAge">85</string>
+    <string name="medical_tvBloodType">Blood Type:</string>
+    <string name="medical_tvBlood">A-</string>
+    <string name="medical_profilePic_altText">Profile Picture of the individual</string>
+
+    <string name="medical_tvMedication">Medication</string>
+    <string name="medical_tvMedication1">Wartarin</string>
+    <string name="medical_tvMedication2">Atenolol</string>
+    <string name="medical_tvMedication3">Rantidine</string>
+    <string name="medical_tvMedication4">Levodopa</string>
+    <string name="medical_tvMedication5">Salbutamol</string>
+    <string name="medical_tvMedication6">Predrisolone</string>
+    <string name="medical_tvMedication7">Levothyroxine</string>
+    <string name="medical_tvMedication8">Statin</string>
+    <string name="medical_tvMedication9">Oxycodone</string>
+    <string name="medical_tvMedication10">Simvastin</string>
+
+    <string name="medical_tvConditions">Medical Conditions</string>
+    <string name="medical_tvCondition1">High Blood Pressure</string>
+    <string name="medical_tvCondition2">Gastroesophageal Reflux Disease</string>
+    <string name="medical_tvCondition3">Parkinsons</string>
+    <string name="medical_tvCondition4">Asthma</string>
+    <string name="medical_tvCondition5">Arthritis</string>
+    <string name="medical_tvCondition6">Hypothyroidism</string>
+    <string name="medical_tvCondition7">High Cholesterol</string>
+    <string name="medical_tvCondition8">Heart Burn</string>
+    <string name="medical_tvCondition9">Diabetes</string>
+    <string name="medical_tvCondition10">Allergic to Peanuts</string>
+
+    <string name="medical_tvInsurance">Insurance Information</string>
+    <string name="medical_btnInsurance">View Info</string>
+    <string name="medical_tvEmergency">Emergency Contact</string>
+    <string name="medical_btnEmerAltText">Text emergency contact</string>
+    <string name="medical_btnEmerAltCall">Call emergency contact</string>
+
+
+    <!--    Maps Activity Strings-->
+    <string name="maps_tvTitle">Maps</string>
+    <string name="maps_altText1">Hospital</string>
+    <string name="maps_altText2">Home</string>
+    <string name="maps_altText3">Shop</string>
+    <string name="maps_altText4">Vet</string>
+    <string name="maps_tvSearch">Search for your destination</string>
+    <string name="maps_etPlaceholder">Put your location here</string>
+    <string name="maps_submit">Submit</string>
+
 </resources>
