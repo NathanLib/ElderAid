@@ -14,7 +14,11 @@
         </activity>
 
         <activity android:name=".MapsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ContactActivity">
@@ -26,11 +30,7 @@
         </activity>
 
         <activity android:name=".MedicalInfoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".MainActivity">
