@@ -187,16 +187,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:textColor="#0ea5c6"
             android:text="@string/maps_fav_cancel"
-            android:textColor="#0ea5c6" />
+             />
 
         <Button
             android:id="@+id/btnFavSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#0ea5c6"
+            android:textColor="@color/white"
             android:text="@string/maps_fav_submit"
-            android:textColor="@color/white" />
+             />
 
 
     </LinearLayout>
