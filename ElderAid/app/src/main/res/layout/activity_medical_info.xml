@@ -1,62 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MedicalInfoActivity">
 
-    <LinearLayout
-        android:id="@+id/navbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnSOS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:minHeight="80dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_sos" />
-
-        <View
-            style="@style/BorderVertical"
-            app:layout_constraintBottom_toTopOf="@id/navbar"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:minHeight="80dp"
-            android:src="@drawable/ic_home" />
-
-        <View
-            style="@style/BorderVertical"
-            app:layout_constraintBottom_toTopOf="@id/navbar"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:minHeight="80dp"
-            android:src="@drawable/ic_menu" />
-
-        <View
-            style="@style/BorderVertical"
-            app:layout_constraintBottom_toTopOf="@id/navbar"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/tvTitle"
@@ -69,124 +19,132 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ivProfilePic"
+        app:layout_constraintBottom_toTopOf="@+id/profileData"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/ivProfilePic"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="18dp"
-        android:contentDescription="@string/medical_profilePic_altText"
-        app:layout_constraintBottom_toTopOf="@+id/tvMedicine"
-        app:layout_constraintEnd_toStartOf="@+id/linearUserData"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:src="@tools:sample/avatars" />
-
     <LinearLayout
-        android:id="@+id/linearUserData"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="18dp"
-        android:orientation="vertical"
+        android:id="@+id/profileData"
+        android:layout_width="388dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/tvMedicine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivProfilePic"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
-        <LinearLayout
-            android:id="@+id/linearName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10sp"
-            android:paddingBottom="10sp">
+        <ImageView
+            android:id="@+id/ivProfilePic"
 
-            <TextView
-                android:id="@+id/tvNameType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="0sp"
-                android:paddingRight="10sp"
-                android:text="@string/medical_tvNameType"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/medical_tvName"
-                android:textSize="22sp" />
-
-
-        </LinearLayout>
+            android:contentDescription="@string/medical_profilePic_altText"
+            android:src="@drawable/ic_profile" />
+        <!--       ^^    purely a placeholder image. When we add real images, we'll edit it for the right format-->
 
         <LinearLayout
-            android:id="@+id/linearAge"
-            android:layout_width="match_parent"
+            android:id="@+id/linearUserData"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10sp">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvAgeType"
+            <LinearLayout
+                android:id="@+id/linearName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="0sp"
-                android:paddingRight="10sp"
-                android:text="@string/medical_tvAgeType"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp">
 
-            <TextView
-                android:id="@+id/tvAge"
+                <TextView
+                    android:id="@+id/tvNameType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0sp"
+                    android:paddingRight="10sp"
+                    android:text="@string/medical_tvNameType"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medical_tvName"
+                    android:textSize="22sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvAge"
-                android:textSize="22sp" />
+                android:orientation="horizontal"
+                android:paddingBottom="10sp">
+
+                <TextView
+                    android:id="@+id/tvAgeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0sp"
+                    android:paddingRight="10sp"
+                    android:text="@string/medical_tvAgeType"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medical_tvAge"
+                    android:textSize="22sp" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearBloodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10sp">
+
+                <TextView
+                    android:id="@+id/tvBloodType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0sp"
+                    android:paddingRight="10sp"
+                    android:text="@string/medical_tvBloodType"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBlood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medical_tvBlood"
+                    android:textSize="22sp" />
+
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearBloodType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10sp">
-
-            <TextView
-                android:id="@+id/tvBloodType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="0sp"
-                android:paddingRight="10sp"
-                android:text="@string/medical_tvBloodType"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvBlood"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/medical_tvBlood"
-                android:textSize="22sp" />
-
-
-        </LinearLayout>
     </LinearLayout>
 
 
@@ -203,7 +161,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/svMedication"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/profileData" />
 
     <ScrollView
         android:id="@+id/svMedication"
@@ -350,7 +308,7 @@
                 android:id="@+id/tvCondition1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication1"
+                android:text="@string/medical_tvCondition1"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -358,7 +316,7 @@
                 android:id="@+id/tvCondition2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication2"
+                android:text="@string/medical_tvCondition2"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -366,7 +324,7 @@
                 android:id="@+id/tvCondition3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication3"
+                android:text="@string/medical_tvCondition3"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -374,7 +332,7 @@
                 android:id="@+id/tvCondition4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication4"
+                android:text="@string/medical_tvCondition4"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -382,7 +340,7 @@
                 android:id="@+id/tvCondition5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication5"
+                android:text="@string/medical_tvCondition5"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -390,7 +348,7 @@
                 android:id="@+id/tvCondition6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication6"
+                android:text="@string/medical_tvCondition6"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -398,7 +356,7 @@
                 android:id="@+id/tvCondition7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication7"
+                android:text="@string/medical_tvCondition7"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -406,7 +364,7 @@
                 android:id="@+id/tvCondition8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication8"
+                android:text="@string/medical_tvCondition8"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -414,7 +372,7 @@
                 android:id="@+id/tvCondition9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication9"
+                android:text="@string/medical_tvCondition9"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -422,7 +380,7 @@
                 android:id="@+id/tvCondition10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/medical_tvMedication10"
+                android:text="@string/medical_tvCondition10"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -506,12 +464,69 @@
         app:layout_constraintTop_toBottomOf="@+id/btnInsurance"
         app:srcCompat="@drawable/ic_call" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
+
+
+
+
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_sos" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:src="@drawable/ic_home" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:minHeight="80dp"
+            android:src="@drawable/ic_menu" />
+
+        <View
+            style="@style/BorderVertical"
+            app:layout_constraintBottom_toTopOf="@id/navbar"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEditInfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/medical_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

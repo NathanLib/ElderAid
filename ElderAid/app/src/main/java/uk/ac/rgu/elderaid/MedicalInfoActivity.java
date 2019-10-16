@@ -2,13 +2,50 @@ package uk.ac.rgu.elderaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 
-public class MedicalInfoActivity extends AppCompatActivity {
+public class MedicalInfoActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button btnEditMedInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_info);
+
+        btnEditMedInfo = findViewById(R.id.btnEditInfo);
+        btnEditMedInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openEditDialog();
+            }
+        });
+
     }
+
+    public void openEditDialog(){
+        final Dialog editMedInfoDialog = new Dialog(this);
+        editMedInfoDialog.setContentView(R.layout.dialog_edit_medinfo);
+        editMedInfoDialog.setTitle("Edit Medical Info");
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(editMedInfoDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        editMedInfoDialog.show();
+        editMedInfoDialog.getWindow().setAttributes(lp);
+
+        editMedInfoDialog.show();
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
 }
+

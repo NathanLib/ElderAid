@@ -97,6 +97,28 @@
     <string name="medical_tvEmergency">Emergency Contact</string>
     <string name="medical_btnEmerAltText">Text emergency contact</string>
     <string name="medical_btnEmerAltCall">Call emergency contact</string>
+    <string name="medical_edit">Edit</string>
+
+    <string name="medical_editTitle">Edit your Medical Info</string>
+    <string name="medical_editName">Edit Name</string>
+    <string name="medical_editAge">Edit Age</string>
+    <string name="medical_editBT">Edit Blood Type</string>
+    <string name="medical_choosePhoto">Choose Photo</string>
+    <string name="chooserBtn">Choose</string>
+    <string name="basicInfo">Basic Information</string>
+    <string name="medicationInfo">Medication Information</string>
+    <string name="editInstructionsMedication">Please enter the Medication name, each on a new line</string>
+    <string name="editInstructionsCondition">Please enter the Condition name, each on a new line</string>
+    <string name="conditionsInfo">Medical Conditions Information</string>
+    <string name="insuranceInfo">Insurance Information</string>
+    <string name="editProvider">Edit Insurance Provider</string>
+    <string name="editInsuranceNum">Edit Insurance Number</string>
+
+    <string name="emergencyContactInfo">Emergency Contact Information</string>
+    <string name="tvEmergencyContactNum">Edit Phone number</string>
+    <string name="edit_med_submit">Submit</string>
+    <string name="edit_med_cancel">Cancel</string>
+
 
 
     <!--    Maps Activity Strings-->
@@ -110,7 +132,7 @@
     <string name="maps_submit">Submit</string>
     <string name="maps_favourite">Edit Favourites</string>
 
-    <!--    favourites for maps-->
+    <!--    Favourites for maps-->
     <string name="maps_fav_title">Edit your Favourites</string>
     <string name="maps_fav1">Address of Favourite 1</string>
     <string name="maps_fav2">Address of Favourite 2</string>
@@ -119,6 +141,9 @@
     <string name="maps_fav_placeholder">Address</string>
     <string name="maps_fav_submit">Submit</string>
     <string name="maps_fav_cancel">Cancel</string>
+
+
+
 
 
 </resources>
