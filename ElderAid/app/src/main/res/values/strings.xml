@@ -127,7 +127,6 @@
     <string name="btnOK">OK</string>
 
 
-
     <!--    Maps Activity Strings-->
     <string name="maps_tvTitle">Maps</string>
     <string name="maps_altText1">Hospital</string>
@@ -159,7 +158,6 @@
     <string name="contactsLink">Contacts Page</string>
 
     <string name="closeNav">Close</string>
-
 
 
 </resources>
