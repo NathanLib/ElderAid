@@ -2,6 +2,7 @@ package uk.ac.rgu.elderaid;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -20,6 +21,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My calendar");
+        setSupportActionBar(toolbar);
 
         btnAddEvent = (ImageButton) findViewById(R.id.calendar_btnAddEvent);
         btnAddEvent.setOnClickListener(new View.OnClickListener() {

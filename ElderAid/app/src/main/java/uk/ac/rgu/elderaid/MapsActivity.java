@@ -1,6 +1,7 @@
 package uk.ac.rgu.elderaid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -15,6 +16,10 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My maps");
+        setSupportActionBar(toolbar);
 
         btnEditFavourites = findViewById(R.id.btnEditFav);
         btnEditFavourites.setOnClickListener(new View.OnClickListener() {
