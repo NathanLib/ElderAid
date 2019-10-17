@@ -149,8 +149,21 @@
     <string name="maps_fav_submit">Submit</string>
     <string name="maps_fav_cancel">Cancel</string>
 
+
     <!--    Favourites for toolbar -->
     <string name="toolbar_btnEdit">Edit</string>
+
+    <string name="sideNavTitle">Navigation Bar</string>
+    <string name="homepageLink">Home Page</string>
+    <string name="medinfoPageLink">Medical Information</string>
+    <string name="mapsPageLink">Maps Page</string>
+    <string name="prescriptionLink">Prescription Page</string>
+    <string name="calendarLink">Calendar Page</string>
+    <string name="toDoLink">Task To-Do Page</string>
+    <string name="contactsLink">Contacts Page</string>
+
+    <string name="closeNav">Close</string>
+
 
 
 </resources>
