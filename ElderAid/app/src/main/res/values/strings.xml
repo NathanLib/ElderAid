@@ -127,7 +127,9 @@
     <string name="btnOK">OK</string>
 
 
-    <!--    Maps Activity Strings-->
+
+
+    <!--    Maps Activity Strings -->
     <string name="maps_tvTitle">Maps</string>
     <string name="maps_altText1">Hospital</string>
     <string name="maps_altText2">Home</string>
@@ -138,7 +140,7 @@
     <string name="maps_submit">Submit</string>
     <string name="maps_favourite">Edit Favourites</string>
 
-    <!--    Favourites for maps-->
+    <!--    Favourites for maps -->
     <string name="maps_fav_title">Edit your Favourites</string>
     <string name="maps_fav1">Address of Favourite 1</string>
     <string name="maps_fav2">Address of Favourite 2</string>
@@ -147,6 +149,10 @@
     <string name="maps_fav_placeholder">Address</string>
     <string name="maps_fav_submit">Submit</string>
     <string name="maps_fav_cancel">Cancel</string>
+
+
+    <!--    Favourites for toolbar -->
+    <string name="toolbar_btnEdit">Edit</string>
 
     <string name="sideNavTitle">Navigation Bar</string>
     <string name="homepageLink">Home Page</string>

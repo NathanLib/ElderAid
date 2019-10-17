@@ -1,6 +1,7 @@
 package uk.ac.rgu.elderaid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -21,7 +22,11 @@ public class MedicalInfoActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_info);
 
-        btnEditMedInfo = findViewById(R.id.btnEditInfo);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My medical informations");
+        setSupportActionBar(toolbar);
+
+        btnEditMedInfo = findViewById(R.id.toolbar_btnEdit);
         btnEditMedInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
