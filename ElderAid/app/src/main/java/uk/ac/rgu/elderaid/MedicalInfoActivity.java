@@ -53,7 +53,7 @@ public class MedicalInfoActivity extends AppCompatActivity implements View.OnCli
 
 
         sideNavDialog.setContentView(R.layout.dialog_side_navigation);
-        sideNavDialog.setTitle("Edit Medical Info");
+        sideNavDialog.setTitle("Navigation View");
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(sideNavDialog.getWindow().getAttributes());
