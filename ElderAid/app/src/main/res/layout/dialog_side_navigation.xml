@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvNavTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:text="@string/sideNavTitle"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingRight="10dp"/>
+
+    <View
+        style="@style/navDivider"
+        android:layout_width="match_parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/linkHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:paddingRight="20dp"
+                android:text="@string/homepageLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/linkCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/calendarLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"/>
+
+            <Button
+                android:id="@+id/linkMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/mapsPageLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"/>
+
+            <Button
+                android:id="@+id/linkTaskList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/toDoLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"/>
+
+            <Button
+                android:id="@+id/linkContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/contactsLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"/>
+
+            <Button
+                android:id="@+id/linkMedInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/medinfoPageLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"/>
+
+            <Button
+                android:id="@+id/linkPrescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/transparent"
+                android:text="@string/prescriptionLink"
+                android:textColor="@color/pacificblue"
+                android:textSize="18sp"
+                android:paddingRight="20dp"
+                />
+
+            <Button
+
+                android:id="@+id/closeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/closeNav"
+                android:background="@color/pacificblue"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

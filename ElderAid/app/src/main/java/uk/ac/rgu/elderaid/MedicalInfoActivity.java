@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MedicalInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnEditMedInfo;
     private Button btnShowInsurance;
+    private ImageButton btnshowSideNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,33 @@ public class MedicalInfoActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
+        btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
+        btnshowSideNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openNavDialog();
+            }
+        });
 
+
+    }
+
+    public void openNavDialog(){
+        final Dialog sideNavDialog = new Dialog(this);
+
+
+        sideNavDialog.setContentView(R.layout.dialog_side_navigation);
+        sideNavDialog.setTitle("Edit Medical Info");
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(sideNavDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+        sideNavDialog.show();
+        sideNavDialog.getWindow().setAttributes(lp);
+
+        sideNavDialog.show();
     }
 
     public void openInsuranceDialog(){
