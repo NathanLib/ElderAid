@@ -17,6 +17,7 @@
         android:layout_marginRight="20dp"
         android:background="@color/white"
         android:textColor="@color/pacificblue"
+        android:text="@string/toolbar_btnEdit"
         android:textSize="18dp" />
 
 </androidx.appcompat.widget.Toolbar>

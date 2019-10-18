@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@color/verydarkgray"
+                    android:background="@color/darkgray"
                     android:text="Delete" />
 
                 <Button

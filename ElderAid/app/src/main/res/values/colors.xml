@@ -9,7 +9,7 @@
     <color name="white">#ffffff</color>
     <color name="lightgray">#e5e5e5</color>
     <color name="darkgray">#D5D6D6</color>
-    <color name="verydarkgray">#D5D6D6</color>
+    <color name="verydarkgray">#444444</color>
     <color name="transparent"></color>
     <color name="lightred">#FA6B73</color>
     <color name="darkred">#9c051a</color>

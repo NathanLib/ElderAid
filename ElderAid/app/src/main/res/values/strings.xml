@@ -150,7 +150,6 @@
 
 
     <!--    Favourites for toolbar -->
-    <string name="toolbar_btnEdit">Edit</string>
 
     <string name="sideNavTitle">Navigation Bar</string>
     <string name="homepageLink">Home Page</string>
@@ -222,6 +221,7 @@
     <string name="myCardEmailPlaceholder">example@email.com</string>
     <string name="myCardBtnSave">Save</string>
     <string name="myCardBtnReturn">Return</string>
+    <string name="toolbar_btnEdit">Edit</string>
 
 
 </resources>
