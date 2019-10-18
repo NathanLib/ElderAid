@@ -35,13 +35,6 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onClick(View view) {
                 openAddTaskDialog();
-                View mView = getLayoutInflater().inflate(R.layout.dialog_add_event,null);
-                Spinner mSpinner = (Spinner) mView.findViewById(R.id.Spinner);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(TaskCheckListActivity.this,
-                        android.R.layout.simple_spinner_item,
-                        getResources().getStringArray(R.array.daily));
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                mSpinner.setAdapter(adapter);
             }
         });
 
