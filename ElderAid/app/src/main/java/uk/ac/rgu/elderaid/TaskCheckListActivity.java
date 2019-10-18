@@ -2,13 +2,14 @@ package uk.ac.rgu.elderaid;
 
         import androidx.appcompat.app.AppCompatActivity;
 
-        import android.annotation.SuppressLint;
         import android.app.Dialog;
         import android.os.Bundle;
         import android.view.View;
         import android.view.WindowManager;
+        import android.widget.ArrayAdapter;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
+        import android.widget.Spinner;
 
 public class TaskCheckListActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton addTaskbnt;
@@ -44,6 +45,9 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
                 openViewTaskDialog();
             }
         });
+
+
+
     }
     public void openViewTaskDialog(){
         final Dialog viewTaskDialog = new Dialog(this);
@@ -58,6 +62,8 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
         viewTaskDialog.getWindow().setAttributes(lp);
 
         viewTaskDialog.show();
+
+
     }
     public void openNavDialog() {
         final Dialog sideNavDialog = new Dialog(this);

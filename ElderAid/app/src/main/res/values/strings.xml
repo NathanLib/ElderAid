@@ -166,4 +166,11 @@
     <string name="closeNav">Close</string>
 
 
+    <string-array name="daily">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>One Off</item>
+    </string-array>
+
+
 </resources>

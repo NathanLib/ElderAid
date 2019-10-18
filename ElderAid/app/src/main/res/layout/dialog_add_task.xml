@@ -12,7 +12,7 @@
         android:layout_height="4dp" />
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -25,8 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Name of the Task" />
+                android:hint="Name of the Task"
+                android:inputType="textPersonName" />
 
             <LinearLayout
                 android:id="@+id/DataTime"
@@ -55,8 +55,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:hint="Date" />
+                        android:hint="Date"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -73,8 +73,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:hint="Time" />
+                        android:hint="Time"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -86,10 +86,32 @@
                 android:layout_marginLeft="60dp"
                 android:layout_weight="0"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Description" />
+                android:hint="Description"
+                android:inputType="textPersonName" />
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:entries="@array/daily" />
+
+                <Switch
+                    android:id="@+id/SetAlarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Set Reminder Alarm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/CancelAdd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
