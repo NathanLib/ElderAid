@@ -21,6 +21,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private Button toolbar_addContact;
     private TextView contact_tvContactA1;
     private TextView btnMyCard;
+    private LinearLayout favouriteContact;
 
 
     @Override
@@ -29,8 +30,13 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_contact);
 
 
-
-
+        favouriteContact = (LinearLayout) findViewById(R.id.favouriteLinear1);
+        favouriteContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSeeContactDialog();
+            }
+        });
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
             @Override
