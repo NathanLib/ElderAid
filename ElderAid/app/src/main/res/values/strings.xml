@@ -172,5 +172,15 @@
         <item>One Off</item>
     </string-array>
 
+    <string name="myCardTitle">My Card</string>
+    <string name="myCardName">Example Name</string>
+    <string name="myCardPhoneNum">My Phone Number</string>
+    <string name="myCardNumPlaceholder">12345678</string>
+    <string name="myCardAddress">My Address</string>
+    <string name="myCardAddressPlaceholder">Smith Street</string>
+    <string name="myCardEmail">My Email</string>
+    <string name="myCardEmailPlaceholder">example@email.com</string>
+    <string name="myCardBtnSave">Save</string>
+    <string name="myCardBtnReturn">Return</string>
 
 </resources>
