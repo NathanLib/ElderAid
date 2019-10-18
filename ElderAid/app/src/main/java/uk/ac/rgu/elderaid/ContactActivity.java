@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+
 import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 public class ContactActivity extends AppCompatActivity implements View.OnClickListener  {
@@ -18,6 +20,8 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
     private TextView contact_tvContactA1;
+    private TextView btnMyCard;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
+
         toolbar_addContact = (Button) findViewById(R.id.toolbar_btnAddContact);
         toolbar_addContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +57,15 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 openSeeContactDialog();
             }
         });
+
+        btnMyCard = (TextView) findViewById(R.id.contact_tvMyCard);
+        btnMyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMyCardDialog();
+            }
+        });
+
     }
 
     public void openNavDialog(){
@@ -71,6 +85,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
         sideNavDialog.show();
     }
+
 
     public void openAddDialog(){
         final Dialog addDialog = new Dialog(this);
@@ -105,6 +120,24 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         seeDialog.getWindow().setAttributes(lp);
 
         seeDialog.show();
+
+    public void openMyCardDialog(){
+        final Dialog myCardDialog = new Dialog(this);
+
+
+        myCardDialog.setContentView(R.layout.dialog_view_card);
+        myCardDialog.setTitle("Navigation View");
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(myCardDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        myCardDialog.show();
+        myCardDialog.getWindow().setAttributes(lp);
+
+        myCardDialog.show();
+
     }
 
     @Override
