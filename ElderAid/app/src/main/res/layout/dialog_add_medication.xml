@@ -20,87 +20,13 @@
 
 
             <EditText
-                android:id="@+id/addevent_etEventName"
+                android:id="@+id/addmedication_etMedName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/addevent_etEventName"
+                android:hint="@string/addmedication_etMedName"
                 android:inputType="text" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/addevent_ic_clock1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_clock" />
-
-                    <EditText
-                        android:id="@+id/addevent_etEventStartDate"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="Start date"
-                        android:inputType="date" />
-
-                    <EditText
-                        android:id="@+id/addevent_etEventStartTime"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="time"
-                        android:inputType="time" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/addevent_ic_clock2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_clock"
-                        android:visibility="invisible" />
-
-                    <EditText
-                        android:id="@+id/addevent_etEventEndDate"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="End date"
-                        android:inputType="date" />
-
-                    <EditText
-                        android:id="@+id/addevent_etEventEndTime"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="time"
-                        android:inputType="time" />
-                </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,21 +36,48 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/ic_place"
+                    android:id="@+id/addmedication_ic_clock"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_place" />
+                    android:src="@drawable/ic_clock" />
 
                 <EditText
-                    android:id="@+id/addevent_etEventPlace"
+                    android:id="@+id/addmedication_etMedExpdate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:ems="10"
-                    android:hint="@string/addevent_etEventPlace"
-                    android:inputType="text" />
+                    android:hint="@string/addmedication_etMedExpdate"
+                    android:inputType="date" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ic_quantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_quantity" />
+
+                <EditText
+                    android:id="@+id/addmedication_etMedQte"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:ems="10"
+                    android:hint="@string/addmedication_etMedQte"
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -143,13 +96,13 @@
                     android:src="@drawable/ic_description" />
 
                 <EditText
-                    android:id="@+id/addevent_etEventDescription"
+                    android:id="@+id/addmedication_etMedDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="@string/addevent_etEventDescription"
+                    android:hint="@string/addmedication_etMedDetails"
                     android:inputType="textMultiLine" />
             </LinearLayout>
 
@@ -160,27 +113,26 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/addevent_btnCancelEvent"
+                    android:id="@+id/addmedication_btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="@string/addevent_btnCancelEvent"
+                    android:text="@string/addmedication_btnCancel"
                     android:textColor="@color/pacificblue" />
 
                 <Button
-                    android:id="@+id/addevent_btnAddEvent"
+                    android:id="@+id/addmedication_btnAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/pacificblue"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="@string/addevent_btnAddEvent"
+                    android:text="@string/addmedication_btnAdd"
                     android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
