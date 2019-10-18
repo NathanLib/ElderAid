@@ -29,9 +29,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_contact);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My contacts");
-        setSupportActionBar(toolbar);
+
 
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +63,11 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 openMyCardDialog();
             }
         });
+
+        // The code below was adapted from a source on the internet from this point forward.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My contacts");
+        setSupportActionBar(toolbar);
 
     }
 
@@ -105,7 +108,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         addDialog.show();
     }
 
-    public void openSeeContactDialog(){
+    public void openSeeContactDialog() {
         final Dialog seeDialog = new Dialog(this);
 
 
@@ -120,6 +123,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         seeDialog.getWindow().setAttributes(lp);
 
         seeDialog.show();
+    }
 
     public void openMyCardDialog(){
         final Dialog myCardDialog = new Dialog(this);

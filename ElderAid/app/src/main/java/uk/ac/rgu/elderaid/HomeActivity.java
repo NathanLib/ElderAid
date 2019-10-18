@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 openNavDialog();
             }
         });
+        // The code below was adapted from a source on the internet from this point forward.
     }
 
     public void openNavDialog() {

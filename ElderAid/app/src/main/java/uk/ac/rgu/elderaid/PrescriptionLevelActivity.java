@@ -22,9 +22,7 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_prescription_level);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My prescription levels");
-        setSupportActionBar(toolbar);
+
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +46,11 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
                 openEditDialog();
             }
         });
+
+        // The code below was adapted from a source on the internet from this point forward./
+         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+         toolbar.setTitle("My prescription levels");
+         setSupportActionBar(toolbar);
     }
 
 

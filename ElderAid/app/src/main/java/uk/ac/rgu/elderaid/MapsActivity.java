@@ -19,9 +19,7 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My maps");
-        setSupportActionBar(toolbar);
+
 
         btnEditFavourites = findViewById(R.id.btnEditFav);
         btnEditFavourites.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +36,11 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
                 openNavDialog();
             }
         });
+        // The code below was adapted from a source on the internet from this point forward.
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My maps");
+        setSupportActionBar(toolbar);
     }
 
     public void openNavDialog(){

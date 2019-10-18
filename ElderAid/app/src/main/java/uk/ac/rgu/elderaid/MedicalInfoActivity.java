@@ -22,9 +22,7 @@ public class MedicalInfoActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_info);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My medical informations");
-        setSupportActionBar(toolbar);
+
 
         btnEditMedInfo = findViewById(R.id.toolbar_btnEdit);
         btnEditMedInfo.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +47,10 @@ public class MedicalInfoActivity extends AppCompatActivity implements View.OnCli
                 openNavDialog();
             }
         });
-
-
+        // The code below was adapted from a source on the internet from this point forward.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My Medical Information");
+        setSupportActionBar(toolbar);
     }
 
     public void openNavDialog(){

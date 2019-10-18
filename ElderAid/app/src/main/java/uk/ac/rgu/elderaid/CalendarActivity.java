@@ -20,14 +20,13 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private ImageButton btnshowSideNav;
     private LinearLayout calendar_llEvent1;
 
+
+
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My calendar");
-        setSupportActionBar(toolbar);
 
         btnAddEvent = (ImageButton) findViewById(R.id.calendar_btnAddEvent);
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +51,14 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 openSeeDialog();
             }
         });
+
+
+        // The code below was adapted from a source on the internet from this point forward.
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("My calendar");
+        setSupportActionBar(toolbar);
+
     }
 
     public void openNavDialog(){

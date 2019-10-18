@@ -46,6 +46,8 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
             }
         });
 
+        // The code below was adapted from a source on the internet from this point forward.
+
 
 
     }
