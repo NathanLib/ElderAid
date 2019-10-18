@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class CalendarActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton btnAddEvent;
     private ImageButton btnshowSideNav;
+    private LinearLayout calendar_llEvent1;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                openAddDialog();
             }
         });
 
@@ -39,6 +42,14 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View view) {
                 openNavDialog();
+            }
+        });
+
+        calendar_llEvent1 = (LinearLayout) findViewById(R.id.calendar_llEvent1);
+        calendar_llEvent1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSeeDialog();
             }
         });
     }
@@ -61,9 +72,24 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         sideNavDialog.show();
     }
 
-    public void openDialog() {
+    public void openAddDialog() {
         final Dialog dialog = new Dialog(this); // Context, this, etc.
         dialog.setContentView(R.layout.dialog_add_event);
+        dialog.setTitle("Add an event");
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+        dialog.show();
+    }
+
+    public void openSeeDialog() {
+        final Dialog dialog = new Dialog(this); // Context, this, etc.
+        dialog.setContentView(R.layout.dialog_see_event);
         dialog.setTitle("Add an event");
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();

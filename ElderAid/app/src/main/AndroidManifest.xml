@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskCheckListActivity">
+       <activity android:name=".TaskCheckListActivity">
 
         </activity>
         <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".CalendarActivity" >
 
@@ -23,11 +27,7 @@
 
         </activity>
         <activity android:name=".ContactActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity android:name=".PrescriptionLevelActivity" >
 
@@ -35,7 +35,6 @@
         <activity android:name=".MedicalInfoActivity">
 
         </activity>
-
     </application>
 
 </manifest>

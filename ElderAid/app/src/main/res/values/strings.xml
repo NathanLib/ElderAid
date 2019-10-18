@@ -127,8 +127,6 @@
     <string name="btnOK">OK</string>
 
 
-
-
     <!--    Maps Activity Strings -->
     <string name="maps_tvTitle">Maps</string>
     <string name="maps_altText1">Hospital</string>
@@ -165,6 +163,48 @@
 
     <string name="closeNav">Close</string>
 
+    <!-- Prescription add medication dialog -->
+    <string name="addmedication_etMedName">Name of the medication</string>
+    <string name="addmedication_etMedExpdate">Expiration date</string>
+    <string name="addmedication_etMedQte">0</string>
+    <string name="addmedication_etMedDetails">Add details</string>
+    <string name="addmedication_btnCancel">Cancel</string>
+    <string name="addmedication_btnAdd">Add the medication</string>
+
+    <!-- Prescription edit medication dialog -->
+    <string name="editPrescription_tvName">Xanax</string>
+    <string name="editPrescription_tvQuantity">Quantity:</string>
+    <string name="editTeditPrescription_etQuantity">10</string>
+    <string name="editPrescription_tvExpDate">Exp. date:</string>
+    <string name="editPrescription_etExpDate">19/03/2022</string>
+    <string name="editPrescription_tvDetails">Details:</string>
+    <string name="editPrescription_etDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</string>
+    <string name="editPrescription_btnDelete">Delete</string>
+    <string name="editPrescription_btnCancel">
+        <u>Cancel</u>
+    </string>
+    <string name="editPrescription_btnSave">Save</string>
+
+
+    <string name="toolbar_btnAddContact">Add a contact</string>
+
+
+    <string name="addContact_etPhoneNumber">Phone number</string>
+    <string name="addContact_tvPhoneNumber">Choose a picture:</string>
+    <string name="addContact_cbFavorite">Add to your favorite</string>
+    <string name="addContact_tvContactTitle">Add a new contact</string>
+    <string name="addContact_etName">Name of the contact</string>
+    <string name="addContact_btnSaveContact">Save</string>
+
+
+
+    <string name="seeContact_tvContactTitle">View contact</string>
+    <string name="seeContact_tvContactName">Alex Alexandre</string>
+    <string name="seeContact_tvContactTextNumber">Phone number:</string>
+    <string name="seeContact_tvContactPhoneNumber">+44 1234 5678 3456</string>
+    <string name="seeContact_btnDeleteContact">Delete</string>
+    <string name="seeContact_btnReturnContact">Return</string>
+    <string name="seeContact_btnCallContact">Call</string>
 
     <string-array name="daily">
         <item>Daily</item>
@@ -182,5 +222,6 @@
     <string name="myCardEmailPlaceholder">example@email.com</string>
     <string name="myCardBtnSave">Save</string>
     <string name="myCardBtnReturn">Return</string>
+
 
 </resources>
