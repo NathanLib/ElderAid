@@ -3,7 +3,9 @@ package uk.ac.rgu.elderaid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
@@ -22,6 +24,8 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private TextView contact_tvContactA1;
     private TextView btnMyCard;
     private LinearLayout favouriteContact;
+    private ImageButton btnSOS;
+    private ImageButton btnHome;
 
 
     @Override
@@ -29,6 +33,23 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        btnSOS = (ImageButton) findViewById(R.id.btnSOS);
+        btnSOS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchSOSPhone();
+            }
+        });
+
+        btnHome = (ImageButton) findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });;
 
         favouriteContact = (LinearLayout) findViewById(R.id.favouriteLinear1);
         favouriteContact.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +110,36 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
 
-        sideNavDialog.show();
         sideNavDialog.getWindow().setAttributes(lp);
+
+        Button linkHome = (Button) sideNavDialog.findViewById(R.id.linkHome);
+        linkHome.setOnClickListener(this);
+
+        Button linkCalendar = (Button) sideNavDialog.findViewById(R.id.linkCalendar);
+        linkCalendar.setOnClickListener(this);
+
+        Button linkMaps = (Button) sideNavDialog.findViewById(R.id.linkMaps);
+        linkMaps.setOnClickListener(this);
+
+        Button linkTaskList = (Button) sideNavDialog.findViewById(R.id.linkTaskList);
+        linkTaskList.setOnClickListener(this);
+
+        Button linkContacts = (Button) sideNavDialog.findViewById(R.id.linkContacts);
+        linkContacts.setOnClickListener(this);
+
+        Button linkMedInfo = (Button) sideNavDialog.findViewById(R.id.linkMedInfo);
+        linkMedInfo.setOnClickListener(this);
+
+        Button linkPrescription = (Button) sideNavDialog.findViewById(R.id.linkPrescription);
+        linkPrescription.setOnClickListener(this);
+
+        Button btnClose = (Button) sideNavDialog.findViewById(R.id.closeBtn);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sideNavDialog.cancel();
+            }
+        });
 
         sideNavDialog.show();
     }
@@ -150,8 +199,52 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    //    ***********************************
+
+    private void launchSOSPhone() {
+        // create the Intent with the action to dial
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        // set the data to the phone number
+        intent.setData(Uri.parse("tel:+4401224272600"));
+
+        // check the intent can be resolved by the device
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+
     @Override
     public void onClick(View v) {
-
+        // Side nav
+        if (v.getId() == R.id.linkHome) {
+            Intent intent = new Intent(
+                    getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkCalendar) {
+            Intent intent = new Intent(
+                    getApplicationContext(), CalendarActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkMaps) {
+            Intent intent = new Intent(
+                    getApplicationContext(), MapsActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkTaskList) {
+            Intent intent = new Intent(
+                    getApplicationContext(), TaskCheckListActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkContacts) {
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkMedInfo) {
+            Intent intent = new Intent(
+                    getApplicationContext(), MedicalInfoActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkPrescription) {
+            Intent intent = new Intent(
+                    getApplicationContext(), PrescriptionLevelActivity.class);
+            startActivity(intent);
+        }
     }
 }
