@@ -15,11 +15,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.lang.reflect.Array;
+
 public class MapsEditFavouritesActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageButton btnshowSideNav;
     private ImageButton btnSOS;
     private ImageButton btnHome;
+    private Button btnCancel;
+    private Button btnSubmit;
 
+    private static final String[] STATE_KEY_FAVOURITE= {"favourite1","favourite2","favourite3","favourite4"};
+    private String favourite1;
+    private String favourite2;
+    private String favourite3;
+    private String favourite4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,23 +59,40 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             }
         });
 
-        // The code below was adapted from a source on the internet from this point.
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("My Map Favourites");
-        setSupportActionBar(toolbar);
-        // Until this point. (The code from this point onward is our own.)
-
-
-//        if (savedInstanceState != null){
-//            if (savedInstanceState.containsKey(STATE_KEY_DESTINATION)){
-//                destination = savedInstanceState.getString(STATE_KEY_DESTINATION, "");
-//                if (!("".equals(destination))){
-//                    EditText addressLocation = findViewById(R.id.etSearch);
-//                    addressLocation.setText(destination);
-//                }
-//            }
-//        }
+        btnSubmit = (Button) findViewById(R.id.btnFavSubmit);
+        btnSubmit.setOnClickListener(this);
+        btnCancel = (Button) findViewById(R.id.btnCancelFav);
+        btnCancel.setOnClickListener(this);
+        if (savedInstanceState != null){
+            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[0])){
+                favourite1 = savedInstanceState.getString(STATE_KEY_FAVOURITE[0], "");
+                if (!("".equals(favourite1))){
+                    EditText etFavourite1 = findViewById(R.id.etFav1);
+                    etFavourite1.setText(favourite1);
+                }
+            }
+            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[1])){
+                favourite2 = savedInstanceState.getString(STATE_KEY_FAVOURITE[1], "");
+                if (!("".equals(favourite2))){
+                    EditText etFavourite2 = findViewById(R.id.etFav2);
+                    etFavourite2.setText(favourite2);
+                }
+            }
+            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[2])){
+                favourite3 = savedInstanceState.getString(STATE_KEY_FAVOURITE[2], "");
+                if (!("".equals(favourite3))){
+                    EditText etFavourite3 = findViewById(R.id.etFav3);
+                    etFavourite3.setText(favourite3);
+                }
+            }
+            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[3])){
+                favourite4 = savedInstanceState.getString(STATE_KEY_FAVOURITE[3], "");
+                if (!("".equals(favourite4))){
+                    EditText etFavourite4 = findViewById(R.id.etFav4);
+                    etFavourite4.setText(favourite4);
+                }
+            }
+        }
     }
 
 
@@ -84,7 +110,7 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             Intent intent = new Intent(
                     getApplicationContext(), CalendarActivity.class);
             startActivity(intent);
-        } else if (v.getId() == R.id.linkMaps) {
+        } else if (v.getId() == R.id.linkMaps || v.getId() == R.id.btnCancelFav) {
             Intent intent = new Intent(
                     getApplicationContext(), MapsActivity.class);
             startActivity(intent);
@@ -103,6 +129,10 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
         } else if (v.getId() == R.id.linkPrescription) {
             Intent intent = new Intent(
                     getApplicationContext(), PrescriptionLevelActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.btnFavSubmit){
+            // Add to shared Preferences
+            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(intent);
         }
     }
