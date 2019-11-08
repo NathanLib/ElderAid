@@ -1,5 +1,6 @@
 package uk.ac.rgu.elderaid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -7,9 +8,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class MapsActivity extends AppCompatActivity implements View.OnClickListener{
@@ -17,7 +20,12 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton btnshowSideNav;
     private ImageButton btnSOS;
     private ImageButton btnHome;
+    private Button btnSubmit;
 
+
+    private String destination;
+    private static final String STATE_KEY_DESTINATION = "destination";
+    private static final String TAG = MapsActivity.class.getCanonicalName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +43,10 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(
-                        getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
-        });;
+        });
 
         btnEditFavourites = findViewById(R.id.btnEditFav);
         btnEditFavourites.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +63,26 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
                 openNavDialog();
             }
         });
-        // The code below was adapted from a source on the internet from this point forward.
+
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(this);
+        // The code below was adapted from a source on the internet from this point.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My maps");
         setSupportActionBar(toolbar);
+        // Until this point. (The code from this point onward is our own.)
+
+
+        if (savedInstanceState != null){
+            if (savedInstanceState.containsKey(STATE_KEY_DESTINATION)){
+                destination = savedInstanceState.getString(STATE_KEY_DESTINATION, "");
+                if (!("".equals(destination))){
+                    EditText addressLocation = findViewById(R.id.etSearch);
+                    addressLocation.setText(destination);
+                }
+            }
+        }
     }
 
     public void openNavDialog(){
@@ -106,9 +128,12 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
+
         sideNavDialog.show();
     }
 
+    //Maps only Java
     public void openDialog(){
         final Dialog favDialog = new Dialog(this);
         favDialog.setContentView(R.layout.dialog_add_favourites);
@@ -124,6 +149,22 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
         favDialog.show();
 
     }
+
+
+    private void launchMap(){
+        EditText addressLocation = findViewById(R.id.etSearch);
+        String address = addressLocation.getText().toString();
+        address.replace(" ","+");
+
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + address);
+        Intent intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+
+        if (intent.resolveActivity(getPackageManager()) !=null){
+
+            startActivity(intent);
+        }
+    }
+
 
     //    ***********************************
 
@@ -171,7 +212,24 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(
                     getApplicationContext(), PrescriptionLevelActivity.class);
             startActivity(intent);
+        } else if (v.getId() == R.id.btnSubmit) {
+            launchMap();
         }
+
+
+
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(STATE_KEY_DESTINATION, destination);
+
+        //outState.putString(STATE_KEY_FORECAST, forecast);
+
+    }
+
+
 
 }
