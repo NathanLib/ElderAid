@@ -223,5 +223,15 @@
     <string name="myCardBtnReturn">Return</string>
     <string name="toolbar_btnEdit">Edit</string>
 
+    <string name="preferencesFile" translatable="false">uk.ac.rgu.elderaid</string>
+    <string name="prefLoc1Key" translatable="false">fav1</string>
+    <string name="prefLoc2Key" translatable="false">fav2</string>
+    <string name="prefLoc3Key" translatable="false">fav3</string>
+    <string name="prefLoc4Key" translatable="false">fav4</string>
+    <string name="Loc1Default"></string>
+    <string name="Loc2Default"></string>
+    <string name="Loc3Default"></string>
+    <string name="Loc4Default"></string>
+
 
 </resources>

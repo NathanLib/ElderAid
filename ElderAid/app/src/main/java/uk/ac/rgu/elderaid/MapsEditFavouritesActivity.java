@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,11 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
     private String favourite2;
     private String favourite3;
     private String favourite4;
+
+    private static final String preferencesFile = "uk.ac.rgu.elderaid";
+    private SharedPreferences sharedPrefs;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,10 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
                 startActivity(intent);
             }
         });
+
+
+        sharedPrefs = getSharedPreferences(preferencesFile, MODE_PRIVATE);
+        restorePrefs();
 
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
@@ -132,11 +142,67 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             startActivity(intent);
         } else if (v.getId() == R.id.btnFavSubmit){
             // Add to shared Preferences
+            saveSharedPrefs();
             Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(intent);
         }
     }
 
+
+    public void saveSharedPrefs(){
+        SharedPreferences.Editor preferenceEditor = sharedPrefs.edit();
+        String prefFav1Key = getString(R.string.prefLoc1Key);
+        String prefFav2Key = getString(R.string.prefLoc2Key);
+        String prefFav3Key = getString(R.string.prefLoc3Key);
+        String prefFav4Key = getString(R.string.prefLoc4Key);
+
+        EditText fav1 = findViewById(R.id.etFav1);
+        EditText fav2 = findViewById(R.id.etFav2);
+        EditText fav3 = findViewById(R.id.etFav3);
+        EditText fav4 = findViewById(R.id.etFav4);
+
+        String etFav1Val = String.valueOf(fav1.getText());
+        String etFav2Val = String.valueOf(fav2.getText());
+        String etFav3Val = String.valueOf(fav3.getText());
+        String etFav4Val = String.valueOf(fav4.getText());
+
+        preferenceEditor.putString(prefFav1Key, etFav1Val);
+        preferenceEditor.putString(prefFav2Key, etFav2Val);
+        preferenceEditor.putString(prefFav3Key, etFav3Val);
+        preferenceEditor.putString(prefFav4Key, etFav4Val);
+
+        preferenceEditor.apply();
+
+    }
+
+    public void restorePrefs(){
+        String prefFav1Key = getString(R.string.prefLoc1Key);
+        String prefFav2Key = getString(R.string.prefLoc2Key);
+        String prefFav3Key = getString(R.string.prefLoc3Key);
+        String prefFav4Key = getString(R.string.prefLoc4Key);
+
+        String defaultFav1 = getString(R.string.Loc1Default);
+        String defaultFav2 = getString(R.string.Loc2Default);
+        String defaultFav3 = getString(R.string.Loc3Default);
+        String defaultFav4 = getString(R.string.Loc4Default);
+
+        EditText fav1 = findViewById(R.id.etFav1);
+        EditText fav2 = findViewById(R.id.etFav2);
+        EditText fav3 = findViewById(R.id.etFav3);
+        EditText fav4 = findViewById(R.id.etFav4);
+
+        String fav1Set = sharedPrefs.getString(prefFav1Key, defaultFav1);
+        String fav2Set = sharedPrefs.getString(prefFav2Key, defaultFav2);
+        String fav3Set = sharedPrefs.getString(prefFav3Key, defaultFav3);
+        String fav4Set = sharedPrefs.getString(prefFav4Key, defaultFav4);
+
+        fav1.setText(fav1Set);
+        fav2.setText(fav2Set);
+        fav3.setText(fav3Set);
+        fav4.setText(fav4Set);
+
+
+    }
 
     public void openNavDialog(){
         final Dialog sideNavDialog = new Dialog(this);
