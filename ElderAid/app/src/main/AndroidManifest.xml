@@ -35,6 +35,9 @@
         <activity android:name=".MedicalInfoActivity">
 
         </activity>
+        <activity android:name=".MapsEditFavouritesActivity">
+
+        </activity>
     </application>
 
 </manifest>

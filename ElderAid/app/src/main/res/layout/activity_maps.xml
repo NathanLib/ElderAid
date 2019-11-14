@@ -124,10 +124,10 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:ems="10"
+                android:hint="@string/maps_etPlaceholder"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:hint="@string/maps_etPlaceholder"
-                android:textColor="@color/darkgray" />
+                android:textColor="@color/black" />
 
             <LinearLayout
                 android:id="@+id/buttonLayout"
