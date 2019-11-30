@@ -299,7 +299,7 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
 
         outState.putString(STATE_KEY_DESTINATION, destination);
 
-        //outState.putString(STATE_KEY_FORECAST, forecast);
+
 
     }
 
