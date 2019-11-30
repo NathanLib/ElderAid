@@ -28,6 +28,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnHome;
 
 
+    private ContactDao cDao;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
             }
         });;
+
+        //Set the Dao
+        this.cDao = ElderaidDatabase.getDatabase(this).cDao();
 
         favouriteContact = (LinearLayout) findViewById(R.id.favouriteLinear1);
         favouriteContact.setOnClickListener(new View.OnClickListener() {

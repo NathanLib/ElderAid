@@ -14,20 +14,20 @@ public class Contact {
 
     private String name;
     private String phoneNum;
-    private Bitmap image;
-
-    public Contact(){
-        super();
-    }
+    private String imagePath;
 
     //Constructor
-    public Contact(String name, String phoneNum, Bitmap image){
+    public Contact(String name, String phoneNum, String imagePath){
         this.name = name;
         this.phoneNum = phoneNum;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
     // Getters
+    public int getContactId() {
+        return contactId;
+    }
+
     public String getName() {
         return name;
     }
@@ -36,11 +36,14 @@ public class Contact {
         return phoneNum;
     }
 
-    public Bitmap getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
 
     //Setters
+    public void setContactId(int contactId){
+        this.contactId = contactId;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -50,7 +53,7 @@ public class Contact {
         this.phoneNum = phoneNum;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

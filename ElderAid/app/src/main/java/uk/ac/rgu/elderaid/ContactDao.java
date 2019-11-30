@@ -9,8 +9,11 @@ import androidx.room.Update;
 
 import java.util.List;
 
+//It is possible to create a singular Dao which could have all of the queries in it.
+//However a Dao for each table is more organised.
 @Dao
 public interface ContactDao {
+
 
     // Insert singular contact
     @Insert(onConflict = OnConflictStrategy.REPLACE)
