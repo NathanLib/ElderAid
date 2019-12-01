@@ -1,21 +1,32 @@
 package uk.ac.rgu.elderaid;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.api.services.calendar.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class CalendarActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton btnAddEvent;
@@ -23,6 +34,16 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private LinearLayout calendar_llEvent1;
     private ImageButton btnSOS;
     private ImageButton btnHome;
+    private ImageButton btnSyncEvents;
+    private static final String TAG = "HELLO";
+
+    // URL template to download data
+    private static final String URL_TEMPLATE ="https://www.googleapis.com/calendar/v3/calendars/";
+
+
+
+
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -72,11 +93,75 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         });
 
 
+        btnSyncEvents = (ImageButton) findViewById(R.id.calendar_btnSyncEvents);
+        btnSyncEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadEvents();
+            }
+        });
+
+
         // The code below was adapted from a source on the internet from this point forward.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My calendar");
         setSupportActionBar(toolbar);
+
+    }
+
+    public void downloadEvents(){
+
+        String calendarID = "kqpt7ub3stsip5mrlf9nt6fnjg@group.calendar.google.com";
+        String url = URL_TEMPLATE + calendarID +"/events?key=AIzaSyC-Gs8DUH7IH7XhShlgzMVO_VIORgl68Qs";
+        Log.d("URL", url);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject responseObj = new JSONObject(response);
+                            JSONArray itemsArray = responseObj.getJSONArray("items");
+                            Log.d("Stuffs", itemsArray.toString());
+                            for(int i =0; i < itemsArray.length();i++) {
+                                JSONObject obj = itemsArray.getJSONObject(i);
+
+
+                                String summary = obj.getString("summary");
+                                String description = obj.getString("description");
+                                String location = obj.getString("location");
+
+                                JSONObject start = obj.getJSONObject("start");
+                                String startDate = start.getString("date");
+
+                                JSONObject end = obj.getJSONObject("end");
+                                String endDate = end.getString("date");
+
+                                String evrything =  summary + "\n"
+                                        + description + "\n"
+                                        + location + "\n"
+                                        + startDate + "\n"
+                                        + endDate + "\n";
+                                Log.d("ItemSummary", evrything);
+
+                            }
+
+
+                        } catch (Exception e) {
+                            Log.d(TAG, "Exception e");
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d(TAG, "VolleyError: " + error);
+                    }
+                });
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(stringRequest);
 
     }
 

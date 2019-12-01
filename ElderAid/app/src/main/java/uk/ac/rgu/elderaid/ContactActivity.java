@@ -55,7 +55,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         });;
 
         //Set the Dao
-        this.cDao = ElderaidDatabase.getDatabase(this).cDao();
+        //this.cDao = ElderaidDatabase.getDatabase(this).cDao();
 
         favouriteContact = (LinearLayout) findViewById(R.id.favouriteLinear1);
         favouriteContact.setOnClickListener(new View.OnClickListener() {
