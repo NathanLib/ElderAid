@@ -5,28 +5,41 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHolder> {
 
-    private List<Contact> contactList;
+    private ArrayList<Contact> contactList;
+    private OnContactListener cOnContactListener;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvUsername;
-        private TextView tvPhone;
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView tvUsername;
+        public TextView tvPhone;
+        OnContactListener onContactListener;
 
-        public MyViewHolder(View view) {
+        public MyViewHolder(View view, OnContactListener onContactListener) {
             super(view);
             tvUsername = (TextView) view.findViewById(R.id.contact_item_username);
             tvPhone = (TextView) view.findViewById(R.id.contact_item_phonenumber);
+            this.onContactListener = onContactListener;
+
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onContactListener.onContactClick(getAdapterPosition());
         }
     }
 
 
-    public ContactAdapter(List<Contact> contacList) {
+    public ContactAdapter(ArrayList<Contact> contactList, OnContactListener onContactListener) {
         this.contactList = contactList;
+        this.cOnContactListener = onContactListener;
     }
 
     @Override
@@ -34,7 +47,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.contact_list_item, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MyViewHolder(itemView, cOnContactListener);
     }
 
     @Override
@@ -46,6 +59,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return contactList.size();
+        return this.contactList.size();
+    }
+
+    public interface OnContactListener {
+        void onContactClick(int position);
     }
 }
