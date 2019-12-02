@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.ac.rgu.elderaid">
 
+    <uses-sdk
+        android:minSdkVersion = "28"
+    android:targetSdkVersion = "29" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactDetailsActivity"></activity>
-        <activity android:name=".TaskCheckListActivity"></activity>
+        <activity android:name=".ContactAddActivity"></activity>
+        <activity android:name=".ContactDetailsActivity" />
+        <activity android:name=".TaskCheckListActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,12 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".MapsActivity"></activity>
-        <activity android:name=".ContactActivity"></activity>
-        <activity android:name=".PrescriptionLevelActivity"></activity>
-        <activity android:name=".MedicalInfoActivity"></activity>
-        <activity android:name=".MapsEditFavouritesActivity"></activity>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".PrescriptionLevelActivity" />
+        <activity android:name=".MedicalInfoActivity" />
+        <activity android:name=".MapsEditFavouritesActivity" />
     </application>
-
 </manifest>

@@ -18,11 +18,15 @@ public class Contact {
     private String phoneNum;
     private String imagePath;
 
+    private Boolean favourite;
+
     //Constructor
     public Contact(String name, String phoneNum, String imagePath) {
         this.name = name;
         this.phoneNum = phoneNum;
         this.imagePath = imagePath;
+
+        this.favourite = false;
     }
 
     @Override
@@ -32,6 +36,7 @@ public class Contact {
         sb.append(", name='").append(name).append('\'');
         sb.append(", phoneNum='").append(phoneNum).append('\'');
         sb.append(", imagePath='").append(imagePath).append('\'');
+        sb.append(", favourite=").append(favourite);
         sb.append('}');
         return sb.toString();
     }
@@ -53,6 +58,10 @@ public class Contact {
         return imagePath;
     }
 
+    public Boolean getFavourite() {
+        return favourite;
+    }
+
     //Setters
     public void setContactId(int contactId) {
         this.contactId = contactId;
@@ -68,6 +77,10 @@ public class Contact {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public void setFavourite(Boolean favourite) {
+        this.favourite = favourite;
     }
 
 
