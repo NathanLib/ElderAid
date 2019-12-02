@@ -11,13 +11,7 @@
     <string name="contact_tvFavorite2">James Wallace</string>
     <string name="contact_tvFavorite3">Nathan Liboutet</string>
 
-    <string name="contact_tvContactsA">A</string>
-    <string name="contact_tvContactA1">Albert Einstein</string>
-    <string name="contact_tvContactA2">Albert Camus</string>
-
-    <string name="contact_tvContactsB">B</string>
-    <string name="contact_tvContactB1">Balbert Einstein</string>
-    <string name="contact_tvContactB2">Balbert Camus</string>
+    <string name="contact_tvContactsAll">All</string>
 
     <!-- Strings for PrescriptionLevel page -->
     <string name="prescription_tvTitle">Prescription level</string>
@@ -185,16 +179,16 @@
     <string name="editPrescription_btnSave">Save</string>
 
 
-    <string name="toolbar_btnAddContact">Add a contact</string>
-
+    <string name="toolbar_btnAddContact">Add</string>
+    <string name="toolbar_btnImportContact">Import</string>
 
     <string name="addContact_etPhoneNumber">Phone number</string>
     <string name="addContact_tvPhoneNumber">Choose a picture:</string>
     <string name="addContact_cbFavorite">Add to your favorite</string>
     <string name="addContact_tvContactTitle">Add a new contact</string>
     <string name="addContact_etName">Name of the contact</string>
+    <string name="addContact_btnSelectPhoto">Select a photo...</string>
     <string name="addContact_btnSaveContact">Save</string>
-
 
 
     <string name="seeContact_tvContactTitle">View contact</string>
@@ -233,5 +227,8 @@
     <string name="Loc3Default"></string>
     <string name="Loc4Default"></string>
 
+
+    <string name="contact_item_username">Username</string>
+    <string name="contact_item_phonenumber">+44 1632 960795</string>
 
 </resources>
