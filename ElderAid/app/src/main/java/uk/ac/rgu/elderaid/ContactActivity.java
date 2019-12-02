@@ -8,6 +8,10 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,6 +20,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactActivity extends AppCompatActivity implements View.OnClickListener  {
 
@@ -27,6 +34,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnSOS;
     private ImageButton btnHome;
 
+    private List<Contact> contactList = new ArrayList<>();
+    private RecyclerView recyclerView_contact;
+    private ContactAdapter cAdapter;
 
     private ContactDao cDao;
 
@@ -81,13 +91,14 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        contact_tvContactA1 = (TextView) findViewById(R.id.contact_tvContactA1);
-        contact_tvContactA1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSeeContactDialog();
-            }
-        });
+//CHANGE TO ADD A CLICK ON A ITEM
+//        contact_tvContactA1 = (TextView) findViewById(R.id.contact_tvContactA1);
+//        contact_tvContactA1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openSeeContactDialog();
+//            }
+//        });
 
         btnMyCard = (TextView) findViewById(R.id.contact_tvMyCard);
         btnMyCard.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +113,27 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         toolbar.setTitle("My contacts");
         setSupportActionBar(toolbar);
 
+        // Code from https://www.androidhive.info/2016/01/android-working-with-recycler-view/
+        recyclerView_contact = (RecyclerView) findViewById(R.id.rvContact);
+
+        cAdapter = new ContactAdapter(contactList);
+        RecyclerView.LayoutManager cLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView_contact.setLayoutManager(cLayoutManager);
+        recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_contact.setAdapter(cAdapter);
+
+        prepareContactData();
+    }
+
+    private void prepareContactData() {
+        Contact contact = new Contact("Blair Morgan", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Olly Ramsay", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Sam Duncan", "+44 1632 960795", "");
+        contactList.add(contact);
     }
 
     public void openNavDialog(){

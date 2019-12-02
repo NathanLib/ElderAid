@@ -177,91 +177,15 @@
                 android:text="@string/contact_tvContactsA"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toTopOf="@id/contact_llContactA"
+                app:layout_constraintBottom_toTopOf="@id/rvContact"
                 app:layout_constraintTop_toBottomOf="@id/contact_llFavoriteContacts" />
 
-            <LinearLayout
-                android:id="@+id/contact_llContactA"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/contact_tvContactsB"
-                app:layout_constraintTop_toBottomOf="@id/contact_tvContactsA">
-
-                <TextView
-                    android:id="@+id/contact_tvContactA1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactA1" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    android:id="@+id/contact_tvContactA2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactA2" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    android:id="@+id/contact_tvContactA3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactA1" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/contact_tvContactsB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="40dp"
-                android:background="@drawable/divider_bloc"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/contact_tvContactsB"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toTopOf="@id/contact_llContactA"
-                app:layout_constraintTop_toBottomOf="@id/contact_llContactA" />
-
-            <LinearLayout
-                android:id="@+id/contact_llContactB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/contact_tvContactsB">
-
-                <TextView
-                    android:id="@+id/contact_tvContactB1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactB1" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    android:id="@+id/contact_tvContactB2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactB2" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    android:id="@+id/contact_tvContactB3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="@string/contact_tvContactB1" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/contact_tvContactsA"
+                app:layout_constraintBottom_toBottomOf='parent'/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

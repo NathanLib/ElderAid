@@ -234,5 +234,7 @@
     <string name="Loc4Default"></string>
 
 
+    <string name="contact_item_username">Username</string>
+    <string name="contact_item_phonenumber">+44 1632 960795</string>
 
 </resources>
