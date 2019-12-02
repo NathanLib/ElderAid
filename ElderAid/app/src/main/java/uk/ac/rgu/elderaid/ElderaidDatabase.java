@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Contact.class}, version= 1)
+@Database(entities = {Contact.class, Event.class}, version= 1)
 public abstract class ElderaidDatabase extends RoomDatabase {
 
     public abstract ContactDao cDao();
+    public abstract EventDao eDao();
 
     private static ElderaidDatabase INSTANCE;
 
@@ -20,10 +21,9 @@ public abstract class ElderaidDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ElderaidDatabase.class,"elderaid_database")
                             .fallbackToDestructiveMigration()
+                            // ONLY FOR TESTING WITHOUT ASYNC!!! >>>>> .allowMainThreadQueries()
                             .build();
-                }
-            }
-        }
+                } } }
         return INSTANCE;
     }
 }
