@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.ac.rgu.elderaid">
 
+
     <uses-sdk
         android:minSdkVersion = "28"
     android:targetSdkVersion = "29" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
 
     <application
         android:allowBackup="true"
@@ -33,4 +35,7 @@
         <activity android:name=".MedicalInfoActivity" />
         <activity android:name=".MapsEditFavouritesActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 </manifest>

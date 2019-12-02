@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -19,11 +20,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import android.widget.TextView;
-
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class ContactActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnContactListener  {
-
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
     private TextView btnMyCard;
@@ -37,7 +38,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private RecyclerView recyclerView_contact;
     private ContactAdapter cAdapter;
 
-    private ContactDao cDao;
+    private ContactDao contactDao;
 
 
     @Override
@@ -63,8 +64,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             }
         });;
 
-        //Set the Dao
-        this.cDao = ElderaidDatabase.getDatabase(this).cDao();
+
 
         favouriteContact1 = (LinearLayout) findViewById(R.id.favouriteLinear1);
         favouriteContact1.setOnClickListener(this);
@@ -92,6 +92,13 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 openMyCardDialog();
             }
         });
+
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.contactDao = db.cDao();
+
+
 
         // The code below was adapted from a source on the internet from this point forward.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -278,4 +285,35 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = new Intent(this, ContactDetailsActivity.class);
         startActivity(intent);
     }
+
+
+    //This is an Async task
+
+    class GetAllContactsTask extends AsyncTask<Void, Void, List<Contact>>{
+        @Override
+        protected List<Contact> doInBackground(Void... voids) {
+            return contactDao.getContacts();
+        }
+
+        @Override
+        protected void onPostExecute(List<Contact> forecasts) {
+            super.onPostExecute(forecasts);
+            //Do stuff
+        }
+    }
+
+    class UpdateInsertContactTask extends AsyncTask<List<Contact>, Void, Void>{
+        @Override
+        protected Void doInBackground(List<Contact>... contacts){
+            if (contacts.length == 0){
+                return null;
+            }
+
+            return null;
+        }
+
+    }
+
 }
+
+

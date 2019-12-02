@@ -1,14 +1,15 @@
 package uk.ac.rgu.elderaid;
 
-import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
 import java.util.Comparator;
 
-@Entity
+
+@Entity(tableName = "contact")
 public class Contact {
     @NonNull
     @PrimaryKey(autoGenerate = true)
