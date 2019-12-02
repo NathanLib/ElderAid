@@ -8,7 +8,7 @@
     tools:context=".ContactActivity">
 
     <include
-        layout="@layout/toolbar_btnaddcontact"
+        layout="@layout/toolbar_btncontact"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

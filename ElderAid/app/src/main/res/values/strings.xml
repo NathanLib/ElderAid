@@ -185,8 +185,8 @@
     <string name="editPrescription_btnSave">Save</string>
 
 
-    <string name="toolbar_btnAddContact">Add a contact</string>
-
+    <string name="toolbar_btnAddContact">Add</string>
+    <string name="toolbar_btnImportContact">Import</string>
 
     <string name="addContact_etPhoneNumber">Phone number</string>
     <string name="addContact_tvPhoneNumber">Choose a picture:</string>
@@ -232,6 +232,7 @@
     <string name="Loc2Default"></string>
     <string name="Loc3Default"></string>
     <string name="Loc4Default"></string>
+
 
 
 </resources>
