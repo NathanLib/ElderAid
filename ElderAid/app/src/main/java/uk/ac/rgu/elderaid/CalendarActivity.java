@@ -27,6 +27,8 @@ import com.google.api.services.calendar.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
+
 
 public class CalendarActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton btnAddEvent;
@@ -40,9 +42,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     // URL template to download data
     private static final String URL_TEMPLATE ="https://www.googleapis.com/calendar/v3/calendars/";
 
-
-
-
+    private EventDao eventDao;
 
 
     @Override
@@ -100,6 +100,26 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 downloadEvents();
             }
         });
+
+
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.eventDao = db.eDao();
+
+
+        //Adding a single event
+        Event e = new Event("Title","IT's an EVENT!","2019-12-03", "2019-12-03",
+                "RGU");
+        this.eventDao.insert(e);
+        Event d = new Event("OK","Surprise one","2019-12-05", "2019-12-09",
+                "Bon accord");
+        this.eventDao.insert(d);
+
+        List<Event> events = this.eventDao.getEvents();
+        Event eventSample = events.get(0);
+        Log.d("EventsTest", eventSample.getTitle());
+
 
 
         // The code below was adapted from a source on the internet from this point forward.

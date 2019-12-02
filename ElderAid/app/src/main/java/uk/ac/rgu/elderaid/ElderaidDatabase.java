@@ -21,10 +21,9 @@ public abstract class ElderaidDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ElderaidDatabase.class,"elderaid_database")
                             .fallbackToDestructiveMigration()
+                            // ONLY FOR TESTING WITHOUT ASYNC!!! >>>>> .allowMainThreadQueries()
                             .build();
-                }
-            }
-        }
+                } } }
         return INSTANCE;
     }
 }

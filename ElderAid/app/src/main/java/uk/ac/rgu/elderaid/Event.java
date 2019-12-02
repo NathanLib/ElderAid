@@ -4,11 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "event")
 public class Event {
     @NonNull
     @PrimaryKey (autoGenerate = true)
-    private String eventID;
+    private int eventID;
 
     private String title;
     private String desc;
@@ -26,11 +26,11 @@ public class Event {
     }
 
     @NonNull
-    public String getEventID() {
+    public int getEventID() {
         return eventID;
     }
 
-    public void setEventID(@NonNull String eventID) {
+    public void setEventID(@NonNull int eventID) {
         this.eventID = eventID;
     }
 
