@@ -112,6 +112,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 String calID = sharedPrefs.getString(prefCalKey, defaultCal);
                 if (!calID.equals(defaultCal)){
                     downloadEvents(calID);
+                    new GetAllEventsTask().execute();
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"You have not setup the Calendar ID",Toast.LENGTH_SHORT).show();
@@ -126,26 +127,14 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         this.eventDao = db.eDao();
 
 
-        //Adding a single event
-//        Event e = new Event("Title","IT's an EVENT!","2019-12-03", "2019-12-03",
-//                "RGU");
-//        this.eventDao.insert(e);
-//        Event d = new Event("OK","Surprise one","2019-12-05", "2019-12-09",
-//                "Bon accord");
-//        this.eventDao.insert(d);
-//
-//        List<Event> events = this.eventDao.getEvents();
-//        Event eventSample = events.get(0);
-//        Log.d("EventsTest", eventSample.getTitle());
 
 
-
-        // The code below was adapted from a source on the internet from this point forward.
+        // The code below was adapted from a source on the internet from this point.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My calendar");
         setSupportActionBar(toolbar);
-
+        // To this point.
     }
 
     public void downloadEvents(String CalID){
@@ -220,7 +209,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         queue.add(stringRequest);
 
 
-        new GetAllEventsTask().execute();
+
     }
 
     public void openNavDialog(){
