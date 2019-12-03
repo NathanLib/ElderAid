@@ -187,7 +187,8 @@
     <string name="addContact_cbFavorite">Add to your favorite</string>
     <string name="addContact_tvContactTitle">Add a new contact</string>
     <string name="addContact_etName">Name of the contact</string>
-    <string name="addContact_btnSelectPhoto">Select a photo...</string>
+    <string name="addContact_btnSelectPhoto">Select a photo</string>
+    <string name="addContact_btnTakePhoto">Take a photo</string>
     <string name="addContact_btnSaveContact">Save</string>
 
 
