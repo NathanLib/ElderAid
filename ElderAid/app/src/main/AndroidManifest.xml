@@ -40,6 +40,10 @@
         <activity android:name=".MapsEditFavouritesActivity">
 
         </activity>
+
+        <activity android:name=".PreferencesActivity">
+
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
