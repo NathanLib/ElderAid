@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -20,11 +22,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ContactActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnContactListener  {
+public class ContactActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnContactListener {
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
     private TextView btnMyCard;
@@ -34,11 +38,12 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnSOS;
     private ImageButton btnHome;
 
-    private ArrayList<Contact> contactList = new ArrayList<>();
+    private List<Contact> contactList = new ArrayList<>();
     private RecyclerView recyclerView_contact;
     private ContactAdapter cAdapter;
 
     private ContactDao contactDao;
+    private Contact contact;
 
 
     @Override
@@ -62,8 +67,8 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                         getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
-        });;
-
+        });
+        ;
 
 
         favouriteContact1 = (LinearLayout) findViewById(R.id.favouriteLinear1);
@@ -99,7 +104,6 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         this.contactDao = db.cDao();
 
 
-
         // The code below was adapted from a source on the internet from this point forward.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My contacts");
@@ -118,33 +122,15 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
-
     private void prepareContactData() {
-        Contact contact = new Contact("Blair Morgan", "+44 1632 960795", "");
-        contactList.add(contact);
+//        Contact contact = new Contact("Blair Morgan", "+44 1632 960795", "");
+//        contactList.add(contact);
 
-        contact = new Contact("Sam Duncan", "+44 1632 960795", "");
-        contactList.add(contact);
+        new GetAllContacts().execute();
 
-        contact = new Contact("Tony Stark", "+44 1632 960795", "");
-        contactList.add(contact);
-
-        contact = new Contact("Peter Parker", "+44 1632 960795", "");
-        contactList.add(contact);
-
-        contact = new Contact("Olly Ramsay", "+44 1632 960795", "");
-        contactList.add(contact);
-
-//        DOESN'T WORK !
-//        Collections.sort(contactList, Contact.ContactNameComparator);
-//
-//        for(Contact str: contactList){
-//            System.out.println(str.toString());
-//        }
     }
 
-    public void openNavDialog(){
+    public void openNavDialog() {
         final Dialog sideNavDialog = new Dialog(this);
 
 
@@ -194,7 +180,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    public void openMyCardDialog(){
+    public void openMyCardDialog() {
         final Dialog myCardDialog = new Dialog(this);
 
 
@@ -263,9 +249,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(
                     getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
-        }
-
-        else if (v.getId() == R.id.favouriteLinear1) {
+        } else if (v.getId() == R.id.favouriteLinear1) {
             Intent intent = new Intent(
                     getApplicationContext(), ContactDetailsActivity.class);
             startActivity(intent);
@@ -277,9 +261,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(
                     getApplicationContext(), ContactDetailsActivity.class);
             startActivity(intent);
-        }
-
-        else if (v.getId() == R.id.toolbar_btnAddContact) {
+        } else if (v.getId() == R.id.toolbar_btnAddContact) {
             Intent intent = new Intent(
                     getApplicationContext(), ContactAddActivity.class);
             startActivity(intent);
@@ -296,29 +278,23 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
     //This is an Async task
 
-    class GetAllContactsTask extends AsyncTask<Void, Void, List<Contact>>{
+    class GetAllContacts extends AsyncTask<Void, Void, List<Contact>> {
         @Override
         protected List<Contact> doInBackground(Void... voids) {
             return contactDao.getContacts();
         }
 
         @Override
-        protected void onPostExecute(List<Contact> forecasts) {
-            super.onPostExecute(forecasts);
-            //Do stuff
-        }
-    }
+        protected void onPostExecute(List<Contact> contactList) {
+            super.onPostExecute(contactList);
 
-    class UpdateInsertContactTask extends AsyncTask<List<Contact>, Void, Void>{
-        @Override
-        protected Void doInBackground(List<Contact>... contacts){
-            if (contacts.length == 0){
-                return null;
+            for (Contact c : contactList) {
+                Log.d("Contacts : ", c.toString());
+
+                contact = new Contact(c.getName(), c.getPhoneNum(), c.getImagePath(), c.getIsFavourite());
+                contactList.add(contact);
             }
-
-            return null;
         }
-
     }
 
 }

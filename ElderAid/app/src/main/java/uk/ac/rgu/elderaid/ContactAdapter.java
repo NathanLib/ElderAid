@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHolder> {
 
-    private ArrayList<Contact> contactList;
+    private List<Contact> contactList;
     private OnContactListener cOnContactListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -37,7 +37,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
     }
 
 
-    public ContactAdapter(ArrayList<Contact> contactList, OnContactListener onContactListener) {
+    public ContactAdapter(List<Contact> contactList, OnContactListener onContactListener) {
         this.contactList = contactList;
         this.cOnContactListener = onContactListener;
     }

@@ -2,30 +2,26 @@ package uk.ac.rgu.elderaid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
-import android.app.Activity;
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactAddActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,14 +30,24 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
     public static final int IMAGE_GALLERY_REQUEST = 20;
 
-    private String name;
-    private String number;
+    private String name = "";
+    private String number = "";
+    private String path = "";
+
+    private EditText et_name;
+    private EditText et_number;
 
     private ImageView imgPicture;
 
     private Button btn_selectPhoto;
+    private Button btn_save;
+
+    private CheckBox cb_favourite;
+    private Boolean isFavourite = false;
 
     private ContactDao contactAddDao;
+
+    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +58,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             if (savedInstanceState.containsKey(STATE_KEY_NAME)) {
                 name = savedInstanceState.getString(STATE_KEY_NAME, "");
                 if (!("".equals(name))) {
-                    EditText et_name = findViewById(R.id.addContact_etName);
+                    et_name = findViewById(R.id.addContact_etName);
                     et_name.setText(name);
                 }
             }
@@ -60,7 +66,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             if (savedInstanceState.containsKey(STATE_KEY_NUMBER)) {
                 number = savedInstanceState.getString(STATE_KEY_NUMBER, "");
                 if (!("".equals(number))) {
-                    EditText et_number = findViewById(R.id.addContact_etPhoneNumber);
+                    et_number = findViewById(R.id.addContact_etPhoneNumber);
                     et_number.setText(number);
                 }
             }
@@ -74,7 +80,12 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
         btn_selectPhoto = (Button) findViewById(R.id.addContact_btnSelectPhoto);
         btn_selectPhoto.setOnClickListener(this);
 
+        btn_save = (Button) findViewById(R.id.addContact_btnSaveContact);
+        btn_save.setOnClickListener(this);
+
         imgPicture = (ImageView) findViewById(R.id.addContact_ic_profile);
+
+        cb_favourite = (CheckBox) findViewById(R.id.addContact_cbFavorite);
     }
 
     @Override
@@ -97,6 +108,31 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             Uri data = Uri.parse(pictureDirectoryPath);
             photoPickerIntent.setDataAndType(data, "image/*");
             startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
+        } else if (v.getId() == R.id.addContact_btnSaveContact) {
+            List<Contact> newContact = new ArrayList<>();
+
+            et_name = findViewById(R.id.addContact_etName);
+            name = et_name.getText().toString();
+
+            et_number = findViewById(R.id.addContact_etPhoneNumber);
+            number = et_number.getText().toString();
+
+            path = imageUri.toString();
+
+            if (cb_favourite.isChecked()) {
+                isFavourite = true;
+            }
+
+            Contact c = new Contact(name, number, path, isFavourite);
+            newContact.add(c);
+
+            new UpdateOrInsertContact().execute(newContact);
+
+            Toast.makeText(this, "Contact added!", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -105,7 +141,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
         if (resultCode == RESULT_OK) {
             if (requestCode == IMAGE_GALLERY_REQUEST) {
                 // the address of the image on the SD Card.
-                Uri imageUri = data.getData();
+                imageUri = data.getData();
 
                 // declare a stream to read the image data from the SD Card.
                 InputStream inputStream;
@@ -129,5 +165,49 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
             }
         }
+    }
+
+    class UpdateOrInsertContact extends AsyncTask<List<Contact>, Void, Void> {
+        @Override
+        protected Void doInBackground(List<Contact>... contacts) {
+            if (contacts.length == 0) {
+                return null;
+            }
+
+            List<Contact> contactList = contacts[0];
+
+            //Get a list of all the events already on the Database
+            List<Contact> savedContacts = contactAddDao.getContacts();
+
+            for (Contact c : savedContacts) {
+                String cName = c.getName();
+
+                for (int i = 0; i < contactList.size(); i++) {
+                    Contact cImport = contactList.get(i);
+
+                    if (cImport.getName().equals(cName)) {
+                        c.setContactId(cImport.getContactId());
+                        c.setName(cImport.getName());
+                        c.setPhoneNum(cImport.getPhoneNum());
+                        c.setImagePath(cImport.getImagePath());
+                        c.setIsFavourite(cImport.getIsFavourite());
+
+                        contactList.remove(i);
+
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            contactAddDao.updateContacts((Contact[]) savedContacts.toArray(new Contact[savedContacts.size()]));
+
+            if (contactList.size() != 0) {
+                contactAddDao.insertContacts((Contact[]) contactList.toArray(new Contact[contactList.size()]));
+            }
+
+            return null;
+        }
+
     }
 }
