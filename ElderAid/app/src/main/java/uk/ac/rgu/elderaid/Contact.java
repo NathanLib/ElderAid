@@ -13,7 +13,7 @@ import java.util.Comparator;
 public class Contact {
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    private int contactId; // auto generate doesn't work, all contacts have the same idea
+    private int contactId;
 
     private String name;
     private String phoneNum;
