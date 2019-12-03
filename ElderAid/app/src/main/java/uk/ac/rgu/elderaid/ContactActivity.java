@@ -29,6 +29,11 @@ import java.util.List;
 
 
 public class ContactActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnContactListener {
+
+    public final static String EXTRA_CONTACT_NAME = "uk.ac.rgu.elderaid.CONTACT_NAME";
+    public final static String EXTRA_CONTACT_NUMBER = "uk.ac.rgu.elderaid.CONTACT_NUMBER";
+    public final static String EXTRA_CONTACT_PHOTO = "uk.ac.rgu.elderaid.CONTACT_PHOTO";
+
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
     private TextView btnMyCard;
@@ -118,16 +123,16 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
         recyclerView_contact.setAdapter(cAdapter);
 
+//        new GetAllContacts().execute();
         prepareContactData();
     }
 
-
     private void prepareContactData() {
-//        Contact contact = new Contact("Blair Morgan", "+44 1632 960795", "");
-//        contactList.add(contact);
+        contact = new Contact("Harry Potter", "+44 1234 5678", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
+        contactList.add(contact);
 
-        new GetAllContacts().execute();
-
+        contact = new Contact("Peter Parker", "+44 9876 4321", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
+        contactList.add(contact);
     }
 
     public void openNavDialog() {
@@ -270,8 +275,12 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onContactClick(int position) {
-        contactList.get(position);
         Intent intent = new Intent(this, ContactDetailsActivity.class);
+
+        intent.putExtra(EXTRA_CONTACT_NAME, contactList.get(position).getName());
+        intent.putExtra(EXTRA_CONTACT_NUMBER, contactList.get(position).getPhoneNum());
+        intent.putExtra(EXTRA_CONTACT_PHOTO, contactList.get(position).getImagePath());
+
         startActivity(intent);
     }
 
@@ -285,15 +294,14 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         @Override
-        protected void onPostExecute(List<Contact> contactList) {
-            super.onPostExecute(contactList);
+        protected void onPostExecute(List<Contact> contacts) {
+            super.onPostExecute(contacts);
 
-            for (Contact c : contactList) {
-                Log.d("Contacts : ", c.toString());
-
-                contact = new Contact(c.getName(), c.getPhoneNum(), c.getImagePath(), c.getIsFavourite());
-                contactList.add(contact);
-            }
+//            for (Contact c : contacts) {
+//                Log.d("Contacts", c.toString());
+//
+//                contactList.add(c);
+//            }
         }
     }
 

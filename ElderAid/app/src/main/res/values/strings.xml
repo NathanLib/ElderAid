@@ -194,9 +194,9 @@
 
 
     <string name="seeContact_tvContactTitle">View contact</string>
-    <string name="seeContact_tvContactName">Alex Alexandre</string>
+    <string name="seeContact_tvContactName">Unknown</string>
     <string name="seeContact_tvContactTextNumber">Phone number:</string>
-    <string name="seeContact_tvContactPhoneNumber">+44 1234 5678 3456</string>
+    <string name="seeContact_tvContactPhoneNumber">Unknown</string>
     <string name="seeContact_btnDeleteContact">Delete</string>
     <string name="seeContact_btnReturnContact">Return</string>
     <string name="seeContact_btnCallContact">Call</string>

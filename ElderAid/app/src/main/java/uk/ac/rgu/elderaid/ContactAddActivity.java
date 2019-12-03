@@ -169,12 +169,12 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
     class UpdateOrInsertContact extends AsyncTask<List<Contact>, Void, Void> {
         @Override
-        protected Void doInBackground(List<Contact>... contacts) {
-            if (contacts.length == 0) {
+        protected Void doInBackground(List<Contact>... contactsList) {
+            if (contactsList.length == 0) {
                 return null;
             }
 
-            List<Contact> contactList = contacts[0];
+            List<Contact> contacts = contactsList[0];
 
             //Get a list of all the events already on the Database
             List<Contact> savedContacts = contactAddDao.getContacts();
@@ -182,8 +182,8 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             for (Contact c : savedContacts) {
                 String cName = c.getName();
 
-                for (int i = 0; i < contactList.size(); i++) {
-                    Contact cImport = contactList.get(i);
+                for (int i = 0; i < contacts.size(); i++) {
+                    Contact cImport = contacts.get(i);
 
                     if (cImport.getName().equals(cName)) {
                         c.setContactId(cImport.getContactId());
@@ -192,7 +192,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
                         c.setImagePath(cImport.getImagePath());
                         c.setIsFavourite(cImport.getIsFavourite());
 
-                        contactList.remove(i);
+                        contacts.remove(i);
 
                         i--;
                         break;
@@ -202,8 +202,8 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
             contactAddDao.updateContacts((Contact[]) savedContacts.toArray(new Contact[savedContacts.size()]));
 
-            if (contactList.size() != 0) {
-                contactAddDao.insertContacts((Contact[]) contactList.toArray(new Contact[contactList.size()]));
+            if (contacts.size() != 0) {
+                contactAddDao.insertContacts((Contact[]) contacts.toArray(new Contact[contacts.size()]));
             }
 
             return null;
