@@ -153,6 +153,7 @@
     <string name="calendarLink">Calendar Page</string>
     <string name="toDoLink">Task To-Do Page</string>
     <string name="contactsLink">Contacts Page</string>
+    <string name="preferencesLink">Preferences Page</string>
 
     <string name="closeNav">Close</string>
 
@@ -217,6 +218,14 @@
     <string name="myCardBtnReturn">Return</string>
     <string name="toolbar_btnEdit">Edit</string>
 
+
+    <!--Pref page-->
+    <string name="tvpreferencesTitle">Edit your Preferences</string>
+    <string name="tvCalID">Your Google Calendar ID (Make sure it\'s public)</string>
+    <string name="etCalIDPlaceholder">Calendar ID</string>
+
+
+    <!-- SharedPrefs -->
     <string name="preferencesFile" translatable="false">uk.ac.rgu.elderaid</string>
     <string name="prefLoc1Key" translatable="false">fav1</string>
     <string name="prefLoc2Key" translatable="false">fav2</string>
@@ -226,6 +235,9 @@
     <string name="Loc2Default"></string>
     <string name="Loc3Default"></string>
     <string name="Loc4Default"></string>
+
+    <string name="CalIdDefault"></string>
+    <string name="prefCalIDKey" translatable="false">calID</string>
 
 
     <string name="contact_item_username">Username</string>

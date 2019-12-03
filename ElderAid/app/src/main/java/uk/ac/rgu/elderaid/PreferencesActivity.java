@@ -1,44 +1,35 @@
 package uk.ac.rgu.elderaid;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import java.lang.reflect.Array;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MapsEditFavouritesActivity extends AppCompatActivity implements View.OnClickListener{
+public class PreferencesActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageButton btnshowSideNav;
     private ImageButton btnSOS;
     private ImageButton btnHome;
     private Button btnCancel;
     private Button btnSubmit;
-
-    private static final String[] STATE_KEY_FAVOURITE= {"favourite1","favourite2","favourite3","favourite4"};
-    private String favourite1;
-    private String favourite2;
-    private String favourite3;
-    private String favourite4;
+    private SharedPreferences sharedPrefs;
+    private static final String STATE_KEY_CALID="calID";
+    private String calID;
 
     private static final String preferencesFile = "uk.ac.rgu.elderaid";
-    private SharedPreferences sharedPrefs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_add_favourites);
+        setContentView(R.layout.activity_preferences);
 
         btnSOS = (ImageButton) findViewById(R.id.btnSOS);
         btnSOS.setOnClickListener(new View.OnClickListener() {
@@ -69,37 +60,16 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             }
         });
 
-        btnSubmit = (Button) findViewById(R.id.btnFavSubmit);
+        btnSubmit = (Button) findViewById(R.id.btnPrefSubmit);
         btnSubmit.setOnClickListener(this);
-        btnCancel = (Button) findViewById(R.id.btnCancelFav);
+        btnCancel = (Button) findViewById(R.id.btnCancelPref);
         btnCancel.setOnClickListener(this);
         if (savedInstanceState != null){
-            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[0])){
-                favourite1 = savedInstanceState.getString(STATE_KEY_FAVOURITE[0], "");
-                if (!("".equals(favourite1))){
-                    EditText etFavourite1 = findViewById(R.id.etFav1);
-                    etFavourite1.setText(favourite1);
-                }
-            }
-            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[1])){
-                favourite2 = savedInstanceState.getString(STATE_KEY_FAVOURITE[1], "");
-                if (!("".equals(favourite2))){
-                    EditText etFavourite2 = findViewById(R.id.etFav2);
-                    etFavourite2.setText(favourite2);
-                }
-            }
-            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[2])){
-                favourite3 = savedInstanceState.getString(STATE_KEY_FAVOURITE[2], "");
-                if (!("".equals(favourite3))){
-                    EditText etFavourite3 = findViewById(R.id.etFav3);
-                    etFavourite3.setText(favourite3);
-                }
-            }
-            if (savedInstanceState.containsKey(STATE_KEY_FAVOURITE[3])){
-                favourite4 = savedInstanceState.getString(STATE_KEY_FAVOURITE[3], "");
-                if (!("".equals(favourite4))){
-                    EditText etFavourite4 = findViewById(R.id.etFav4);
-                    etFavourite4.setText(favourite4);
+            if (savedInstanceState.containsKey(STATE_KEY_CALID)){
+                calID = savedInstanceState.getString(STATE_KEY_CALID, "");
+                if (!("".equals(calID))){
+                    EditText etCalID = findViewById(R.id.etCalID);
+                    etCalID.setText(calID);
                 }
             }
         }
@@ -112,7 +82,7 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
     @Override
     public void onClick(View v) {
         // Side nav
-        if (v.getId() == R.id.linkHome) {
+        if (v.getId() == R.id.linkHome || v.getId() == R.id.btnCancelPref) {
             Intent intent = new Intent(
                     getApplicationContext(), HomeActivity.class);
             startActivity(intent);
@@ -120,7 +90,7 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             Intent intent = new Intent(
                     getApplicationContext(), CalendarActivity.class);
             startActivity(intent);
-        } else if (v.getId() == R.id.linkMaps || v.getId() == R.id.btnCancelFav) {
+        } else if (v.getId() == R.id.linkMaps) {
             Intent intent = new Intent(
                     getApplicationContext(), MapsActivity.class);
             startActivity(intent);
@@ -140,10 +110,10 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
             Intent intent = new Intent(
                     getApplicationContext(), PrescriptionLevelActivity.class);
             startActivity(intent);
-        } else if (v.getId() == R.id.btnFavSubmit){
+        } else if (v.getId() == R.id.btnPrefSubmit){
             // Add to shared Preferences
             saveSharedPrefs();
-            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.linkPreferences) {
             Intent intent = new Intent(
@@ -152,61 +122,38 @@ public class MapsEditFavouritesActivity extends AppCompatActivity implements Vie
         }
     }
 
-
     public void saveSharedPrefs(){
         SharedPreferences.Editor preferenceEditor = sharedPrefs.edit();
-        String prefFav1Key = getString(R.string.prefLoc1Key);
-        String prefFav2Key = getString(R.string.prefLoc2Key);
-        String prefFav3Key = getString(R.string.prefLoc3Key);
-        String prefFav4Key = getString(R.string.prefLoc4Key);
+        String prefCalIDKey = getString(R.string.prefCalIDKey);
 
-        EditText fav1 = findViewById(R.id.etFav1);
-        EditText fav2 = findViewById(R.id.etFav2);
-        EditText fav3 = findViewById(R.id.etFav3);
-        EditText fav4 = findViewById(R.id.etFav4);
+        EditText calID = findViewById(R.id.etCalID);
 
-        String etFav1Val = String.valueOf(fav1.getText());
-        String etFav2Val = String.valueOf(fav2.getText());
-        String etFav3Val = String.valueOf(fav3.getText());
-        String etFav4Val = String.valueOf(fav4.getText());
 
-        preferenceEditor.putString(prefFav1Key, etFav1Val);
-        preferenceEditor.putString(prefFav2Key, etFav2Val);
-        preferenceEditor.putString(prefFav3Key, etFav3Val);
-        preferenceEditor.putString(prefFav4Key, etFav4Val);
+        String etcalIDVal = String.valueOf(calID.getText());
+
+
+        preferenceEditor.putString(prefCalIDKey, etcalIDVal);
 
         preferenceEditor.apply();
 
     }
 
     public void restorePrefs(){
-        String prefFav1Key = getString(R.string.prefLoc1Key);
-        String prefFav2Key = getString(R.string.prefLoc2Key);
-        String prefFav3Key = getString(R.string.prefLoc3Key);
-        String prefFav4Key = getString(R.string.prefLoc4Key);
+        String prefCalIDKey = getString(R.string.prefCalIDKey);
 
-        String defaultFav1 = getString(R.string.Loc1Default);
-        String defaultFav2 = getString(R.string.Loc2Default);
-        String defaultFav3 = getString(R.string.Loc3Default);
-        String defaultFav4 = getString(R.string.Loc4Default);
+        String defaultCalID = getString(R.string.CalIdDefault);
 
-        EditText fav1 = findViewById(R.id.etFav1);
-        EditText fav2 = findViewById(R.id.etFav2);
-        EditText fav3 = findViewById(R.id.etFav3);
-        EditText fav4 = findViewById(R.id.etFav4);
 
-        String fav1Set = sharedPrefs.getString(prefFav1Key, defaultFav1);
-        String fav2Set = sharedPrefs.getString(prefFav2Key, defaultFav2);
-        String fav3Set = sharedPrefs.getString(prefFav3Key, defaultFav3);
-        String fav4Set = sharedPrefs.getString(prefFav4Key, defaultFav4);
+        EditText calID = findViewById(R.id.etCalID);
 
-        fav1.setText(fav1Set);
-        fav2.setText(fav2Set);
-        fav3.setText(fav3Set);
-        fav4.setText(fav4Set);
 
+        String CalSet = sharedPrefs.getString(prefCalIDKey, defaultCalID);
+
+
+        calID.setText(CalSet);
 
     }
+
 
     public void openNavDialog(){
         final Dialog sideNavDialog = new Dialog(this);

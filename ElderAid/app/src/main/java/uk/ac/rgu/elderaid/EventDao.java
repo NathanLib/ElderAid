@@ -41,4 +41,7 @@ public interface EventDao {
     @Delete
     public void deleteEvents(Event... event);
 
+    @Query("DELETE FROM Event")
+    public void deleteAllEvents();
+
 }
