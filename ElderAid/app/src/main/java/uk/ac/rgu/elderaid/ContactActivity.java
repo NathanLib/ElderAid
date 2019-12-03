@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,19 +20,23 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import android.widget.TextView;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class ContactActivity extends AppCompatActivity implements View.OnClickListener  {
 
+public class ContactActivity extends AppCompatActivity implements View.OnClickListener, ContactAdapter.OnContactListener  {
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
-    private TextView contact_tvContactA1;
     private TextView btnMyCard;
-    private LinearLayout favouriteContact;
+    private LinearLayout favouriteContact1;
+    private LinearLayout favouriteContact2;
+    private LinearLayout favouriteContact3;
     private ImageButton btnSOS;
     private ImageButton btnHome;
 
+    private ArrayList<Contact> contactList = new ArrayList<>();
+    private RecyclerView recyclerView_contact;
+    private ContactAdapter cAdapter;
 
     private ContactDao contactDao;
 
@@ -59,13 +66,13 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-        favouriteContact = (LinearLayout) findViewById(R.id.favouriteLinear1);
-        favouriteContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSeeContactDialog();
-            }
-        });
+        favouriteContact1 = (LinearLayout) findViewById(R.id.favouriteLinear1);
+        favouriteContact1.setOnClickListener(this);
+        favouriteContact2 = (LinearLayout) findViewById(R.id.favouriteLinear2);
+        favouriteContact2.setOnClickListener(this);
+        favouriteContact3 = (LinearLayout) findViewById(R.id.favouriteLinear3);
+        favouriteContact3.setOnClickListener(this);
+
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,20 +83,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
 
         toolbar_addContact = (Button) findViewById(R.id.toolbar_btnAddContact);
-        toolbar_addContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddDialog();
-            }
-        });
-
-        contact_tvContactA1 = (TextView) findViewById(R.id.contact_tvContactA1);
-        contact_tvContactA1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSeeContactDialog();
-            }
-        });
+        toolbar_addContact.setOnClickListener(this);
 
         btnMyCard = (TextView) findViewById(R.id.contact_tvMyCard);
         btnMyCard.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +105,43 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         toolbar.setTitle("My contacts");
         setSupportActionBar(toolbar);
 
+        // Code from https://www.androidhive.info/2016/01/android-working-with-recycler-view/
+        recyclerView_contact = (RecyclerView) findViewById(R.id.rvContact);
+
+        cAdapter = new ContactAdapter(contactList, this);
+        RecyclerView.LayoutManager cLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView_contact.setLayoutManager(cLayoutManager);
+        recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_contact.setAdapter(cAdapter);
+
+        prepareContactData();
+    }
+
+
+
+
+    private void prepareContactData() {
+        Contact contact = new Contact("Blair Morgan", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Sam Duncan", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Tony Stark", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Peter Parker", "+44 1632 960795", "");
+        contactList.add(contact);
+
+        contact = new Contact("Olly Ramsay", "+44 1632 960795", "");
+        contactList.add(contact);
+
+//        DOESN'T WORK !
+//        Collections.sort(contactList, Contact.ContactNameComparator);
+//
+//        for(Contact str: contactList){
+//            System.out.println(str.toString());
+//        }
     }
 
     public void openNavDialog(){
@@ -162,41 +193,6 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         sideNavDialog.show();
     }
 
-
-    public void openAddDialog(){
-        final Dialog addDialog = new Dialog(this);
-
-
-        addDialog.setContentView(R.layout.dialog_add_contact);
-        addDialog.setTitle("Add a contact");
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(addDialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        addDialog.show();
-        addDialog.getWindow().setAttributes(lp);
-
-        addDialog.show();
-    }
-
-    public void openSeeContactDialog() {
-        final Dialog seeDialog = new Dialog(this);
-
-
-        seeDialog.setContentView(R.layout.dialog_see_contact);
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(seeDialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        seeDialog.show();
-        seeDialog.getWindow().setAttributes(lp);
-
-        seeDialog.show();
-    }
 
     public void openMyCardDialog(){
         final Dialog myCardDialog = new Dialog(this);
@@ -268,6 +264,33 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                     getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
         }
+
+        else if (v.getId() == R.id.favouriteLinear1) {
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactDetailsActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.favouriteLinear2) {
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactDetailsActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.favouriteLinear3) {
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactDetailsActivity.class);
+            startActivity(intent);
+        }
+
+        else if (v.getId() == R.id.toolbar_btnAddContact) {
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactAddActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onContactClick(int position) {
+        contactList.get(position);
+        Intent intent = new Intent(this, ContactDetailsActivity.class);
+        startActivity(intent);
     }
 
 
