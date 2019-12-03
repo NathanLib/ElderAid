@@ -44,6 +44,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
     private CheckBox cb_favourite;
     private Boolean isFavourite = false;
+    private Boolean favourites_full;
 
     private ContactDao contactAddDao;
 
@@ -86,6 +87,16 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
         imgPicture = (ImageView) findViewById(R.id.addContact_ic_profile);
 
         cb_favourite = (CheckBox) findViewById(R.id.addContact_cbFavorite);
+
+        Intent launcher = getIntent();
+        if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_FAV_FULL)) {
+            favourites_full = launcher.getBooleanExtra(ContactActivity.EXTRA_CONTACT_FAV_FULL, false);
+
+            if (favourites_full == true) {
+                cb_favourite.setEnabled(false);
+                cb_favourite.setText("You already have 3 favorite contacts!");
+            }
+        }
     }
 
     @Override

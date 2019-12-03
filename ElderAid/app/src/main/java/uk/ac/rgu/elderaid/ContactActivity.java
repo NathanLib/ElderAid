@@ -33,6 +33,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public final static String EXTRA_CONTACT_NAME = "uk.ac.rgu.elderaid.CONTACT_NAME";
     public final static String EXTRA_CONTACT_NUMBER = "uk.ac.rgu.elderaid.CONTACT_NUMBER";
     public final static String EXTRA_CONTACT_PHOTO = "uk.ac.rgu.elderaid.CONTACT_PHOTO";
+    public final static String EXTRA_CONTACT_FAV_FULL = "uk.ac.rgu.elderaid.CONTACT_FAV_FULL";
 
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
@@ -160,11 +161,16 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         contact = new Contact("Hermione Granger", "+44 8 3467", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
         contactList.add(contact);
 
+        contact = new Contact("Spider man", "+44 118 712", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
+        contactList.add(contact);
+
         addToFavouriteList(contactList);
 
         if (!favouriteContactList.isEmpty()) {
             for (int i=0; i < favouriteContactList.size(); i++) {
-                tv_favList.get(i).setText(favouriteContactList.get(i).getName());
+                String[] tab = favouriteContactList.get(i).getName().split(" ");
+
+                tv_favList.get(i).setText(tab[0]);
                 ll_favList.get(i).setVisibility(View.VISIBLE);
             }
         }
@@ -300,22 +306,35 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         } else if (v.getId() == R.id.favouriteLinear1) {
             Intent intent = new Intent(this, ContactDetailsActivity.class);
 
-            intent.putExtra(EXTRA_CONTACT_NAME, contactList.get(2).getName());
-            intent.putExtra(EXTRA_CONTACT_NUMBER, contactList.get(2).getPhoneNum());
-            intent.putExtra(EXTRA_CONTACT_PHOTO, contactList.get(2).getImagePath());
+            intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(0).getName());
+            intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(0).getPhoneNum());
+            intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(0).getImagePath());
 
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear2) {
-            Intent intent = new Intent(
-                    getApplicationContext(), ContactDetailsActivity.class);
+            Intent intent = new Intent(this, ContactDetailsActivity.class);
+
+            intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(1).getName());
+            intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(1).getPhoneNum());
+            intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(1).getImagePath());
+
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear3) {
-            Intent intent = new Intent(
-                    getApplicationContext(), ContactDetailsActivity.class);
+            Intent intent = new Intent(this, ContactDetailsActivity.class);
+
+            intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(2).getName());
+            intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(2).getPhoneNum());
+            intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(2).getImagePath());
+
             startActivity(intent);
         } else if (v.getId() == R.id.toolbar_btnAddContact) {
             Intent intent = new Intent(
                     getApplicationContext(), ContactAddActivity.class);
+
+            if (favouriteContactList.size() >= 2) {
+                intent.putExtra(EXTRA_CONTACT_FAV_FULL, true);
+            }
+
             startActivity(intent);
         }
     }
