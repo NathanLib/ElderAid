@@ -139,6 +139,9 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
         Button linkPrescription = (Button) sideNavDialog.findViewById(R.id.linkPrescription);
         linkPrescription.setOnClickListener(this);
 
+        Button linkPreferences = (Button) sideNavDialog.findViewById(R.id.linkPreferences);
+        linkPreferences.setOnClickListener(this);
+
         Button btnClose = (Button) sideNavDialog.findViewById(R.id.closeBtn);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,6 +290,10 @@ public class MapsActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
+        } else if (v.getId() == R.id.linkPreferences) {
+            Intent intent = new Intent(
+                    getApplicationContext(), PreferencesActivity.class);
+            startActivity(intent);
         }
 
 

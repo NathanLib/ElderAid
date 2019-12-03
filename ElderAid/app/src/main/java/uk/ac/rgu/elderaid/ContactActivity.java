@@ -179,6 +179,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         Button linkPrescription = (Button) sideNavDialog.findViewById(R.id.linkPrescription);
         linkPrescription.setOnClickListener(this);
 
+        Button linkPreferences = (Button) sideNavDialog.findViewById(R.id.linkPreferences);
+        linkPreferences.setOnClickListener(this);
+
         Button btnClose = (Button) sideNavDialog.findViewById(R.id.closeBtn);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,6 +258,10 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         } else if (v.getId() == R.id.linkPrescription) {
             Intent intent = new Intent(
                     getApplicationContext(), PrescriptionLevelActivity.class);
+            startActivity(intent);
+        } else if (v.getId() == R.id.linkPreferences) {
+            Intent intent = new Intent(
+                    getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
         }
 

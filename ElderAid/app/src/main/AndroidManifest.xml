@@ -25,12 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".CalendarActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".PrescriptionLevelActivity" />
         <activity android:name=".MedicalInfoActivity" />
         <activity android:name=".MapsEditFavouritesActivity" />
+        <activity android:name=".PreferencesActivity"/>
+
     </application>
 
 </manifest>
