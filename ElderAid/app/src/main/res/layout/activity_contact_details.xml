@@ -35,7 +35,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/seeContact_ivContactPhoto"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     app:srcCompat="@drawable/ic_person" />

@@ -37,11 +37,20 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnshowSideNav;
     private Button toolbar_addContact;
     private TextView btnMyCard;
+
     private LinearLayout favouriteContact1;
+    private TextView tv_fav1;
     private LinearLayout favouriteContact2;
+    private TextView tv_fav2;
     private LinearLayout favouriteContact3;
+    private TextView tv_fav3;
+
     private ImageButton btnSOS;
     private ImageButton btnHome;
+
+    private List<Contact> favouriteContactList = new ArrayList<>();
+    private List<TextView> tv_favList = new ArrayList<>();
+    private List<LinearLayout> ll_favList = new ArrayList<>();
 
     private List<Contact> contactList = new ArrayList<>();
     private RecyclerView recyclerView_contact;
@@ -75,13 +84,24 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         });
         ;
 
-
+        tv_fav1 = (TextView) findViewById(R.id.contact_tvFavorite1);
         favouriteContact1 = (LinearLayout) findViewById(R.id.favouriteLinear1);
         favouriteContact1.setOnClickListener(this);
+
+        tv_fav2 = (TextView) findViewById(R.id.contact_tvFavorite2);
         favouriteContact2 = (LinearLayout) findViewById(R.id.favouriteLinear2);
         favouriteContact2.setOnClickListener(this);
+
+        tv_fav3 = (TextView) findViewById(R.id.contact_tvFavorite3);
         favouriteContact3 = (LinearLayout) findViewById(R.id.favouriteLinear3);
         favouriteContact3.setOnClickListener(this);
+
+        tv_favList.add(tv_fav1);
+        tv_favList.add(tv_fav2);
+        tv_favList.add(tv_fav3);
+        ll_favList.add(favouriteContact1);
+        ll_favList.add(favouriteContact2);
+        ll_favList.add(favouriteContact3);
 
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +143,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
         recyclerView_contact.setAdapter(cAdapter);
 
-//        new GetAllContacts().execute();
+        new GetAllContacts().execute();
         prepareContactData();
     }
 
@@ -131,8 +151,31 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         contact = new Contact("Harry Potter", "+44 1234 5678", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
         contactList.add(contact);
 
-        contact = new Contact("Peter Parker", "+44 9876 4321", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
+        contact = new Contact("Peter Parker", "+44 9876 4321", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
         contactList.add(contact);
+
+        contact = new Contact("Tony Stark", "+44 4567 2", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
+        contactList.add(contact);
+
+        contact = new Contact("Hermione Granger", "+44 8 3467", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
+        contactList.add(contact);
+
+        addToFavouriteList(contactList);
+
+        if (!favouriteContactList.isEmpty()) {
+            for (int i=0; i < favouriteContactList.size(); i++) {
+                tv_favList.get(i).setText(favouriteContactList.get(i).getName());
+                ll_favList.get(i).setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private void addToFavouriteList(List<Contact> contacts) {
+        for (Contact c : contacts) {
+            if (c.getIsFavourite() == true) {
+                favouriteContactList.add(c);
+            }
+        }
     }
 
     public void openNavDialog() {
@@ -255,8 +298,12 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                     getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear1) {
-            Intent intent = new Intent(
-                    getApplicationContext(), ContactDetailsActivity.class);
+            Intent intent = new Intent(this, ContactDetailsActivity.class);
+
+            intent.putExtra(EXTRA_CONTACT_NAME, contactList.get(2).getName());
+            intent.putExtra(EXTRA_CONTACT_NUMBER, contactList.get(2).getPhoneNum());
+            intent.putExtra(EXTRA_CONTACT_PHOTO, contactList.get(2).getImagePath());
+
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear2) {
             Intent intent = new Intent(
@@ -297,11 +344,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         protected void onPostExecute(List<Contact> contacts) {
             super.onPostExecute(contacts);
 
-//            for (Contact c : contacts) {
-//                Log.d("Contacts", c.toString());
-//
-//                contactList.add(c);
-//            }
+            for (Contact c : contacts) {
+                Log.d("Contacts", c.toString());
+            }
         }
     }
 

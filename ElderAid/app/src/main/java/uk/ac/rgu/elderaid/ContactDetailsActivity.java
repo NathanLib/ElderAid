@@ -3,12 +3,19 @@ package uk.ac.rgu.elderaid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ContactDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +27,8 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
 
     private TextView tv_name;
     private TextView tv_number;
+
+    private ImageView iv_photo;
 
     private String contact_name;
     private String contact_number;
@@ -45,6 +54,8 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
         tv_name = (TextView) findViewById(R.id.seeContact_tvContactName);
         tv_number = (TextView) findViewById(R.id.seeContact_tvContactPhoneNumber);
 
+        iv_photo = (ImageView) findViewById(R.id.seeContact_ivContactPhoto);
+
         Intent launcher = getIntent();
         if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_NAME)) {
             contact_name = launcher.getStringExtra(ContactActivity.EXTRA_CONTACT_NAME);
@@ -56,6 +67,25 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
 
             tv_number.setText(contact_number);
         }
+//        if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_PHOTO)) {
+//            contact_photo = launcher.getStringExtra(ContactActivity.EXTRA_CONTACT_PHOTO);
+//
+//            Uri imageUri = Uri.parse(contact_photo);
+//
+//            InputStream inputStream;
+//
+//            try {
+//                inputStream = getContentResolver().openInputStream(imageUri);
+//                Bitmap image = BitmapFactory.decodeStream(inputStream);
+//
+//
+//                iv_photo.setImageBitmap(image);
+//
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//                Toast.makeText(this, "Unable to open image", Toast.LENGTH_LONG).show();
+//            }
+//        }
 
     }
 
