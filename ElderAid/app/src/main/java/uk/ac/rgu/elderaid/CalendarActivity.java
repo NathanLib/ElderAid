@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -74,10 +76,22 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private EventDao eventDao;
 
 
+    //RecyclerView Variables
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        recyclerView = (RecyclerView) findViewById(R.id.eventsRecycler);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new CalendarAdapter();
+        recyclerView.setAdapter(adapter);
 
         // *Shared Preferences File link*
         sharedPrefs = getSharedPreferences(preferencesFile, MODE_PRIVATE);
@@ -114,7 +128,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String dayString ="" +dayOfMonth;
-
                 month+= 1;
                 String monthString=""+month;
                 if (dayOfMonth < 10){

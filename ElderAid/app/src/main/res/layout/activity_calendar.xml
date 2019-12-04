@@ -104,6 +104,11 @@
                 android:theme="@style/CalenderViewCustom"
                 android:weekDayTextAppearance="@color/lightgray" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <LinearLayout
                 android:id="@+id/calendar_llEvent1"
                 android:layout_width="match_parent"
@@ -128,7 +133,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/calendar_tvEvent1Time"
+                    android:id="@+id/calendar_item_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
