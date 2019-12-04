@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +17,11 @@ import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
 
 public class ContactDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ContactDao cDao;
+    private ContactDao contactDetailsDao;
 
     private Button btn_delete;
     private Button btn_call;
@@ -28,19 +30,20 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
     private TextView tv_name;
     private TextView tv_number;
 
-    private ImageView iv_photo;
-
     private String contact_name;
     private String contact_number;
-    private String contact_photo;
+
+    private int contact_position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
 
-        //Set the Dao
-        this.cDao = ElderaidDatabase.getDatabase(this).cDao();
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.contactDetailsDao = db.cDao();
 
         btn_delete = (Button) findViewById(R.id.seeContact_btnDeleteContact);
         btn_delete.setOnClickListener(this);
@@ -54,7 +57,7 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
         tv_name = (TextView) findViewById(R.id.seeContact_tvContactName);
         tv_number = (TextView) findViewById(R.id.seeContact_tvContactPhoneNumber);
 
-        iv_photo = (ImageView) findViewById(R.id.seeContact_ivContactPhoto);
+        contact_position = -1;
 
         Intent launcher = getIntent();
         if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_NAME)) {
@@ -67,32 +70,21 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
 
             tv_number.setText(contact_number);
         }
-//        if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_PHOTO)) {
-//            contact_photo = launcher.getStringExtra(ContactActivity.EXTRA_CONTACT_PHOTO);
-//
-//            Uri imageUri = Uri.parse(contact_photo);
-//
-//            InputStream inputStream;
-//
-//            try {
-//                inputStream = getContentResolver().openInputStream(imageUri);
-//                Bitmap image = BitmapFactory.decodeStream(inputStream);
-//
-//
-//                iv_photo.setImageBitmap(image);
-//
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//                Toast.makeText(this, "Unable to open image", Toast.LENGTH_LONG).show();
-//            }
-//        }
-
+        if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_POSITION)) {
+            contact_position = launcher.getIntExtra(ContactActivity.EXTRA_CONTACT_POSITION, -1);
+        }
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.seeContact_btnDeleteContact) {
+            new DeleteContact().execute();
 
+            Toast.makeText(this, "Contact removed!", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(
+                    getApplicationContext(), ContactActivity.class);
+            startActivity(intent);
         } else if (v.getId() == R.id.seeContact_btnReturnContact) {
             Intent intent = new Intent(
                     getApplicationContext(), ContactActivity.class);
@@ -112,5 +104,18 @@ public class ContactDetailsActivity extends AppCompatActivity implements View.On
             startActivity(intent);
         }
 
+    }
+
+
+    class DeleteContact extends AsyncTask<List<Contact>, Void, Void> {
+        @Override
+        protected Void doInBackground(List<Contact>... contactsList) {
+            //Get a list of all the contacts already on the Database
+            List<Contact> allContacts = contactDetailsDao.getContacts();
+
+            contactDetailsDao.delete(allContacts.get(contact_position));
+
+            return null;
+        }
     }
 }

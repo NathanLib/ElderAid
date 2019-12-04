@@ -30,9 +30,9 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
     public static final int IMAGE_GALLERY_REQUEST = 20;
 
-    private String name = "";
-    private String number = "";
-    private String path = "";
+    private String name;
+    private String number;
+    private String path;
 
     private EditText et_name;
     private EditText et_number;
@@ -43,7 +43,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
     private Button btn_save;
 
     private CheckBox cb_favourite;
-    private Boolean isFavourite = false;
+    private Boolean isFavourite;
     private Boolean favourites_full;
 
     private ContactDao contactAddDao;
@@ -54,6 +54,13 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_add);
+
+        this.name = "";
+        this.number = "";
+        this.path = "";
+        this.isFavourite = false;
+
+        this.imageUri = null;
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(STATE_KEY_NAME)) {
@@ -128,7 +135,9 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             et_number = findViewById(R.id.addContact_etPhoneNumber);
             number = et_number.getText().toString();
 
-            path = imageUri.toString();
+            if (imageUri != null) {
+                path = imageUri.toString();
+            }
 
             if (cb_favourite.isChecked()) {
                 isFavourite = true;
@@ -187,7 +196,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
 
             List<Contact> contacts = contactsList[0];
 
-            //Get a list of all the events already on the Database
+            //Get a list of all the contacts already on the Database
             List<Contact> savedContacts = contactAddDao.getContacts();
 
             for (Contact c : savedContacts) {

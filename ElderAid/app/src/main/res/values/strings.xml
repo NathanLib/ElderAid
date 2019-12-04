@@ -3,7 +3,7 @@
 
     <!-- Strings for Contact page -->
     <string name="contact_tvTitle">Contact</string>
-    <string name="contact_tvUserName">Nathan ELDERAID</string>
+    <string name="contact_tvUserName">Team ELDERAID</string>
     <string name="contact_tvMyCard">My card</string>
 
     <string name="contact_tvFavorites">Favorites</string>
@@ -200,6 +200,11 @@
     <string name="seeContact_btnDeleteContact">Delete</string>
     <string name="seeContact_btnReturnContact">Return</string>
     <string name="seeContact_btnCallContact">Call</string>
+    <string name="seeContact_tvContactFavourite">Favourite:</string>
+    <string name="seeContact_cbContactFavourite">Add this contact to your favourites!</string>
+
+    <string name="contact_item_username">Username</string>
+    <string name="contact_item_phonenumber">+44 1234 56789</string>
 
     <string-array name="daily">
         <item>Daily</item>
@@ -239,9 +244,5 @@
 
     <string name="CalIdDefault"></string>
     <string name="prefCalIDKey" translatable="false">calID</string>
-
-
-    <string name="contact_item_username">Username</string>
-    <string name="contact_item_phonenumber">+44 1632 960795</string>
 
 </resources>

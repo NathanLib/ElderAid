@@ -33,6 +33,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public final static String EXTRA_CONTACT_NAME = "uk.ac.rgu.elderaid.CONTACT_NAME";
     public final static String EXTRA_CONTACT_NUMBER = "uk.ac.rgu.elderaid.CONTACT_NUMBER";
     public final static String EXTRA_CONTACT_PHOTO = "uk.ac.rgu.elderaid.CONTACT_PHOTO";
+    public final static String EXTRA_CONTACT_POSITION = "uk.ac.rgu.elderaid.CONTACT_POSITION";
     public final static String EXTRA_CONTACT_FAV_FULL = "uk.ac.rgu.elderaid.CONTACT_FAV_FULL";
 
     private ImageButton btnshowSideNav;
@@ -138,32 +139,11 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         // Code from https://www.androidhive.info/2016/01/android-working-with-recycler-view/
         recyclerView_contact = (RecyclerView) findViewById(R.id.rvContact);
 
-        cAdapter = new ContactAdapter(contactList, this);
-        RecyclerView.LayoutManager cLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView_contact.setLayoutManager(cLayoutManager);
-        recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
-        recyclerView_contact.setAdapter(cAdapter);
 
         new GetAllContacts().execute();
-        prepareContactData();
     }
 
     private void prepareContactData() {
-        contact = new Contact("Harry Potter", "+44 1234 5678", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
-        contactList.add(contact);
-
-        contact = new Contact("Peter Parker", "+44 9876 4321", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
-        contactList.add(contact);
-
-        contact = new Contact("Tony Stark", "+44 4567 2", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", false);
-        contactList.add(contact);
-
-        contact = new Contact("Hermione Granger", "+44 8 3467", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
-        contactList.add(contact);
-
-        contact = new Contact("Spider man", "+44 118 712", "content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F25/ORIGINAL/NONE/984870976", true);
-        contactList.add(contact);
-
         addToFavouriteList(contactList);
 
         if (!favouriteContactList.isEmpty()) {
@@ -343,6 +323,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public void onContactClick(int position) {
         Intent intent = new Intent(this, ContactDetailsActivity.class);
 
+        intent.putExtra(EXTRA_CONTACT_POSITION, position);
         intent.putExtra(EXTRA_CONTACT_NAME, contactList.get(position).getName());
         intent.putExtra(EXTRA_CONTACT_NUMBER, contactList.get(position).getPhoneNum());
         intent.putExtra(EXTRA_CONTACT_PHOTO, contactList.get(position).getImagePath());
@@ -350,6 +331,13 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(intent);
     }
 
+    public void recyclerViewInitialization(){
+        cAdapter = new ContactAdapter(contactList, this);
+        RecyclerView.LayoutManager cLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView_contact.setLayoutManager(cLayoutManager);
+        recyclerView_contact.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_contact.setAdapter(cAdapter);
+    }
 
     //This is an Async task
 
@@ -365,7 +353,11 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
             for (Contact c : contacts) {
                 Log.d("Contacts", c.toString());
+                contactList.add(c);
             }
+
+            prepareContactData();
+            recyclerViewInitialization();
         }
     }
 
