@@ -33,6 +33,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public final static String EXTRA_CONTACT_NAME = "uk.ac.rgu.elderaid.CONTACT_NAME";
     public final static String EXTRA_CONTACT_NUMBER = "uk.ac.rgu.elderaid.CONTACT_NUMBER";
     public final static String EXTRA_CONTACT_PHOTO = "uk.ac.rgu.elderaid.CONTACT_PHOTO";
+    public final static String EXTRA_CONTACT_ISFAVOURITE = "uk.ac.rgu.elderaid.CONTACT_ISFAVOURITE";
     public final static String EXTRA_CONTACT_POSITION = "uk.ac.rgu.elderaid.CONTACT_POSITION";
     public final static String EXTRA_CONTACT_FAV_FULL = "uk.ac.rgu.elderaid.CONTACT_FAV_FULL";
 
@@ -51,8 +52,11 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnHome;
 
     private List<Contact> favouriteContactList = new ArrayList<>();
+    private List<Integer> positionFav = new ArrayList<>();
     private List<TextView> tv_favList = new ArrayList<>();
     private List<LinearLayout> ll_favList = new ArrayList<>();
+
+    private Boolean fav_isFull;
 
     private List<Contact> contactList = new ArrayList<>();
     private RecyclerView recyclerView_contact;
@@ -105,6 +109,8 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         ll_favList.add(favouriteContact2);
         ll_favList.add(favouriteContact3);
 
+        fav_isFull = false;
+
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnshowSideNav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +118,6 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 openNavDialog();
             }
         });
-
 
         toolbar_addContact = (Button) findViewById(R.id.toolbar_btnAddContact);
         toolbar_addContact.setOnClickListener(this);
@@ -154,12 +159,17 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 ll_favList.get(i).setVisibility(View.VISIBLE);
             }
         }
+
+        if (favouriteContactList.size() >= 3) {
+            fav_isFull = true;
+        }
     }
 
     private void addToFavouriteList(List<Contact> contacts) {
         for (Contact c : contacts) {
             if (c.getIsFavourite() == true) {
                 favouriteContactList.add(c);
+                positionFav.add(contacts.indexOf(c));
             }
         }
     }
@@ -286,34 +296,44 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         } else if (v.getId() == R.id.favouriteLinear1) {
             Intent intent = new Intent(this, ContactDetailsActivity.class);
 
+            intent.putExtra(EXTRA_CONTACT_POSITION, positionFav.get(0));
             intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(0).getName());
             intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(0).getPhoneNum());
             intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(0).getImagePath());
+            intent.putExtra(EXTRA_CONTACT_ISFAVOURITE, favouriteContactList.get(0).getIsFavourite());
+
+            intent.putExtra(EXTRA_CONTACT_FAV_FULL, fav_isFull);
 
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear2) {
             Intent intent = new Intent(this, ContactDetailsActivity.class);
 
+            intent.putExtra(EXTRA_CONTACT_POSITION, positionFav.get(1));
             intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(1).getName());
             intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(1).getPhoneNum());
             intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(1).getImagePath());
+            intent.putExtra(EXTRA_CONTACT_ISFAVOURITE, favouriteContactList.get(1).getIsFavourite());
+
+            intent.putExtra(EXTRA_CONTACT_FAV_FULL, fav_isFull);
 
             startActivity(intent);
         } else if (v.getId() == R.id.favouriteLinear3) {
             Intent intent = new Intent(this, ContactDetailsActivity.class);
 
+            intent.putExtra(EXTRA_CONTACT_POSITION, positionFav.get(2));
             intent.putExtra(EXTRA_CONTACT_NAME, favouriteContactList.get(2).getName());
             intent.putExtra(EXTRA_CONTACT_NUMBER, favouriteContactList.get(2).getPhoneNum());
             intent.putExtra(EXTRA_CONTACT_PHOTO, favouriteContactList.get(2).getImagePath());
+            intent.putExtra(EXTRA_CONTACT_ISFAVOURITE, favouriteContactList.get(2).getIsFavourite());
+
+            intent.putExtra(EXTRA_CONTACT_FAV_FULL, fav_isFull);
 
             startActivity(intent);
         } else if (v.getId() == R.id.toolbar_btnAddContact) {
             Intent intent = new Intent(
                     getApplicationContext(), ContactAddActivity.class);
 
-            if (favouriteContactList.size() >= 2) {
-                intent.putExtra(EXTRA_CONTACT_FAV_FULL, true);
-            }
+            intent.putExtra(EXTRA_CONTACT_FAV_FULL, fav_isFull);
 
             startActivity(intent);
         }
@@ -327,6 +347,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra(EXTRA_CONTACT_NAME, contactList.get(position).getName());
         intent.putExtra(EXTRA_CONTACT_NUMBER, contactList.get(position).getPhoneNum());
         intent.putExtra(EXTRA_CONTACT_PHOTO, contactList.get(position).getImagePath());
+        intent.putExtra(EXTRA_CONTACT_ISFAVOURITE, contactList.get(position).getIsFavourite());
+
+        intent.putExtra(EXTRA_CONTACT_FAV_FULL, fav_isFull);
 
         startActivity(intent);
     }
@@ -352,7 +375,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             super.onPostExecute(contacts);
 
             for (Contact c : contacts) {
-                Log.d("Contacts", c.toString());
+                // Log.d("Contacts", c.toString());
                 contactList.add(c);
             }
 

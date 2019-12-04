@@ -185,7 +185,7 @@
 
     <string name="addContact_etPhoneNumber">Phone number</string>
     <string name="addContact_tvPhoneNumber">Choose a picture:</string>
-    <string name="addContact_cbFavorite">Add to your favorite</string>
+    <string name="addContact_cbFavorite">Add to your favorites</string>
     <string name="addContact_tvContactTitle">Add a new contact</string>
     <string name="addContact_etName">Name of the contact</string>
     <string name="addContact_btnSelectPhoto">Select a photo</string>

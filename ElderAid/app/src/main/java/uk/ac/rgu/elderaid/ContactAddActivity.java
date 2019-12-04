@@ -3,6 +3,7 @@ package uk.ac.rgu.elderaid;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,12 +45,15 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
     private Button btn_save;
 
     private CheckBox cb_favourite;
+
     private Boolean isFavourite;
     private Boolean favourites_full;
 
     private ContactDao contactAddDao;
 
     private Uri imageUri;
+
+    private List<Contact> newContact = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +132,6 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             photoPickerIntent.setDataAndType(data, "image/*");
             startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
         } else if (v.getId() == R.id.addContact_btnSaveContact) {
-            List<Contact> newContact = new ArrayList<>();
 
             et_name = findViewById(R.id.addContact_etName);
             name = et_name.getText().toString();
@@ -147,8 +151,6 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             newContact.add(c);
 
             new UpdateOrInsertContact().execute(newContact);
-
-            Toast.makeText(this, "Contact added!", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(
                     getApplicationContext(), ContactActivity.class);
@@ -188,6 +190,7 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
     }
 
     class UpdateOrInsertContact extends AsyncTask<List<Contact>, Void, Void> {
+
         @Override
         protected Void doInBackground(List<Contact>... contactsList) {
             if (contactsList.length == 0) {
@@ -200,34 +203,28 @@ public class ContactAddActivity extends AppCompatActivity implements View.OnClic
             List<Contact> savedContacts = contactAddDao.getContacts();
 
             for (Contact c : savedContacts) {
-                String cName = c.getName();
 
-                for (int i = 0; i < contacts.size(); i++) {
-                    Contact cImport = contacts.get(i);
+                if (c.getPhoneNum().equals(contacts.get(0).getPhoneNum())) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "This phone number is already used in your contacts!", Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                    if (cImport.getName().equals(cName)) {
-                        c.setContactId(cImport.getContactId());
-                        c.setName(cImport.getName());
-                        c.setPhoneNum(cImport.getPhoneNum());
-                        c.setImagePath(cImport.getImagePath());
-                        c.setIsFavourite(cImport.getIsFavourite());
-
-                        contacts.remove(i);
-
-                        i--;
-                        break;
-                    }
+                    return null;
                 }
             }
 
-            contactAddDao.updateContacts((Contact[]) savedContacts.toArray(new Contact[savedContacts.size()]));
 
-            if (contacts.size() != 0) {
-                contactAddDao.insertContacts((Contact[]) contacts.toArray(new Contact[contacts.size()]));
-            }
+            contactAddDao.insertContacts((Contact[]) contacts.toArray(new Contact[contacts.size()]));
+
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Contact added!", Toast.LENGTH_LONG).show();
+                }
+            });
 
             return null;
         }
-
     }
 }
