@@ -19,15 +19,14 @@ public class Contact {
     private String phoneNum;
     private String imagePath;
 
-    private Boolean favourite;
+    private Boolean isFavourite;
 
     //Constructor
-    public Contact(String name, String phoneNum, String imagePath) {
+    public Contact(String name, String phoneNum, String imagePath,  Boolean isFavourite) {
         this.name = name;
         this.phoneNum = phoneNum;
         this.imagePath = imagePath;
-
-        this.favourite = false;
+        this.isFavourite = isFavourite;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Contact {
         sb.append(", name='").append(name).append('\'');
         sb.append(", phoneNum='").append(phoneNum).append('\'');
         sb.append(", imagePath='").append(imagePath).append('\'');
-        sb.append(", favourite=").append(favourite);
+        sb.append(", isFavourite=").append(isFavourite);
         sb.append('}');
         return sb.toString();
     }
@@ -59,8 +58,8 @@ public class Contact {
         return imagePath;
     }
 
-    public Boolean getFavourite() {
-        return favourite;
+    public Boolean getIsFavourite() {
+        return isFavourite;
     }
 
     //Setters
@@ -80,25 +79,25 @@ public class Contact {
         this.imagePath = imagePath;
     }
 
-    public void setFavourite(Boolean favourite) {
-        this.favourite = favourite;
+    public void setIsFavourite(Boolean isFavourite) {
+        this.isFavourite = isFavourite;
     }
 
 
-    // Code from https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
-    /*Comparator for sorting the list by Contact Name*/
-    public static Comparator<Contact> ContactNameComparator = new Comparator<Contact>() {
-
-        public int compare(Contact c1, Contact c2) {
-            String contactName1 = c1.getName().toUpperCase();
-            String contactName2 = c1.getName().toUpperCase();
-
-            //ascending order
-            return contactName1.compareTo(contactName2);
-
-            //descending order
-            //return contactName2.compareTo(contactName1);
-        }
-    };
+//    // Code from https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
+//    /*Comparator for sorting the list by Contact Name*/
+//    public static Comparator<Contact> ContactNameComparator = new Comparator<Contact>() {
+//
+//        public int compare(Contact c1, Contact c2) {
+//            String contactName1 = c1.getName().toUpperCase();
+//            String contactName2 = c1.getName().toUpperCase();
+//
+//            //ascending order
+//            return contactName1.compareTo(contactName2);
+//
+//            //descending order
+//            //return contactName2.compareTo(contactName1);
+//        }
+//    };
 }
 

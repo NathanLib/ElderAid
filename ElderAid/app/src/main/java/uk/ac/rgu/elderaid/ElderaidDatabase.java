@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Contact.class, Event.class}, version= 3, exportSchema = false)
+@Database(entities = {Contact.class, Event.class}, version= 1, exportSchema = false)
 public abstract class ElderaidDatabase extends RoomDatabase {
 
     public abstract ContactDao cDao();
