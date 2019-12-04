@@ -1,5 +1,6 @@
 package uk.ac.rgu.elderaid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -63,6 +65,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     private int dateFlag;
 
+    private CalendarView calView;
+
 
     // URL template to download data
     private static final String URL_TEMPLATE ="https://www.googleapis.com/calendar/v3/calendars/";
@@ -87,6 +91,11 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
         calendar_llEvent1 = (LinearLayout) findViewById(R.id.calendar_llEvent1);
 
+        calView = (CalendarView) findViewById(R.id.calendarView);
+
+
+
+
         // *Database setup*
         //Get the database instance
         ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
@@ -101,9 +110,33 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         // To this point.
 
 
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String dayString ="" +dayOfMonth;
 
+                month+= 1;
+                String monthString=""+month;
+                if (dayOfMonth < 10){
+                    dayString = "0" + dayOfMonth;
+                }
 
+                if(month <10){
+                    monthString = "0" + month;
+                }
 
+                Log.d("DateChange", (year + "-" + monthString + "-" + dayString));
+                String dateChange = year + "-" + monthString + "-" + dayString;
+                new GetEventsByDateTask().execute(dateChange);
+            }
+        });
+
+//        calView.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                displayEventsOfDay();
+//            }
+//        });
 
 
         // *On click listeners for image buttons*
@@ -429,9 +462,13 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             eventString.append(event.getEventID())
                     .append("\n")
                     .append(event.getTitle())
+                    .append("\n")
                     .append(event.getDesc())
+                    .append("\n")
                     .append(event.getLocation())
+                    .append("\n")
                     .append(event.getStartDate())
+                    .append("\n")
                     .append(event.getEndDate())
                     .append("\n")
                     .append("\n");
@@ -511,6 +548,13 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         Toast.makeText(getApplicationContext(),"Event added",Toast.LENGTH_SHORT).show();
 
         return true;
+    }
+
+    private void displayEventsOfDay(){
+        //Get the date
+        long selectedDate = calView.getDate();
+
+        Log.d("Date", ": "+selectedDate);
     }
 
     @Override
@@ -621,4 +665,26 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    class GetEventsByDateTask extends AsyncTask<String,Void,List<Event>>{
+
+        @Override
+        protected List<Event> doInBackground(String... strings) {
+            String dateReceived = strings[0];
+            Log.d("Receiver", dateReceived);
+            return eventDao.getEventsForDate(dateReceived);
+        }
+
+        @Override
+        protected void onPostExecute(List<Event> events){
+            super.onPostExecute(events);
+
+            //Check returned events
+            String eventString = unpackageEvents(events);
+            Log.d("EVENTSOUTPUT", "Result:" +eventString);
+
+            //Parse through the results and create the display boxes.
+
+
+        }
+    }
 }
