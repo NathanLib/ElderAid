@@ -2,6 +2,11 @@ package uk.ac.rgu.elderaid;
 
         import androidx.appcompat.app.AppCompatActivity;
 
+        import androidx.appcompat.widget.Toolbar;
+        import androidx.recyclerview.widget.DefaultItemAnimator;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
+
         import android.app.Dialog;
         import android.content.Intent;
         import android.net.Uri;
@@ -14,12 +19,20 @@ package uk.ac.rgu.elderaid;
         import android.widget.LinearLayout;
         import android.widget.Spinner;
 
+        import java.util.ArrayList;
+
 public class TaskCheckListActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton addTaskbnt;
     private ImageButton btnshowSideNav;
     private LinearLayout task;
     private ImageButton btnSOS;
     private ImageButton btnHome;
+
+    private ArrayList<Task> taskList = new ArrayList<>();
+    private RecyclerView recyclerView_task;
+    private TaskAdapter tAdapter;
+
+    private TaskDao taskDao;
 
 
     @Override
@@ -69,11 +82,28 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        // The code below was adapted from a source on the internet from this point forward.
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.taskDao =db.tDao();
 
+        recyclerView_task = (RecyclerView) findViewById(R.id.rvTasks);
 
+        tAdapter = new TaskAdapter(taskList, this);
+        RecyclerView.LayoutManager tLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView_task.setLayoutManager(tLayoutManager);
+        recyclerView_task.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_task.setAdapter(tAdapter);
+
+        prepareTaskData();
 
     }
+
+    private void prepareTaskData(){
+        Task task = new Task("Take Pills", "11/12/2019", "15:00", "daily", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." );
+    }
+
+
     public void openViewTaskDialog(){
         final Dialog viewTaskDialog = new Dialog(this);
         viewTaskDialog.setContentView(R.layout.dialog_view_task);

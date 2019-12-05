@@ -76,6 +76,7 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
         //Get the DAO from the database
         this.prescriptionDao = db.pDao();
 
+
         // The code below was adapted from a source on the internet from this point forward./
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My prescription levels");

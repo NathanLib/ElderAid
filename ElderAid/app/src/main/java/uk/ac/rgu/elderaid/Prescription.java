@@ -40,7 +40,7 @@ public class Prescription {
     }
 
     //Setters
-    public void setPrescriptionId(int prescriptionIdq){
+    public void setPrescriptionId(int prescriptionId){
         this.prescriptionId = prescriptionId;
     }
 

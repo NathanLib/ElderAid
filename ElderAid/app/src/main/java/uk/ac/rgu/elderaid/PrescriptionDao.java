@@ -18,7 +18,7 @@ public interface PrescriptionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public void insert(Prescription prescription);
 
-    // Insert multiple contacts
+    // Insert multiple prescription
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public void insertPrescriptions(Prescription... prescription);
 
@@ -40,6 +40,6 @@ public interface PrescriptionDao {
 
     //Delete multiple Prescription
     @Delete
-    public void deleteContacts(Prescription... prescription);
+    public void deletePrescriptions(Prescription... prescription);
 
 }

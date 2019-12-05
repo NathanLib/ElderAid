@@ -33,6 +33,7 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
         view.setOnClickListener(this);
     }
 
+
         @Override
         public void onClick(View v) {
             onPrescriptionListener.onPrescriptionClick(getAdapterPosition());
