@@ -246,5 +246,6 @@
     <string name="contact_item_username">Username</string>
     <string name="contact_item_phonenumber">+44 1632 960795</string>
     <string name="btnPickDate">Pick Date</string>
+    <string name="tvEventDash">to</string>
 
 </resources>

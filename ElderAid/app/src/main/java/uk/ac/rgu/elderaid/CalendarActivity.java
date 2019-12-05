@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,10 +49,9 @@ import java.util.Date;
 import java.util.List;
 
 
-public class CalendarActivity extends AppCompatActivity implements View.OnClickListener , DatePickerDialog.OnDateSetListener {
+public class CalendarActivity extends AppCompatActivity implements View.OnClickListener , DatePickerDialog.OnDateSetListener, CalendarAdapter.OnEventListener {
     private ImageButton btnAddEvent;
     private ImageButton btnshowSideNav;
-    private LinearLayout calendar_llEvent1;
     private ImageButton btnSOS;
     private ImageButton btnHome;
     private ImageButton btnSyncEvents;
@@ -61,10 +61,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     private EditText etTitle;
     private EditText etLocation;
     private EditText etDescription;
-
+    private List<Event> eventsDialogsList;
     private TextView tvStartDate;
     private TextView tvEndDate;
-
+    private int listPos;
     private int dateFlag;
 
     private CalendarView calView;
@@ -87,11 +87,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_calendar);
 
         recyclerView = (RecyclerView) findViewById(R.id.eventsRecycler);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new CalendarAdapter();
-        recyclerView.setAdapter(adapter);
+
+
+
 
         // *Shared Preferences File link*
         sharedPrefs = getSharedPreferences(preferencesFile, MODE_PRIVATE);
@@ -102,8 +101,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         btnAddEvent = (ImageButton) findViewById(R.id.calendar_btnAddEvent);
         btnshowSideNav = (ImageButton) findViewById(R.id.btnMenu);
         btnSyncEvents = (ImageButton) findViewById(R.id.calendar_btnSyncEvents);
-
-        calendar_llEvent1 = (LinearLayout) findViewById(R.id.calendar_llEvent1);
 
         calView = (CalendarView) findViewById(R.id.calendarView);
 
@@ -183,12 +180,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        calendar_llEvent1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSeeDialog();
-            }
-        });
 
         btnSyncEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -369,11 +360,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         dialog.show();
     }
 
-    public void openSeeDialog() {
+    public void openSeeDialog(String title, String start, String end, String location, String desc) {
         final Dialog dialog = new Dialog(this); // Context, this, etc.
         dialog.setContentView(R.layout.dialog_see_event);
-        dialog.setTitle("Add an event");
-
+        dialog.setTitle("View Event");
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
@@ -382,6 +372,24 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         dialog.getWindow().setAttributes(lp);
 
         dialog.show();
+
+        TextView tvTitle = dialog.findViewById(R.id.seeEvent_tvEventName);
+        TextView tvStart = dialog.findViewById(R.id.seeEvent_tvEventStartDate);
+        TextView tvEnd = dialog.findViewById(R.id.seeEvent_tvEventEndDate);
+        TextView tvLocation = dialog.findViewById(R.id.seeEvent_tvEventPlace);
+        TextView tvDesc = dialog.findViewById(R.id.seeEvent_tvEventDescription);
+
+        tvTitle.setText(title);
+        tvStart.setText(start);
+        tvEnd.setText(end);
+        tvLocation.setText(location);
+        tvDesc.setText(desc);
+
+        Button closeButton = (Button) dialog.findViewById(R.id.seeEvent_btnCloseEvent);
+        closeButton.setOnClickListener(this);
+
+        Button deleteButton = (Button) dialog.findViewById(R.id.seeEvent_btnDeleteEvent);
+        deleteButton.setOnClickListener(this);
     }
 
 //    ***********************************
@@ -400,10 +408,22 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        //Viewing event dialogs
+        if(v.getId() == R.id.seeEvent_btnCloseEvent){
+            //Send back to calendar Page
+            Intent intent = new Intent(
+                    getApplicationContext(), CalendarActivity.class);
+            startActivity(intent);
+        } else if(v.getId() == R.id.seeEvent_btnDeleteEvent){
+            new DeleteEventTask().execute(eventsDialogsList.get(listPos));
+        }
+
+
+
+
         //Add event Dialog
 
         if (v.getId() == R.id.addevent_btnAddEvent){
-
             //Add the event to DB
             if (manualAddEvent() == true){
                 //Send back to calendar Page
@@ -563,12 +583,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
-    private void displayEventsOfDay(){
-        //Get the date
-        long selectedDate = calView.getDate();
-
-        Log.d("Date", ": "+selectedDate);
-    }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -592,6 +606,25 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+
+    public void recyclerInitializer(List<Event> events){
+        adapter = new CalendarAdapter(events,this);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onEventClick(int position) {
+        String title = eventsDialogsList.get(position).getTitle();
+        String start = eventsDialogsList.get(position).getStartDate();
+        String end = eventsDialogsList.get(position).getEndDate();
+        String location = eventsDialogsList.get(position).getLocation();
+        String desc = eventsDialogsList.get(position).getDesc();
+        listPos = position;
+        openSeeDialog(title,start,end,location,desc);
+    }
 
     // Async tasks
 
@@ -696,8 +729,30 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             Log.d("EVENTSOUTPUT", "Result:" +eventString);
 
             //Parse through the results and create the display boxes.
+            recyclerInitializer(events);
+            eventsDialogsList = new ArrayList<>();
+            for (Event event : events){
+                eventsDialogsList.add(event);
+            }
+        }
+    }
 
+    class DeleteEventTask extends AsyncTask<Event, Void, Void>{
 
+        @Override
+        protected Void doInBackground(Event... events) {
+            eventDao.delete(events[0]);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(getApplicationContext(),"Event Deleted",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(
+                    getApplicationContext(), CalendarActivity.class);
+            startActivity(intent);
         }
     }
 }

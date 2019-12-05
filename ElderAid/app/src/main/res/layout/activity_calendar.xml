@@ -107,104 +107,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:id="@+id/calendar_llEvent1"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/calendar_event"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp">
+                tools:itemCount="10" />
 
 
-                <TextView
-                    android:id="@+id/calendar_tvEvent1Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent1Name"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/calendar_item_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent1Time"
-                    android:textColor="@color/verydarkgray"
-                    android:textSize="15dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/calendar_llEvent2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/calendar_event"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:id="@+id/calendar_tvEvent2Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent2Name"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/calendar_tvEvent2Time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent2Time"
-                    android:textColor="@color/verydarkgray"
-                    android:textSize="15dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/calendar_llEvent3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/calendar_event"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:id="@+id/calendar_tvEvent3Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent3Name"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/calendar_tvEvent3Time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar_tvEvent3Time"
-                    android:textColor="@color/verydarkgray"
-                    android:textSize="15dp" />
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
