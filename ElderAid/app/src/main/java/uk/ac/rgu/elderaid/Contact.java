@@ -23,7 +23,7 @@ public class Contact {
 
     //Constructor
     public Contact(String name, String phoneNum, String imagePath) {
-        this.name = name;
+            this.name = name;
         this.phoneNum = phoneNum;
         this.imagePath = imagePath;
 

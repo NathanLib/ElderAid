@@ -76,7 +76,6 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
         //Get the DAO from the database
         this.prescriptionDao = db.pDao();
 
-
         // The code below was adapted from a source on the internet from this point forward./
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My prescription levels");
@@ -183,7 +182,7 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
     public void openEditDialog() {
         final Dialog dialog = new Dialog(this); // Context, this, etc.
         dialog.setContentView(R.layout.dialog_edit_prescription);
-        dialog.setTitle("Add a medication");
+        dialog.setTitle("Medication");
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
@@ -191,7 +190,6 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.show();
         dialog.getWindow().setAttributes(lp);
-
         dialog.show();
     }
 

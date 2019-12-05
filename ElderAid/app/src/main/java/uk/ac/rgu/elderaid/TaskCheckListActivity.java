@@ -21,7 +21,7 @@ package uk.ac.rgu.elderaid;
 
         import java.util.ArrayList;
 
-public class TaskCheckListActivity extends AppCompatActivity implements View.OnClickListener {
+public class TaskCheckListActivity extends AppCompatActivity implements View.OnClickListener,TaskAdapter.OnTaskListener {
     private ImageButton addTaskbnt;
     private ImageButton btnshowSideNav;
     private LinearLayout task;
@@ -74,34 +74,35 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        task = (LinearLayout) findViewById(R.id.Task);
-        task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openViewTaskDialog();
-            }
-        });
+//        task = (LinearLayout) findViewById(R.id.Task);
+//        task.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openViewTaskDialog();
+//            }
+//       });
 
         //Get the database instance
         ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
         //Get the DAO from the database
         this.taskDao =db.tDao();
 
-        recyclerView_task = (RecyclerView) findViewById(R.id.rvTasks);
+//        recyclerView_task = (RecyclerView) findViewById(R.id.rvTasks);
 
-        tAdapter = new TaskAdapter(taskList, this);
-        RecyclerView.LayoutManager tLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView_task.setLayoutManager(tLayoutManager);
-        recyclerView_task.setItemAnimator(new DefaultItemAnimator());
-        recyclerView_task.setAdapter(tAdapter);
-
-        prepareTaskData();
+//        tAdapter = new TaskAdapter(taskList, this) ;
+//        RecyclerView.LayoutManager tLayoutManager = new LinearLayoutManager(getApplicationContext());
+//       recyclerView_task.setLayoutManager(tLayoutManager);
+//        recyclerView_task.setItemAnimator(new DefaultItemAnimator());
+//       recyclerView_task.setAdapter(tAdapter);
+//
+//        prepareTaskData();
 
     }
 
     private void prepareTaskData(){
         Task task = new Task("Take Pills", "11/12/2019", "15:00", "daily", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." );
-    }
+        taskList.add(task);
+        }
 
 
     public void openViewTaskDialog(){
@@ -235,6 +236,13 @@ public class TaskCheckListActivity extends AppCompatActivity implements View.OnC
                     getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
         }
+
+    }
+
+
+
+    @Override
+    public void onTaskClick(int position) {
 
     }
 }

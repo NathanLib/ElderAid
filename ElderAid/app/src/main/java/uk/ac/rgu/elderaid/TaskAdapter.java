@@ -4,12 +4,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> {
-    private ArrayList<Task> tasklist;
+
+    private ArrayList<Task> taskList;
     private OnTaskListener cOnTaskListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -38,7 +41,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     }
 
     public TaskAdapter(ArrayList<Task> taskList, OnTaskListener onTaskListener){
-        this.tasklist = taskList;
+        this.taskList = taskList;
         this.cOnTaskListener = onTaskListener;
     }
 
@@ -52,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        Task task = tasklist.get(position);
+        Task task = taskList.get(position);
         holder.tName.setText(task.getName());
         holder.tDate.setText(task.getDate());
         holder.tTime.setText(task.getTime());
@@ -60,7 +63,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     }
 
     @Override
-    public int getItemCount(){return this.tasklist.size();}
+    public int getItemCount(){return this.taskList.size();}
 
     public interface OnTaskListener{
         void onTaskClick(int position);

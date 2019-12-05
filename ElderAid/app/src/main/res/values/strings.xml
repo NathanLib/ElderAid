@@ -168,9 +168,9 @@
     <!-- Prescription edit medication dialog -->
     <string name="editPrescription_tvName">Xanax</string>
     <string name="editPrescription_tvQuantity">Quantity:</string>
-    <string name="editTeditPrescription_etQuantity">10</string>
+    <string name="editTeditPrescription_etQuantity">50</string>
     <string name="editPrescription_tvExpDate">Exp. date:</string>
-    <string name="editPrescription_etExpDate">19/03/2022</string>
+    <string name="editPrescription_etExpDate">10/02/2021</string>
     <string name="editPrescription_tvDetails">Details:</string>
     <string name="editPrescription_etDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</string>
     <string name="editPrescription_btnDelete">Delete</string>
