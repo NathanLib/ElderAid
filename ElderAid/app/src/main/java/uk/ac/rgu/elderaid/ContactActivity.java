@@ -499,23 +499,23 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     class InsertImportContact extends AsyncTask<List<Contact>, Void, Void> {
         @Override
         protected Void doInBackground(List<Contact>... importContacts) {
-            List<Contact> imports;
+            List<Contact> newImports;
 
             //Get a list of all the contacts already on the Database
             List<Contact> allContacts = contactDao.getContacts();
             count_same = 0;
-            imports = importContacts[0];
+            newImports = importContacts[0];
 
-            for (Contact c : imports) {
-                for (int i = 0; i < allContacts.size(); i++) {
-                    if (c.getPhoneNum().equals(allContacts.get(i).getPhoneNum())) {
+            for (int i = 0; i < newImports.size(); i++) {
+                for (int j = 0; j < allContacts.size(); j++) {
+                    if ((newImports.get(i).getPhoneNum()).equals(allContacts.get(j).getPhoneNum())) {
                         count_same++;
-                        imports.remove(c);
+                        newImports.remove(i);
                     }
                 }
             }
 
-            contactDao.insertContacts((Contact[]) imports.toArray(new Contact[imports.size()]));
+            contactDao.insertContacts((Contact[]) newImports.toArray(new Contact[newImports.size()]));
 
             refresh();
 
