@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +19,7 @@ import android.widget.ImageButton;
 
 import java.lang.reflect.Array;
 
-public class MapsEditFavouritesActivity extends AppCompatActivity implements View.OnClickListener{
+public class MapsEditFavouritesActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton btnshowSideNav;
     private ImageButton btnSOS;
     private ImageButton btnHome;

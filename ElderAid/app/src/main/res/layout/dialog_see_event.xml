@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Eat Christmas chocolate"
+                android:text="@string/calendar_placeholder"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="22dp"
@@ -59,17 +59,40 @@
                         android:id="@+id/seeEvent_tvEventStartDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Feb 10, 2019"
+                        android:layout_weight="3"
+                        android:text="@string/calendar_placeholder"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                    <TextView
+                        android:id="@+id/seeEvent_tvDash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/tvEventDash"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/seeEvent_tvEventStartTime"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="3pm-4pm"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/seeEvent_tvEventEndDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="@string/calendar_placeholder"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -95,7 +118,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:text="N533 - RGU"
+                        android:text="@string/calendar_placeholder"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -121,7 +144,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam."
+                        android:text="@string/calendar_placeholder"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
                 </LinearLayout>
