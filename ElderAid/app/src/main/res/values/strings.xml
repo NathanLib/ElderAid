@@ -3,13 +3,13 @@
 
     <!-- Strings for Contact page -->
     <string name="contact_tvTitle">Contact</string>
-    <string name="contact_tvUserName">Nathan ELDERAID</string>
+    <string name="contact_tvUserName">Team ELDERAID</string>
     <string name="contact_tvMyCard">My card</string>
 
     <string name="contact_tvFavorites">Favorites</string>
-    <string name="contact_tvFavorite1">Jack Sears</string>
-    <string name="contact_tvFavorite2">James Wallace</string>
-    <string name="contact_tvFavorite3">Nathan Liboutet</string>
+    <string name="contact_tvFavorite1">Unknown</string>
+    <string name="contact_tvFavorite2">Unknown</string>
+    <string name="contact_tvFavorite3">Unknown</string>
 
     <string name="contact_tvContactsAll">All</string>
 
@@ -188,20 +188,26 @@
 
     <string name="addContact_etPhoneNumber">Phone number</string>
     <string name="addContact_tvPhoneNumber">Choose a picture:</string>
-    <string name="addContact_cbFavorite">Add to your favorite</string>
+    <string name="addContact_cbFavorite">Add to your favorites</string>
     <string name="addContact_tvContactTitle">Add a new contact</string>
     <string name="addContact_etName">Name of the contact</string>
-    <string name="addContact_btnSelectPhoto">Select a photo...</string>
+    <string name="addContact_btnSelectPhoto">Select a photo</string>
+    <string name="addContact_btnTakePhoto">Take a photo</string>
     <string name="addContact_btnSaveContact">Save</string>
 
 
     <string name="seeContact_tvContactTitle">View contact</string>
-    <string name="seeContact_tvContactName">Alex Alexandre</string>
+    <string name="seeContact_tvContactName">Unknown</string>
     <string name="seeContact_tvContactTextNumber">Phone number:</string>
-    <string name="seeContact_tvContactPhoneNumber">+44 1234 5678 3456</string>
+    <string name="seeContact_tvContactPhoneNumber">Unknown</string>
     <string name="seeContact_btnDeleteContact">Delete</string>
     <string name="seeContact_btnReturnContact">Return</string>
     <string name="seeContact_btnCallContact">Call</string>
+    <string name="seeContact_tvContactFavourite">Favourite:</string>
+    <string name="seeContact_cbContactFavourite">Add this contact to your favourites!</string>
+
+    <string name="contact_item_username">Username</string>
+    <string name="contact_item_phonenumber">+44 1234 56789</string>
 
     <string-array name="daily">
         <item>Daily</item>

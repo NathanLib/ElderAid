@@ -76,7 +76,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/addContact_ic_profile"
                     android:layout_width="100dp"
@@ -84,18 +83,23 @@
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_profile" />
 
-                <Button
-                    android:id="@+id/addContact_btnSelectPhoto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/pacificblue"
-                    android:layout_marginTop="15dip"
-                    android:layout_marginBottom="5dip"
-                    android:paddingLeft="20dip"
-                    android:paddingRight="20dip"
-                    android:text="@string/addContact_btnSelectPhoto"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_horizontal"/>
+                    <Button
+                        android:id="@+id/addContact_btnSelectPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="15dip"
+                        android:layout_marginRight="10dip"
+                        android:layout_marginBottom="5dip"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@color/pacificblue"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dip"
+                        android:text="@string/addContact_btnSelectPhoto"
+                        android:textColor="@color/white"
+                        android:textSize="15dip" />
+
             </LinearLayout>
 
             <CheckBox
