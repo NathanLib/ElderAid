@@ -79,20 +79,6 @@ Actual results:
 *********************************************
 
 Test purpose:​
-    To check that it is not possible to add more than three favorite contacts
-Test actions:​
-    Add 3 favorites contacts and then verify that the Favorite contact option is disabled when adding a contact and in the details page of a contact that is not a favorite
-Expected response:​
-    All options to add a new favorite have been blocked because the user already has 3 favorites
-Test passed?​
-    Yes
-Actual results:
-    When the user has already added three favorite contacts, it is no longer possible to add new ones because the options allowing this have been disabled
-    and a descriptive message is present next to the option to notify the user
-
-*********************************************
-
-Test purpose:​
     To check that it is possible to see the details of a contact by clicking on its row in the RecyclerView
 Test actions:​
     On ContactActivity, click on a contact in the RecyclerView
