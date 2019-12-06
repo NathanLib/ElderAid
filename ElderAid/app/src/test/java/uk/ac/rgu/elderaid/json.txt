@@ -1,0 +1,42 @@
+{
+     "kind": "calendar#events",
+     "etag": "\"p33gfnruilufuc0g\"",
+     "summary": "Other Elder Cal",
+     "description": "TestingCalendar",
+     "updated": "2019-12-05T20:43:13.132Z",
+     "timeZone": "Europe/London",
+     "accessRole": "reader",
+     "defaultReminders": [],
+     "nextSyncToken": "COD779Kvn-YCEAAYAQ==",
+     "items": [
+      {
+       "kind": "calendar#event",
+       "etag": "\"3151157186264000\"",
+       "id": "4q4quqcfsri2sgiv96bml3ilm8",
+       "status": "confirmed",
+       "htmlLink": "https://www.google.com/calendar/event?eid=NHE0cXVxY2Zzcmkyc2dpdjk2Ym1sM2lsbTggcDNjbzJqMnRsa2dnZWtoM2ZsaWd2amEwOW9AZw",
+       "created": "2019-12-05T20:43:13.000Z",
+       "updated": "2019-12-05T20:43:13.132Z",
+       "summary": "Mail order arrives",
+       "description": "3 Parcels",
+       "location": "Post Office",
+       "creator": {
+        "email": "clorixian@gmail.com"
+       },
+       "organizer": {
+        "email": "p3co2j2tlkggekh3fligvja09o@group.calendar.google.com",
+        "displayName": "Other Elder Cal",
+        "self": true
+       },
+       "start": {
+        "date": "2019-12-09"
+       },
+       "end": {
+        "date": "2019-12-10"
+       },
+       "transparency": "transparent",
+       "iCalUID": "4q4quqcfsri2sgiv96bml3ilm8@google.com",
+       "sequence": 0
+      }
+     ]
+    }
