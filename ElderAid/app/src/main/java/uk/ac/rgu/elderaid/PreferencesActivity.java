@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -22,7 +24,7 @@ public class PreferencesActivity extends AppCompatActivity implements View.OnCli
     private SharedPreferences sharedPrefs;
     private static final String STATE_KEY_CALID="calID";
     private String calID;
-
+    private EventDao eventDao;
     private static final String preferencesFile = "uk.ac.rgu.elderaid";
 
 
@@ -73,6 +75,14 @@ public class PreferencesActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         }
+        // *Database setup*
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.eventDao = db.eDao();
+
+
+
     }
 
 
@@ -111,6 +121,8 @@ public class PreferencesActivity extends AppCompatActivity implements View.OnCli
                     getApplicationContext(), PrescriptionLevelActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.btnPrefSubmit){
+
+
             // Add to shared Preferences
             saveSharedPrefs();
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -125,13 +137,17 @@ public class PreferencesActivity extends AppCompatActivity implements View.OnCli
     public void saveSharedPrefs(){
         SharedPreferences.Editor preferenceEditor = sharedPrefs.edit();
         String prefCalIDKey = getString(R.string.prefCalIDKey);
-
+        String defaultCalID = getString(R.string.CalIdDefault);
         EditText calID = findViewById(R.id.etCalID);
 
+        String CalSet = sharedPrefs.getString(prefCalIDKey, defaultCalID);
 
         String etcalIDVal = String.valueOf(calID.getText());
 
-
+        if(!(etcalIDVal.equals(CalSet))){
+            new EmptyEventsTableTask().execute();
+            Log.d("Changed","It was changed!");
+        }
         preferenceEditor.putString(prefCalIDKey, etcalIDVal);
 
         preferenceEditor.apply();
@@ -215,6 +231,14 @@ public class PreferencesActivity extends AppCompatActivity implements View.OnCli
         // check the intent can be resolved by the device
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+        }
+    }
+
+    class EmptyEventsTableTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            eventDao.deleteAllEvents();
+            return null;
         }
     }
 }

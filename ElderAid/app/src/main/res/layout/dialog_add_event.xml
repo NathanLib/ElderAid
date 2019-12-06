@@ -48,29 +48,33 @@
                         android:layout_weight="1"
                         android:src="@drawable/ic_clock" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/addevent_etEventStartDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:ems="10"
                         android:hint="Start date"
-                        android:inputType="date" />
+                        android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/addevent_etEventStartTime"
-                        android:layout_width="0dp"
+
+                    <Button
+                        android:id="@+id/btnStartDatePicker"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="time"
-                        android:inputType="time" />
+                        android:background="@color/pacificblue"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/btnPickDate"
+                        android:textColor="@color/white"
+                        android:onClick="showDatePickerDialog"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -82,23 +86,25 @@
                         android:src="@drawable/ic_clock"
                         android:visibility="invisible" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/addevent_etEventEndDate"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:ems="10"
                         android:hint="End date"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/addevent_etEventEndTime"
-                        android:layout_width="0dp"
+                    <Button
+                        android:id="@+id/btnEndDatePicker"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="time"
-                        android:inputType="time" />
+                        android:background="@color/pacificblue"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/btnPickDate"
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 

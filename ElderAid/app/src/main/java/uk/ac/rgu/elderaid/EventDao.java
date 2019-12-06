@@ -24,6 +24,9 @@ public interface EventDao {
     @Query("SELECT * FROM Event ORDER BY startDate ASC")
     public List<Event> getEvents();
 
+    //Returns the events for a specific date
+    @Query("SELECT * FROM Event WHERE startDate = :startDate ORDER BY title ASC")
+    public List<Event> getEventsForDate(String startDate);
 
     //Update a singular event
     @Update

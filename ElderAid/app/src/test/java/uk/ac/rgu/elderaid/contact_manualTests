@@ -1,0 +1,265 @@
+Test purpose:​
+    To check that the Contact button in HomeActivity launches ContactActivity
+Test actions:​
+    Launch the app, click on the Contact button in the HomeActivity
+Expected response:​
+    The ContactActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the ContactActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Add button in ContactActivity launches ContactAddActivity
+Test actions:​
+    On the ContactActivity, click on the button "Add"
+Expected response:​
+    The ContactAdd is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the ContactAddActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the contacts in the database are displayed correctly when ContactActivity is launched
+Test actions:​
+    Launch the app, click on the Contact button in the HomeActivity
+Expected response:​
+    All the contacts should be displayed in the RecyclerView
+Test passed?​
+    Yes
+Actual results:
+    The button works and all the contacts from the database are correctly displayed row by row in the ReclyclerView
+
+*********************************************
+
+Test purpose:​
+    To check that the display of favorite contacts is dynamic
+Test actions:​
+    Launch ContactActivity with no favorite contacts in the database, then add one favorite contact, then two, then three
+Expected response:​
+    The section for displaying favorite contacts is empty, then displays one favorite contact, then two, then three
+Test passed?​
+    Yes
+Actual results:
+    When the activity is started, the display is empty, then displays a favorite contact, then two, then three
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to modify your favorite contacts
+Test actions:​
+    Add a new favorite contact from ContactAddActivity, make a contact favorite from ContactDetailsActivity, remove a contact from its favorites from ContactDetailsActivity
+Expected response:​
+    Checking the option favorite contact when adding a new contact allows you to display this contact in your favorites.
+    Checking or unchecking the option Favourite contact from the details page of a contact allows you to add or remove this contact from your favourites.
+Test passed?​
+    Yes
+Actual results:
+    These different options allow you to modify your favorite contacts by either removing those that already were or adding new ones.
+
+*********************************************
+
+Test purpose:​
+    To check that it is not possible to add more than three favorite contacts
+Test actions:​
+    Add 3 favorites contacts and then verify that the Favorite contact option is disabled when adding a contact and in the details page of a contact that is not a favorite
+Expected response:​
+    All options to add a new favorite have been blocked because the user already has 3 favorites
+Test passed?​
+    Yes
+Actual results:
+    When the user has already added three favorite contacts, it is no longer possible to add new ones because the options allowing this have been disabled
+    and a descriptive message is present next to the option to notify the user
+
+*********************************************
+
+Test purpose:​
+    To check that it is not possible to add more than three favorite contacts
+Test actions:​
+    Add 3 favorites contacts and then verify that the Favorite contact option is disabled when adding a contact and in the details page of a contact that is not a favorite
+Expected response:​
+    All options to add a new favorite have been blocked because the user already has 3 favorites
+Test passed?​
+    Yes
+Actual results:
+    When the user has already added three favorite contacts, it is no longer possible to add new ones because the options allowing this have been disabled
+    and a descriptive message is present next to the option to notify the user
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to see the details of a contact by clicking on its row in the RecyclerView
+Test actions:​
+    On ContactActivity, click on a contact in the RecyclerView
+Expected response:​
+    ContactDetailsActivity is launched and completed with the information of the selected contact
+Test passed?​
+    Yes
+Actual results:
+    ContactDetailsActivity is launched and correctly completed with all the information of the selected contact
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to see the details of one of the favorite contacts
+Test actions:​
+    On ContactActivity, click on a contact in the Favourite section
+Expected response:​
+    ContactDetailsActivity is launched and completed with the information of the selected contact and the Favorites option is already checked
+Test passed?​
+    Yes
+Actual results:
+    ContactDetailsActivity is launched and correctly completed with all the information of the selected contact and the Favorites option is already checked
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to delete a contact from its details page
+Test actions:​
+    Click on the button "Delete" in the details page of a contact
+Expected response:​
+    The contact is well deleted from the database
+Test passed?​
+    Yes
+Actual results:
+    After clicking on the "Delete" button, this brings you back to the page of all contacts where you can see that the deleted contact no longer appears,
+    which means that it has been deleted from the database
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to call a contact from his details page and that this pre-enters the number in the Phone application
+Test actions:​
+    Click on the button "Call" in the details page of a contact
+Expected response:​
+    The phone dialler is launched and the contact number is enter
+Test passed?​
+    Yes
+Actual results:
+    The phone dialler app is displayed and the contact number is already enter
+
+*********************************************
+
+Test purpose:​
+    To check the text in the addContact_etName EditText,​ addContact_etPhoneNumber EditText in the ContacAddActivity is maintained when the device is rotated
+Test actions:​
+    In ContactAddActivity, write text in the input fields and then rotate the phone
+Expected response:​
+    Text
+Test passed?​
+    Yes
+Actual results:
+    Text that was already entered before the rotation continues to be displayed after the rotation
+
+*********************************************
+
+Test purpose:​
+    To check that it is not possible to enter anything other than numbers in the EditText provided for the phone number when adding a new contact
+Test actions:​
+    Enter letters when typing in the input
+Expected response:​
+    Only numbers are displayed
+Test passed?​
+    Yes
+Actual results:
+    Only numbers are displayed in the input, you can't type any letters
+
+*********************************************
+
+Test purpose:​
+    To check that it is possible to search for an image from your photo gallery to associate it with the new contact
+Test actions:​
+    Click on the button "Select a photo" on the ContactAddActivity
+Expected response:​
+    Clicking on the button opens the phone's photo gallery and displays only the images
+Test passed?​
+    Yes
+Actual results:
+    Clicking on the button opens the phone's photo gallery and displays only the images
+
+*********************************************
+
+Test purpose:​
+    To check that a preview of the selected image is displayed on the page
+Test actions:​
+    Select an image from the photo gallery
+Expected response:​
+    Once the image is selected, a thumbnail is displayed on the contact's add page
+Test passed?​
+    Yes
+Actual results:
+    Selecting an image from the gallery brings you back to the current page of the application, ContactAddActivity,
+    where a thumbnail of the selected image is displayed instead of a face drawing.
+
+*********************************************
+
+Test purpose:​
+    To check that the contact is correctly added to the database
+Test actions:​
+    Click on the button "Save"
+Expected response:​
+    The contact created is well added to the database
+Test passed?​
+    Yes
+Actual results:
+    Clicking on the button brings you back to the page of all contacts where you can see that the new contact created is displayed in the RecyclerView,
+    which means that it has been correctly added to the database
+
+*********************************************
+
+Test purpose:​
+    To check that it is impossible to add an existing contact
+Test actions:​
+    Click on the button "Save"
+Expected response:​
+    The contact is not added
+Test passed?​
+    Yes
+Actual results:
+    Before adding the contact to the database, a check is made on the phone number to verify that it is not already used in the application.
+    As is the case for this test, the contact is not added and the user is brought back to all contacts page and notified of the situation.
+
+*********************************************
+
+Test purpose:​
+    To check that the button "Import" in ContactActivity allows you to import the phone contacts into the application
+Test actions:​
+    Click on the button "Import" on the ContactActivity
+Expected response:​
+    Phone contacts are added to the application database and displayed in the RecyclerView
+Test passed?​
+    Yes
+Actual results:
+    Phone contacts are added to the application database and displayed in the RecyclerView
+
+*********************************************
+
+Test purpose:​
+    To check that if an imported contact is already present in the application then it is not imported but the others are
+Test actions:​
+    Click on the button "Import" on the ContactActivity
+Expected response:​
+    If a contact of the phone is already present in the application database then the contact is not added and the user is notified but other contacts are correctly added
+Test passed?​
+    Yes
+Actual results:
+    The contact already present in the application database is correctly detected and not added, then the user is notified and other contacts are correctly added
+
+*********************************************
+
+Test purpose:​
+    To check that if the authorization has not already been granted then the application asks the user for authorization to read the contacts on the phone
+Test actions:​
+    Click on the "Import" button for the first time after the installation of the application
+Expected response:​
+    A pop-up asking the user to authorize, yes or no, access to the phone contact
+Test passed?​
+    Yes
+Actual results:
+    A pop-up asking the user to authorize, yes or no, access to the phone contact. The user is notified of the permission change by a toast and if he has authorized access,
+    he must click again on the "Import" button to import the contacts
