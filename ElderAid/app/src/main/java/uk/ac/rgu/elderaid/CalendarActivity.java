@@ -28,9 +28,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.ClientError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -39,6 +42,9 @@ import com.google.api.services.calendar.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -120,7 +126,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         setSupportActionBar(toolbar);
         // To this point.
 
-
+        //Set on click listener for when the calendarDate changes
         calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -135,7 +141,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                     monthString = "0" + month;
                 }
 
-                Log.d("DateChange", (year + "-" + monthString + "-" + dayString));
+                //Log.d("DateChange", (year + "-" + monthString + "-" + dayString));
                 String dateChange = year + "-" + monthString + "-" + dayString;
                 new GetEventsByDateTask().execute(dateChange);
             }
@@ -203,13 +209,15 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
         String calendarID = CalID;
         String url = URL_TEMPLATE + calendarID +"/events?key=AIzaSyC-Gs8DUH7IH7XhShlgzMVO_VIORgl68Qs";
-        Log.d("URL", url);
+        //Log.d("URL", url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
                         try {
+                            // Used to get the response for testing purposes
+                            //Log.d("resp", response);
                             JSONObject responseObj = new JSONObject(response);
                             JSONArray itemsArray = responseObj.getJSONArray("items");
                             List<Event> downloadedEventsList = new ArrayList<>();
@@ -249,6 +257,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
                             }
                             new UpdateOrInsertEvent().execute(downloadedEventsList);
+                            Toast.makeText(getApplicationContext(),"Calendar Synced",Toast.LENGTH_SHORT).show();
 
 
                         } catch (Exception e) {
@@ -262,8 +271,13 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, "VolleyError: " + error);
-                        Toast.makeText(getApplicationContext(),"Please check your Calendar ID, and make sure the calendar is public",Toast.LENGTH_SHORT).show();
-
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(getApplicationContext(),"An Error has occurred, please check your WiFi connection",Toast.LENGTH_LONG).show();
+                        } else if(error instanceof ClientError){
+                            Toast.makeText(getApplicationContext(),"Please check your Calendar ID, and make sure the calendar is public",Toast.LENGTH_LONG).show();
+                        } else{
+                            Toast.makeText(getApplicationContext(),"Please check your Calendar ID, and make sure the calendar is public",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
 
@@ -692,8 +706,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected void onPostExecute(List<Event> events) {
             super.onPostExecute(events);
-            String eventString = unpackageEvents(events);
-            Log.d("EVENTSOUTPUT", eventString);
+            //String eventString = unpackageEvents(events);
+            //Log.d("EVENTSOUTPUT", eventString);
         }
     }
 
@@ -716,7 +730,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected List<Event> doInBackground(String... strings) {
             String dateReceived = strings[0];
-            Log.d("Receiver", dateReceived);
+            //Log.d("Receiver", dateReceived);
             return eventDao.getEventsForDate(dateReceived);
         }
 
@@ -725,8 +739,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             super.onPostExecute(events);
 
             //Check returned events
-            String eventString = unpackageEvents(events);
-            Log.d("EVENTSOUTPUT", "Result:" +eventString);
+            //String eventString = unpackageEvents(events);
+            //Log.d("EVENTSOUTPUT", "Result:" +eventString);
 
             //Parse through the results and create the display boxes.
             recyclerInitializer(events);
@@ -755,4 +769,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         }
     }
+
+
+
 }
