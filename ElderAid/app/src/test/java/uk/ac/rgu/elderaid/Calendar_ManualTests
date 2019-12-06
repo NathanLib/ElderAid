@@ -176,40 +176,68 @@ Actual results:
 *********************************************
 
 Test purpose:​
-
+    Check that Calendar handles a network/connection error
 Test actions:​
-
+    Launch app, turn airplane mode on, navigate to the calendar page, click sync events
 Expected response:​
-
+    Toast appears: "An Error has occurred, please check your WiFi connection"
 Test passed?​
-
+    Yes
 Actual results:
-
+    Toast appears: "An Error has occurred, please check your WiFi connection"
 
 *********************************************
 
 Test purpose:​
-
+    Check that the Calendar won't break when using an empty google calendar
 Test actions:​
-
+    Launch app, navigate to preferences, enter a calendarID of a calendar that is empty, click submit,
+    navigate to the calendar page, click sync events
 Expected response:​
-
+    Toast appears: "Calendar Synced"
 Test passed?​
-
+    Yes
 Actual results:
-
+    Toast appears: "Calendar Synced"
 
 *********************************************
 
 Test purpose:​
-
+    Check that the Calendar handles a non public calendar ID
 Test actions:​
-
+    Change settings in Google calendar to non-public.
+    Launch app, navigate to calendar page, sync events
 Expected response:​
-
+    Toast appears: "Please check your Calendar ID, and make sure the calendar is public"
 Test passed?​
-
+    Yes
 Actual results:
+    Toast appears: "Please check your Calendar ID, and make sure the calendar is public"
 
+*********************************************
+
+Test purpose:​
+    Check that the Calendar handles an invalid CalendarID
+Test actions:​
+    Launch app, navigate to preferences and enter a random string, navigate to calendar page, sync events
+Expected response:​
+    Toast appears: "Please check your Calendar ID, and make sure the calendar is public"
+Test passed?​
+    Yes
+Actual results:
+    Toast appears: "Please check your Calendar ID, and make sure the calendar is public"
+
+*********************************************
+
+Test purpose:​
+    Check that the Calendar removes all events when switching Calendar ID
+Test actions:​
+    Launch app, navigate to preferences and enter a new calendar ID, navigate to calendar page, sync events
+Expected response:​
+    Toast appears: "Calendar Synced". Events displayed from a previous calendar are now replaced/removed.
+Test passed?​
+    Yes
+Actual results:
+    Toast appears: "Calendar Synced". Events displayed from a previous calendar are now replaced/removed.
 
 *********************************************
