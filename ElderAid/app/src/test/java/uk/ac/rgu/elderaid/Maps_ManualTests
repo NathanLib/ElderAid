@@ -1,0 +1,133 @@
+Test purpose:​
+    To check that the Maps button in HomeActivity launches MapActivity
+Test actions:​
+    Launch the app, click on the Map button in the HomeActivity
+Expected response:​
+    The MapsActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the MapsActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Maps button in Navigation dialog launches MapActivity
+Test actions:​
+    Launch the app, click on the Navigation button on the tool bar, then click the Map button in the dialog
+Expected response:​
+    The MapsActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the MapsActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Edit Favourites button launches the EditFavourites activity
+Test actions:​
+    Launch the app, navigate to the maps activity, click on the edit favourites button
+Expected response:​
+    Launches the edit favourites activity
+Test passed?​
+    Yes
+Actual results:
+    The button worked and the edit favourites activity was launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Edit Favourites activity stores via the submit button and restores shared preferences
+Test actions:​
+    Launch app, navigate to edit favourites activity, enter data in each edit text, click submit,
+    exit out of edit favourites activity and re-enter the same activity
+Expected response:​
+    Each entered preference should be stored in the same editText
+Test passed?​
+    Yes
+Actual results:
+    Each entered preference was stored, and then restored upon re-entering the activity
+
+*********************************************
+
+Test purpose:​
+    To check that the cancel button in the Edit Favourites activity doesn't save any changed preferences
+Test actions:​
+    Launch app, navigate to edit favourites activity, change the preferences via the editTexts, click cancel,
+    re-enter the application
+Expected response:​
+    Upon clicking cancel, the maps activity is started. Upon entering the edit favourites activity again, the
+    changed preferences have not been saved.
+Test passed?​
+    Yes
+Actual results:
+    Upon clicking cancel, the maps activity is started. Upon entering the edit favourites activity again, the
+    changed preferences have not been saved.
+
+*********************************************
+
+Test purpose:​
+    To check that the favourite buttons are working
+Test actions:​
+    Launch app, navigate to maps activity, set favourites (if not already set), then click favourites button.
+Expected response:​
+    Launches the google maps app with the specified location already entered in navigation mode
+Test passed?​
+    Yes
+Actual results:
+    Launches the google maps app with the specified location already entered in navigation mode
+
+*********************************************
+
+Test purpose:​
+    To check that the Submit button works
+Test actions:​
+    Launch app, navigate to maps activity, enter a location into the editText, hit submit
+Expected response:​
+    Launches the google maps app with the specified location already entered, in navigation mode
+Test passed?​
+    Yes
+Actual results:
+    Launches the google maps app with the specified location already entered, in navigation mode
+
+*********************************************
+
+Test purpose:​
+    To check that the Maps activity responds to life cycle events appropriately
+Test actions:​
+    Launch app, navigate to the maps activity, enter a location into the editText, rotate the screen
+Expected response:​
+    The entered location remains in the editText
+Test passed?​
+    Yes
+Actual results:
+    The entered location remained in the editText
+
+*********************************************
+
+Test purpose:​
+    To check that the Edit Favourites activity responds to life cycle events appropriately
+Test actions:​
+    Launch app, navigate to the editFavourites activity, enter locations into the editTexts, rotate the screen
+Expected response:​
+    The locations remain inside of the editTexts
+Test passed?​
+    Yes
+Actual results:
+    The locations remained inside of the editTexts
+
+*********************************************
+
+Test purpose:​
+    To check that the favourites won't run if not set
+Test actions:​
+    Launch app, navigate to the editFavourites activity, leave a location blank and submit,
+    move to maps activity, click the relevant favourites button.
+Expected response:​
+    Toast appears with error message: "You have not setup this favourite"
+Test passed?​
+    Yes
+Actual results:
+    Toast appears with error message: "You have not setup this favourite"
+
