@@ -20,6 +20,8 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 public class DatabaseInstrumentedTest {
+    //The code used in the Incremented Test was heavily adapted from 
+    //https://developer.android.com/training/data-storage/room/testing-db
     private EventDao eventDao;
     private ElderaidDatabase db;
 
