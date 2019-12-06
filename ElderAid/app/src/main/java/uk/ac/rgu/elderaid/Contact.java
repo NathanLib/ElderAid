@@ -23,7 +23,7 @@ public class Contact {
 
     //Constructor
 
-    public Contact(String name, String phoneNum, String imagePath,  Boolean isFavourite) {
+    public Contact(String name, String phoneNum, String imagePath, Boolean isFavourite) {
         this.name = name;
 
         this.phoneNum = phoneNum;
@@ -84,22 +84,5 @@ public class Contact {
     public void setIsFavourite(Boolean isFavourite) {
         this.isFavourite = isFavourite;
     }
-
-
-//    // Code from https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
-//    /*Comparator for sorting the list by Contact Name*/
-//    public static Comparator<Contact> ContactNameComparator = new Comparator<Contact>() {
-//
-//        public int compare(Contact c1, Contact c2) {
-//            String contactName1 = c1.getName().toUpperCase();
-//            String contactName2 = c1.getName().toUpperCase();
-//
-//            //ascending order
-//            return contactName1.compareTo(contactName2);
-//
-//            //descending order
-//            //return contactName2.compareTo(contactName1);
-//        }
-//    };
 }
 

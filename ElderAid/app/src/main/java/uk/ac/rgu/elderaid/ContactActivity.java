@@ -156,10 +156,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             if (launcher.hasExtra(ContactActivity.EXTRA_CONTACT_SAME)) {
                 count_same = launcher.getIntExtra(ContactActivity.EXTRA_CONTACT_SAME, 0);
 
-                Toast.makeText(this, count_imported + " contacts imported \n" + count_same + " duplicate contacts not imported" , Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(this, count_imported + " contacts imported" , Toast.LENGTH_LONG).show();
+                Toast.makeText(this, count_imported + " contacts imported \n" + count_same + " duplicate contacts not imported", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, count_imported + " contacts imported", Toast.LENGTH_LONG).show();
             }
         }
 
