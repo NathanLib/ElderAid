@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/TaskName"
+                android:id="@+id/Task_tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -50,7 +50,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/Date"
+                        android:id="@+id/Task_tvDate"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -68,7 +68,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/Time"
+                        android:id="@+id/Task_tvTime"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

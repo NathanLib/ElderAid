@@ -2,6 +2,9 @@ package uk.ac.rgu.elderaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,13 +16,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-public class PrescriptionLevelActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+
+public class PrescriptionLevelActivity extends AppCompatActivity implements View.OnClickListener, PrescriptionAdapter.OnPrescriptionListener {
 
     private ImageButton btnshowSideNav;
     private LinearLayout prescription_llAddMedications;
     private LinearLayout prescription_llMyMedication1;
     private ImageButton btnSOS;
     private ImageButton btnHome;
+
+    private ArrayList<Prescription> prescriptionList = new ArrayList<>();
+    private RecyclerView recyclerView_presciption;
+    private PrescriptionAdapter pAdapter;
+
+    private PrescriptionDao prescriptionDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,18 +71,47 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
             }
         });
 
-        prescription_llMyMedication1 = (LinearLayout) findViewById(R.id.prescription_llMyMedication1);
-        prescription_llMyMedication1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openEditDialog();
-            }
-        });
+        //Get the database instance
+        ElderaidDatabase db = ElderaidDatabase.getDatabase(this);
+        //Get the DAO from the database
+        this.prescriptionDao = db.pDao();
 
         // The code below was adapted from a source on the internet from this point forward./
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My prescription levels");
         setSupportActionBar(toolbar);
+
+        recyclerView_presciption = (RecyclerView) findViewById(R.id.rvPrescription);
+
+        pAdapter = new PrescriptionAdapter(prescriptionList, this);
+        RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView_presciption.setLayoutManager(pLayoutManager);
+        recyclerView_presciption.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_presciption.setAdapter(pAdapter);
+
+        preparePrescriptionData();
+    }
+
+    private void preparePrescriptionData() {
+        Prescription prescription = new Prescription("Xanax", "10/2/2021","50");
+        prescriptionList.add(prescription);
+
+        prescription = new Prescription("Vicodin", "15/6/2020","23");
+        prescriptionList.add(prescription);
+
+        prescription = new Prescription("Simvastatin", "21/9/2020","34");
+        prescriptionList.add(prescription);
+
+        prescription = new Prescription("Lisinopril", "29/12/2019","14");
+        prescriptionList.add(prescription);
+
+        prescription = new Prescription("Levothyroxine", "11/10/2022","103");
+        prescriptionList.add(prescription);
+
+        prescription = new Prescription("Paracetamol", "18/5/2022","64");
+        prescriptionList.add(prescription);
+
+
     }
 
 
@@ -142,7 +182,7 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
     public void openEditDialog() {
         final Dialog dialog = new Dialog(this); // Context, this, etc.
         dialog.setContentView(R.layout.dialog_edit_prescription);
-        dialog.setTitle("Add a medication");
+        dialog.setTitle("Medication");
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
@@ -150,7 +190,6 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.show();
         dialog.getWindow().setAttributes(lp);
-
         dialog.show();
     }
 
@@ -206,5 +245,11 @@ public class PrescriptionLevelActivity extends AppCompatActivity implements View
                     getApplicationContext(), PreferencesActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onPrescriptionClick(int position){
+        prescriptionList.get(position);
+        openEditDialog();
     }
 }

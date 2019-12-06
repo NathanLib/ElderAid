@@ -22,8 +22,10 @@ public class Contact {
     private Boolean isFavourite;
 
     //Constructor
+
     public Contact(String name, String phoneNum, String imagePath,  Boolean isFavourite) {
         this.name = name;
+
         this.phoneNum = phoneNum;
         this.imagePath = imagePath;
         this.isFavourite = isFavourite;
