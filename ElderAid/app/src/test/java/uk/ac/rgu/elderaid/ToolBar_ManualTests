@@ -1,0 +1,40 @@
+*********************************************
+
+Test purpose:​
+    To check that the Home button is working
+Test actions:​
+    Launch App, navigate to any activity of choice (e.g. Maps Activity), click home button on toolbar
+Expected response:​
+    Launches home activity
+Test passed?​
+    Yes
+Actual results:
+    Launches home activity
+
+*********************************************
+
+Test purpose:​
+    To check that the SOS button is working properly
+Test actions:​
+    Launch App, click the SOS button
+Expected response:​
+    Launches phone application, with emergency number already inputted into the dial screen.
+Test passed?​
+    Yes
+Actual results:
+    Launches phone application, with emergency number already inputted into the dial screen.
+
+*********************************************
+
+Test purpose:​
+    To check that the Navigation button is working properly
+Test actions:​
+    Launch App, click the Navigation button
+Expected response:​
+    Launches dialog onto screen with links to pages
+Test passed?​
+    Yes
+Actual results:
+    Launches dialog onto screen with links to pages
+
+*********************************************

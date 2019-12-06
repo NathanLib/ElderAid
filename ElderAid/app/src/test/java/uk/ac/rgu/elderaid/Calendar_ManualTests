@@ -1,0 +1,215 @@
+Test purpose:​
+    To check that the Calendar button in HomeActivity launches CalendarActivity
+Test actions:​
+    Launch the app, click on the Calendar button in the HomeActivity
+Expected response:​
+    The CalendarActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the CalendarActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Calendar button in Navigation dialog launches CalendarActivity
+Test actions:​
+    Launch the app, click on the Navigation button on the tool bar, then click the Calendar button in the dialog
+Expected response:​
+    The CalendarActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the CalendarActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Preferences button in Navigation dialog launches PreferencesActivity
+Test actions:​
+    Launch the app, click on the Navigation button on the tool bar, then click the Preferences button in the dialog
+Expected response:​
+    The PreferencesActivity is launched
+Test passed?​
+    Yes
+Actual results:
+    The button works and the PreferencesActivity is launched
+
+*********************************************
+
+Test purpose:​
+    To check that the Preferences activity stores via the submit button and restores shared preferences
+Test actions:​
+    Launch app, navigate to Preferences activity, enter data in the editText, click submit,
+    exit out of Preferences activity and re-enter the same activity
+Expected response:​
+    The entered preference should be stored in the same editText
+Test passed?​
+    Yes
+Actual results:
+    The entered preference was stored, and then restored upon re-entering the activity
+
+*********************************************
+
+Test purpose:​
+    To check that the cancel button in the Preferences activity doesn't save any changed preferences
+Test actions:​
+    Launch app, navigate to Preferences activity, change the preferences via the editTexts, click cancel,
+    re-enter the application
+Expected response:​
+    Upon clicking cancel, the home activity is started. Upon entering the Preferences activity again, the
+    changed preferences editTexts have not been saved.
+Test passed?​
+    Yes
+Actual results:
+    Upon clicking cancel, the home activity is started. Upon entering the Preferences activity again, the
+    changed preferences editTexts have not been saved.
+
+*********************************************
+
+Test purpose:​
+    To check that the Preferences activity responds to life cycle events appropriately
+Test actions:​
+    Launch app, navigate to the Preferences activity, enter a location into the editText, rotate the screen
+Expected response:​
+    The entered location remains in the editText
+Test passed?​
+    Yes
+Actual results:
+    The entered location remained in the editText
+
+*********************************************
+
+
+Test purpose:​
+    To check that the sync events button is working properly, and in turn, that the API get request and insert/Update
+    async methods are also working properly.
+Test actions:​
+    Launch app, ensure that a valid calendar ID is entered into the preferences page editText,
+    navigate to the Calendar page, click Sync events button
+Expected response:​
+    Toast appears with the message "Calendar Synced", and when a day with an event is clicked on, the
+    relevant events appear
+Test passed?​
+    Yes
+Actual results:
+    Toast appears with the message "Calendar Synced", and when a day with an event is clicked on, the
+    relevant events appear
+
+*********************************************
+
+Test purpose:​
+    To check that the manual events entry dialog is working properly, and that manual events are being added to the
+    database and displayed properly.
+Test actions:​
+    Launch app, navigate to calendar page, click add event button. Then fill out the entry form, click the
+    "add the event" button
+Expected response:​
+    Toast appears with message "Event added", and when the day of the entered start date is clicked on, the
+    event appears.
+Test passed?​
+    Yes
+Actual results:
+    Toast appears with message "Event added", and when the day of the entered start date is clicked on, the
+    event appears.
+
+*********************************************
+
+Test purpose:​
+    To check that the recyclerView is working properly & clicked events are being displayed through
+    dialogs correctly
+Test actions:​
+    Launch app, navigate to the calendar page, sync events/add event, navigate to a date with an event on it,
+    click the event in the recyclerView
+Expected response:​
+    Dialog appears with all the entered information inside of it
+Test passed?​
+    Yes
+Actual results:
+    Dialog appears with all the entered information inside of it
+
+*********************************************
+
+Test purpose:​
+    To check that the database is deleting events properly/making sure that the delete button inside of event
+    dialogs is working
+Test actions:​
+    Launch app, navigate to the calendar page, sync events/add event, navigate to a date with an event on it,
+    click the event in the recyclerView, click the delete button
+Expected response:​
+    Toast displays "Event Deleted", the calendar activity is re-launched, the event is no longer displayed on the
+    relevant date.
+Test passed?​
+    Yes
+Actual results:
+    Toast displays "Event Deleted", the calendar activity is re-launched, the event is no longer displayed on the
+    relevant date.
+
+*********************************************
+
+Test purpose:​
+    Check that the date validation is working for adding events
+Test actions:​
+    Launch app, navigate to calendar page, click add event button. Then fill out the entry form with the end
+    date before the start date, click the "add the event" button
+Expected response:​
+    Toast appears with "Event not added: Your end date must be after the start date"
+Test passed?​
+    Yes
+Actual results:
+    Toast appears with "Event not added: Your end date must be after the start date"
+
+*********************************************
+
+Test purpose:​
+    Check that the text validation is working for adding events
+Test actions:​
+    Launch app, navigate to calendar page, click add event button. Then leave the entry form blank and only
+    fill out the dates, click the "add the event" button
+Expected response:​
+    Toast appears with "Event added", when viewing the event, the fields left blank are replaced by "Not Provided"
+Test passed?​
+    Yes
+Actual results:
+    Toast appears with "Event added", when viewing the event, the fields left blank are replaced by "Not Provided"
+
+*********************************************
+
+Test purpose:​
+
+Test actions:​
+
+Expected response:​
+
+Test passed?​
+
+Actual results:
+
+
+*********************************************
+
+Test purpose:​
+
+Test actions:​
+
+Expected response:​
+
+Test passed?​
+
+Actual results:
+
+
+*********************************************
+
+Test purpose:​
+
+Test actions:​
+
+Expected response:​
+
+Test passed?​
+
+Actual results:
+
+
+*********************************************

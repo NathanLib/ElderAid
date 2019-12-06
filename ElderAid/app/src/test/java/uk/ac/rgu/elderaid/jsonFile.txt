@@ -1,6 +1,6 @@
 {
      "kind": "calendar#events",
-     "etag": "\"p33gfnruilufuc0g\"",
+     "etag": "p33gfnruilufuc0g",
      "summary": "Other Elder Cal",
      "description": "TestingCalendar",
      "updated": "2019-12-05T20:43:13.132Z",
@@ -11,7 +11,7 @@
      "items": [
       {
        "kind": "calendar#event",
-       "etag": "\"3151157186264000\"",
+       "etag": "3151157186264000",
        "id": "4q4quqcfsri2sgiv96bml3ilm8",
        "status": "confirmed",
        "htmlLink": "https://www.google.com/calendar/event?eid=NHE0cXVxY2Zzcmkyc2dpdjk2Ym1sM2lsbTggcDNjbzJqMnRsa2dnZWtoM2ZsaWd2amEwOW9AZw",
