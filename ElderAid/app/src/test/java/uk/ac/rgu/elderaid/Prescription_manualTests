@@ -25,7 +25,7 @@ Actual results:
 *********************************************
 
 Test purpose:​
-    To check that the prescriptions in the database are displayed correctly when PrescriptionActivity is launched
+    To check that the prescriptions in the ArrayList are displayed correctly when PrescriptionActivity is launched
 Test actions:​
     Launch the app, navigate to the PrescriptionActivity
 Expected response:​
@@ -33,30 +33,30 @@ Expected response:​
 Test passed?​
     Yes
 Actual results:
-    All the prescription from the database are correctly displayed row by row in the ReclyclerView
+    All the prescription from the ArrayList are correctly displayed row by row in the ReclyclerView
 
 *********************************************
 
-    Test purpose:
-        To check that the Add Prscription button in the PrescriptionActivity launches the dialogEditPrescription
-    Test actions:
-        Launch the app, navigate to the PrescriptionActivity, click on the Add Prscription button
-    Expected response:
-        The dialogEditPrescription is launched
-    Test passed?
-        Yes
-    Actual results:
-        The button works and the dialogEditPrescription is launched
+Test purpose:
+    To check that the Add Prescription button in the PrescriptionActivity launches the dialogEditPrescription
+Test actions:
+    Launch the app, navigate to the PrescriptionActivity, click on the Add Prescription button
+Expected response:
+    The dialogEditPrescription is launched
+Test passed?
+     Yes
+Actual results:
+     The button works and the dialogEditPrescription is launched
 
 *********************************************
 
-    Test purpose:​
-        To check that it is possible to see the details of a prescription by clicking on its row in the RecyclerView
-    Test actions:​
-        Launch the app, navigate to the PrescriptionActivity, click on a prescription in the RecyclerView
-    Expected response:​
-        The dialogEditPrescription is launched
-    Test passed?​
-        Yes
-    Actual results:
-        The dialogEditPrescription is launched
+Test purpose:​
+    To check that it is possible to see the placeholder details of a prescription by clicking on its row in the RecyclerView
+Test actions:​
+    Launch the app, navigate to the PrescriptionActivity, click on a prescription in the RecyclerView
+Expected response:​
+    The dialogEditPrescription is launched
+Test passed?​
+    Yes
+Actual results:
+    The dialogEditPrescription is launched
